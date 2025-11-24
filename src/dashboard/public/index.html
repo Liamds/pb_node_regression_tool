@@ -17,6 +17,9 @@
                     <button class="btn btn-success" onclick="showRunModal()">
                         ▶️ Run Analysis
                     </button>
+                    <button class="btn btn-primary" onclick="showTemplateModal()" title="Analysis Templates">
+                        📋 Templates
+                    </button>
                     <a href="/api-docs" target="_blank" class="btn btn-primary" title="View API Documentation">
                         📚 API Docs
                     </a>
@@ -139,7 +142,20 @@
         <div class="table-section">
             <h2>Recent Reports</h2>
             <div class="table-controls">
-                <input type="text" id="searchInput" placeholder="🔍 Search reports..." class="search-input">
+                <input type="text" id="searchInput" placeholder="🔍 Search reports... (Ctrl+F)" class="search-input">
+                <input type="number" 
+                    id="varianceThresholdInput" 
+                    placeholder="Min variance" 
+                    class="search-input" 
+                    style="flex: 0 0 150px;"
+                    value="0">
+                
+                <input type="number" 
+                    id="percentThresholdInput" 
+                    placeholder="Min %" 
+                    class="search-input" 
+                    style="flex: 0 0 100px;"
+                    value="0">
                 <select id="baseDateFilter" class="filter-select">
                     <option value="">All Base Dates</option>
                 </select>

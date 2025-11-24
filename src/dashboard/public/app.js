@@ -1,3 +1,48 @@
+// ============================================
+// USER PREFERENCES MANAGER
+// ============================================
+const UserPreferences = {
+  get: (key, defaultValue) => {
+    try {
+      const stored = localStorage.getItem(`variance_pref_${key}`);
+      return stored ? JSON.parse(stored) : defaultValue;
+    } catch {
+      return defaultValue;
+    }
+  },
+  set: (key, value) => {
+    try {
+      localStorage.setItem(`variance_pref_${key}`, JSON.stringify(value));
+    } catch (e) {
+      console.error('Failed to save preference:', e);
+    }
+  }
+};
+
+// ============================================
+// ANALYSIS TEMPLATES MANAGER
+// ============================================
+const AnalysisTemplates = {
+  get: () => UserPreferences.get('analysis_templates', []),
+  save: (templates) => UserPreferences.set('analysis_templates', templates),
+  add: (template) => {
+    const templates = AnalysisTemplates.get();
+    templates.push({ ...template, id: Date.now() });
+    AnalysisTemplates.save(templates);
+  },
+  delete: (id) => {
+    const templates = AnalysisTemplates.get().filter(t => t.id !== id);
+    AnalysisTemplates.save(templates);
+  },
+  getList: () => AnalysisTemplates.get()
+};
+
+// Initialize
+let userTemplates = AnalysisTemplates.getList();
+let recentSearches = UserPreferences.get('recentSearches', []);
+let varianceThreshold = UserPreferences.get('varianceThreshold', 0);
+let percentThreshold = UserPreferences.get('percentThreshold', 0);
+
 // Dashboard Client Application
 const API_BASE = window.location.origin + '/api';
 const WS_URL = `ws://${window.location.host}`;
@@ -16,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFilterOptions();
     loadStatistics();
     loadReports();
+    setupKeyboardShortcuts();
+    loadUserTemplates();
+    restoreUserPreferences();
     
     // Setup search and filters
     document.getElementById('searchInput').addEventListener('input', filterReports);
@@ -340,6 +388,11 @@ function displayReports(reports) {
 // Filter reports
 function filterReports() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+    // Save to recent searches
+    if (searchTerm.trim()) {
+        addToRecentSearches(searchTerm);
+    }
     
     let filtered = allReports;
     
@@ -351,6 +404,12 @@ function filterReports() {
     }
     
     displayReports(filtered);
+}
+
+function addToRecentSearches(term) {
+    if (!term.trim()) return;
+    recentSearches = [term, ...recentSearches.filter(s => s !== term)].slice(0, 5);
+    UserPreferences.set('recentSearches', recentSearches);
 }
 
 // Create trend charts
@@ -771,6 +830,12 @@ async function runAnalysis() {
         alert('Please provide a configuration file');
         return;
     }
+
+    UserPreferences.set('lastAnalysisConfig', {
+        configFile,
+        outputFile,
+        timestamp: new Date().toISOString()
+    });
     
     try {
         const response = await fetch(`${API_BASE}/run-analysis`, {
@@ -860,6 +925,199 @@ function formatDuration(ms) {
     } else {
         return `${seconds}s`;
     }
+}
+
+function setupKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+        // Ctrl+R: Run last analysis
+        if (e.ctrlKey && e.key === 'r') {
+            e.preventDefault();
+            runLastAnalysis();
+        }
+        
+        // Ctrl+F: Focus search
+        if (e.ctrlKey && e.key === 'f') {
+            e.preventDefault();
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.focus();
+                searchInput.select();
+            }
+        }
+        
+        // Escape: Close modals
+        if (e.key === 'Escape') {
+            closeModal();
+            closeRunModal();
+            closeTemplateModal();
+        }
+        
+        // Ctrl+T: Toggle theme
+        if (e.ctrlKey && e.key === 't') {
+            e.preventDefault();
+            toggleDarkMode();
+        }
+    });
+}
+
+function runLastAnalysis() {
+    const lastConfig = UserPreferences.get('lastAnalysisConfig', null);
+    if (lastConfig) {
+        document.getElementById('configFileInput').value = lastConfig.configFile || 'config.json';
+        document.getElementById('outputFileInput').value = lastConfig.outputFile || '';
+        showRunModal();
+        alert('Last analysis config loaded. Click "Start Analysis" to run.');
+    } else {
+        alert('No previous analysis found. Run an analysis first.');
+    }
+}
+
+function restoreUserPreferences() {
+    // Restore filter thresholds
+    const savedVarianceThreshold = UserPreferences.get('varianceThreshold', 0);
+    const savedPercentThreshold = UserPreferences.get('percentThreshold', 0);
+    
+    console.log('Restored preferences:', { savedVarianceThreshold, savedPercentThreshold });
+}
+
+function loadUserTemplates() {
+    userTemplates = AnalysisTemplates.getList();
+    console.log('Loaded templates:', userTemplates);
+}
+
+function showTemplateModal() {
+    const modal = document.getElementById('templateModal');
+    if (!modal) {
+        createTemplateModal();
+    }
+    document.getElementById('templateModal').classList.add('show');
+    renderTemplateList();
+}
+
+function closeTemplateModal() {
+    const modal = document.getElementById('templateModal');
+    if (modal) {
+        modal.classList.remove('show');
+    }
+}
+
+function createTemplateModal() {
+    const modalHTML = `
+        <div id="templateModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>📋 Analysis Templates</h2>
+                    <button class="modal-close" onclick="closeTemplateModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="templateList"></div>
+                    
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                        <h3>Create New Template</h3>
+                        <div class="form-group">
+                            <label>Template Name</label>
+                            <input type="text" id="templateName" class="form-control" placeholder="e.g., Quarterly Review">
+                        </div>
+                        <div class="form-group">
+                            <label>Config File</label>
+                            <input type="text" id="templateConfig" class="form-control" placeholder="e.g., config.json">
+                        </div>
+                        <div class="form-group">
+                            <label>Output File (optional)</label>
+                            <input type="text" id="templateOutput" class="form-control" placeholder="e.g., Q1_report.xlsx">
+                        </div>
+                        <button class="btn btn-primary" onclick="saveNewTemplate()">Save Template</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+function renderTemplateList() {
+    const container = document.getElementById('templateList');
+    if (!container) return;
+    
+    if (userTemplates.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 20px;">No templates saved yet</p>';
+        return;
+    }
+    
+    container.innerHTML = userTemplates.map(template => `
+        <div style="padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h4 style="margin: 0 0 4px 0;">${template.name}</h4>
+                    <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">
+                        Config: ${template.config.configFile || template.config}
+                    </p>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-sm btn-primary" onclick="runTemplate(${template.id})">
+                        ▶️ Run
+                    </button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteTemplate(${template.id})">
+                        🗑️
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function saveNewTemplate() {
+    const name = document.getElementById('templateName').value.trim();
+    const configFile = document.getElementById('templateConfig').value.trim();
+    const outputFile = document.getElementById('templateOutput').value.trim();
+    
+    if (!name || !configFile) {
+        alert('Please provide template name and config file');
+        return;
+    }
+    
+    AnalysisTemplates.add({
+        name,
+        config: {
+            configFile,
+            outputFile
+        },
+        createdAt: new Date().toISOString()
+    });
+    
+    userTemplates = AnalysisTemplates.getList();
+    renderTemplateList();
+    
+    // Clear form
+    document.getElementById('templateName').value = '';
+    document.getElementById('templateConfig').value = '';
+    document.getElementById('templateOutput').value = '';
+    
+    alert('Template saved!');
+}
+
+function runTemplate(templateId) {
+    const template = userTemplates.find(t => t.id === templateId);
+    if (!template) return;
+    
+    // Save as last used
+    UserPreferences.set('lastAnalysisConfig', template.config);
+    
+    // Populate run modal
+    document.getElementById('configFileInput').value = template.config.configFile;
+    document.getElementById('outputFileInput').value = template.config.outputFile || '';
+    
+    closeTemplateModal();
+    showRunModal();
+}
+
+function deleteTemplate(templateId) {
+    if (!confirm('Delete this template?')) return;
+    
+    AnalysisTemplates.delete(templateId);
+    userTemplates = AnalysisTemplates.getList();
+    renderTemplateList();
 }
 
 // Close modal on outside click

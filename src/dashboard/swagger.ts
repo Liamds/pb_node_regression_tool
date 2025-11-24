@@ -28,15 +28,7 @@ const options: swaggerJsdoc.Options = {
         
         ## Authentication
         Currently no authentication is required. All endpoints are publicly accessible.
-      `,
-      contact: {
-        name: 'API Support',
-        email: 'support@example.com'
-      },
-      license: {
-        name: 'MIT',
-        url: 'https://opensource.org/licenses/MIT'
-      }
+      `
     },
     servers: [
       {
