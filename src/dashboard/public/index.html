@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variance Analysis Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>📊 Variance Analysis Dashboard</h1>
+                <div class="header-actions">
+                    <button class="btn btn-success" onclick="showRunModal()">
+                        ▶️ Run Analysis
+                    </button>
+                    <button class="btn btn-icon" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+                        🌙
+                    </button>
+                    <button class="btn btn-secondary" onclick="refreshReports()">
+                        🔄 Refresh
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalReports">-</div>
+                    <div class="stat-label">Total Reports</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="completedReports">-</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚠️</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalVariances">-</div>
+                    <div class="stat-label">Total Variances</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">❌</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalErrors">-</div>
+                    <div class="stat-label">Validation Errors</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trend Analysis Charts -->
+        <div class="charts-section">
+            <h2>📈 Trend Analysis</h2>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Variances Over Time</h3>
+                    <canvas id="varianceTrendChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Validation Errors Trend</h3>
+                    <canvas id="errorTrendChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Top Forms by Variance Count</h3>
+                    <canvas id="topFormsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Progress (hidden by default) -->
+        <div class="progress-section" id="progressSection" style="display: none;">
+            <div class="progress-header">
+                <h3>⏳ Analysis in Progress</h3>
+                <button class="btn btn-sm btn-danger" onclick="stopAnalysis()" id="stopButton">
+                    ⏹️ Stop
+                </button>
+            </div>
+            
+            <!-- Steps Progress -->
+            <div class="steps-container">
+                <div class="step" id="step-1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Authentication</div>
+                    <div class="step-status">⏳</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step" id="step-2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Analyzing Returns</div>
+                    <div class="step-status">⏳</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step" id="step-3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Export to Excel</div>
+                    <div class="step-status">⏳</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step" id="step-4">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Saving Report</div>
+                    <div class="step-status">⏳</div>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text">
+                <span id="progressText">Initializing...</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            
+            <!-- Console Output -->
+            <div class="console-section">
+                <div class="console-header">
+                    <h4>📋 Console Output</h4>
+                    <button class="btn btn-sm btn-secondary" onclick="clearConsole()">Clear</button>
+                </div>
+                <div class="console-output" id="consoleOutput"></div>
+            </div>
+        </div>
+
+        <!-- Reports Table -->
+        <div class="table-section">
+            <h2>Recent Reports</h2>
+            <div class="table-controls">
+                <input type="text" id="searchInput" placeholder="🔍 Search reports..." class="search-input">
+                <select id="baseDateFilter" class="filter-select">
+                    <option value="">All Base Dates</option>
+                </select>
+                <select id="formFilter" class="filter-select">
+                    <option value="">All Forms</option>
+                </select>
+                <select id="statusFilter" class="filter-select">
+                    <option value="">All Status</option>
+                    <option value="completed">Completed</option>
+                    <option value="running">Running</option>
+                    <option value="failed">Failed</option>
+                </select>
+            </div>
+            
+            <div class="table-container">
+                <table class="reports-table">
+                    <thead class="sticky-header">
+                        <tr>
+                            <th>Date</th>
+                            <th>Base Date</th>
+                            <th>Returns</th>
+                            <th>Variances</th>
+                            <th>Errors</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reportsTableBody">
+                        <tr>
+                            <td colspan="8" class="loading-cell">Loading reports...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Run Analysis Modal -->
+        <div id="runModal" class="modal">
+            <div class="modal-content modal-small">
+                <div class="modal-header">
+                    <h2>▶️ Run Analysis</h2>
+                    <button class="modal-close" onclick="closeRunModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="configFileInput">Configuration File</label>
+                        <input type="text" id="configFileInput" class="form-control" 
+                               placeholder="e.g., config.json" value="config.json">
+                        <small class="form-hint">Path to the JSON configuration file</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="outputFileInput">Output File (optional)</label>
+                        <input type="text" id="outputFileInput" class="form-control" 
+                               placeholder="e.g., report.xlsx">
+                        <small class="form-hint">Leave empty for auto-generated name</small>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" onclick="closeRunModal()">Cancel</button>
+                        <button class="btn btn-success" onclick="runAnalysis()">
+                            ▶️ Start Analysis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Details Modal -->
+        <div id="detailsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Report Details</h2>
+                    <button class="modal-close" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

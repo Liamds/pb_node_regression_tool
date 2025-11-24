@@ -1,0 +1,791 @@
+{
+  "results": [
+    {
+      "formName": "1180",
+      "formCode": "ARF1180",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": []
+    },
+    {
+      "formName": "2102",
+      "formCode": "ARF2102",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": []
+    },
+    {
+      "formName": "21031",
+      "formCode": "ARF21031",
+      "confirmed": false,
+      "varianceCount": 15,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": [
+        {
+          "Cell Reference": "BSAO25920",
+          "Cell Description": "Unencumbered debt securities_Domestic_Other long-term debt securities_Maturity Buckets_>= 10 years or no contractual maturity",
+          "2025-06-16": 27020000,
+          "2025-06-30": "",
+          "Difference": -27020000,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "BSAO26249",
+          "Cell Description": "Other earning assets by counterparty_Domestic_Other financial institutions or other legal entities_Maturity Buckets_>= 10 years or no contractual maturity",
+          "2025-06-16": "",
+          "2025-06-30": 118174.1,
+          "Difference": 118174.1,
+          "% Difference": 100
+        },
+        {
+          "Cell Reference": "BSAO26307",
+          "Cell Description": "Any other material funded assets not included above_At call/ Overnight",
+          "2025-06-16": 35726865.7,
+          "2025-06-30": 36351771.31,
+          "Difference": 624905.61,
+          "% Difference": 1.75
+        },
+        {
+          "Cell Reference": "BSAO26308",
+          "Cell Description": "Any other material funded assets not included above_Maturity Buckets_1 day to <= 7 days",
+          "2025-06-16": 240202.64,
+          "2025-06-30": 41182.85,
+          "Difference": -199019.79,
+          "% Difference": -82.85
+        },
+        {
+          "Cell Reference": "BSAO26320",
+          "Cell Description": "Any other material funded assets not included above_Maturity Buckets_3 months to < 6 months",
+          "2025-06-16": 806220.38,
+          "2025-06-30": 643434.75,
+          "Difference": -162785.63,
+          "% Difference": -20.19
+        },
+        {
+          "Cell Reference": "BSAO26321",
+          "Cell Description": "Any other material funded assets not included above_Maturity Buckets_6 months to < 12 months",
+          "2025-06-16": 263100.19,
+          "2025-06-30": "",
+          "Difference": -263100.19,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "BSAO26468",
+          "Cell Description": "Total assets_AUD_At call/ Overnight",
+          "2025-06-16": 65690348.77,
+          "2025-06-30": 66315254.38,
+          "Difference": 624905.61,
+          "% Difference": 0.95
+        },
+        {
+          "Cell Reference": "BSAO26469",
+          "Cell Description": "Total assets_AUD_Maturity Buckets_1 day to <= 7 days",
+          "2025-06-16": 7956676.13,
+          "2025-06-30": 7757656.34,
+          "Difference": -199019.79,
+          "% Difference": -2.5
+        },
+        {
+          "Cell Reference": "BSAO26530",
+          "Cell Description": "Total assets_AUD_Maturity Buckets_3 months to < 6 months",
+          "2025-06-16": 99681773.11,
+          "2025-06-30": 99518987.48,
+          "Difference": -162785.63,
+          "% Difference": -0.16
+        },
+        {
+          "Cell Reference": "BSAO26531",
+          "Cell Description": "Total assets_AUD_Maturity Buckets_6 months to < 12 months",
+          "2025-06-16": 59577400.57,
+          "2025-06-30": 59314300.38,
+          "Difference": -263100.19,
+          "% Difference": -0.44
+        }
+      ]
+    },
+    {
+      "formName": "21032",
+      "formCode": "ARF21032",
+      "confirmed": false,
+      "varianceCount": 264,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": [
+        {
+          "Cell Reference": "102372_E16055",
+          "Cell Description": "Large liability exposures_Deposits",
+          "2025-06-16": "",
+          "2025-06-30": 1293291.62,
+          "Difference": 1293291.62,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "1066_E16055",
+          "Cell Description": "Large liability exposures_Deposits",
+          "2025-06-16": "",
+          "2025-06-30": 1305201.55,
+          "Difference": 1305201.55,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "10944_E16055",
+          "Cell Description": "Large liability exposures_Deposits",
+          "2025-06-16": "",
+          "2025-06-30": 1002489.04,
+          "Difference": 1002489.04,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "11431_E16055",
+          "Cell Description": "Large liability exposures_Deposits",
+          "2025-06-16": "",
+          "2025-06-30": 1170993.02,
+          "Difference": 1170993.02,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "11479_E16055",
+          "Cell Description": "Large liability exposures_Deposits",
+          "2025-06-16": "",
+          "2025-06-30": 1308132.81,
+          "Difference": 1308132.81,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "12840_E16055",
+          "Cell Description": "Large liability exposures_Deposits",
+          "2025-06-16": "",
+          "2025-06-30": 3211684.36,
+          "Difference": 3211684.36,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "13102_E16055",
+          "Cell Description": "Large liability exposures_Deposits",
+          "2025-06-16": "",
+          "2025-06-30": 1057699.05,
+          "Difference": 1057699.05,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "13109_E16055",
+          "Cell Description": "Large liability exposures_Deposits",
+          "2025-06-16": "",
+          "2025-06-30": 1854460.89,
+          "Difference": 1854460.89,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "1469_E16055",
+          "Cell Description": "Large liability exposures_Deposits",
+          "2025-06-16": "",
+          "2025-06-30": 1081488.47,
+          "Difference": 1081488.47,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "14970_E16055",
+          "Cell Description": "Large liability exposures_Deposits",
+          "2025-06-16": "",
+          "2025-06-30": 1043235.05,
+          "Difference": 1043235.05,
+          "% Difference": ""
+        }
+      ]
+    },
+    {
+      "formName": "2105",
+      "formCode": "ARF2105",
+      "confirmed": false,
+      "varianceCount": 57,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-15",
+      "topVariances": [
+        {
+          "Cell Reference": "A2105P2R001C001",
+          "Cell Description": "Unencumbered liquid assets_HQLA_Balance at reporting date",
+          "2025-06-15": 109955087.98,
+          "2025-06-30": 937638.95,
+          "Difference": -109017449.03,
+          "% Difference": -99.15
+        },
+        {
+          "Cell Reference": "A2105P2R002C001",
+          "Cell Description": "Unencumbered liquid assets_RBA eligible securities not included in item 1.1 and item 1.3_Balance at reporting date",
+          "2025-06-15": 317349696.19,
+          "2025-06-30": "",
+          "Difference": -317349696.19,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "A2105P2R008C001",
+          "Cell Description": "Net funding outflows over last five business days_Total net retail deposit outflow_Balance at reporting date",
+          "2025-06-15": 2081395981.98,
+          "2025-06-30": 1977837745.12,
+          "Difference": -103558236.86,
+          "% Difference": -4.98
+        },
+        {
+          "Cell Reference": "A2105P2R009C001",
+          "Cell Description": "Net funding outflows over last five business days_Total net retail deposit outflow_of which: offshore_Balance at reporting date",
+          "2025-06-15": "",
+          "2025-06-30": 4170932.25,
+          "Difference": 4170932.25,
+          "% Difference": 100
+        },
+        {
+          "Cell Reference": "A2105P2R010C001",
+          "Cell Description": "Net funding outflows over last five business days_Total net wholesale (non-financial institution) deposit outflow_Balance at reporting date",
+          "2025-06-15": 71752407.11,
+          "2025-06-30": 121931311.6,
+          "Difference": 50178904.49,
+          "% Difference": 69.93
+        },
+        {
+          "Cell Reference": "A2105P2R012C001",
+          "Cell Description": "Net funding outflows over last five business days_Total net financial institution (FI) deposit outflow_Balance at reporting date",
+          "2025-06-15": "",
+          "2025-06-30": 53937423.05,
+          "Difference": 53937423.05,
+          "% Difference": 100
+        },
+        {
+          "Cell Reference": "A2105P2R023C003",
+          "Cell Description": "Net contingent and committed outflows over last five business days_Net outflows under committed credit facilities_Undrawn",
+          "2025-06-15": "",
+          "2025-06-30": 74293755.35,
+          "Difference": 74293755.35,
+          "% Difference": 100
+        },
+        {
+          "Cell Reference": "A2105P2R035C002",
+          "Cell Description": "Funding maturities_Retail deposits_At-call or overnight",
+          "2025-06-15": 1356754673.36,
+          "2025-06-30": 1323804865.4,
+          "Difference": -32949807.96,
+          "% Difference": -2.43
+        },
+        {
+          "Cell Reference": "A2105P2R035C003",
+          "Cell Description": "Funding maturities_Retail deposits_<= 7 days",
+          "2025-06-15": 28729761.3,
+          "2025-06-30": 27663542.18,
+          "Difference": -1066219.12,
+          "% Difference": -3.71
+        },
+        {
+          "Cell Reference": "A2105P2R035C004",
+          "Cell Description": "Funding maturities_Retail deposits_8 days to <= 15 days",
+          "2025-06-15": 22702562.82,
+          "2025-06-30": 21432869.96,
+          "Difference": -1269692.86,
+          "% Difference": -5.59
+        }
+      ]
+    },
+    {
+      "formName": "2200",
+      "formCode": "ARF2200",
+      "confirmed": false,
+      "varianceCount": 27,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-15",
+      "topVariances": [
+        {
+          "Cell Reference": "R00910",
+          "Cell Description": "Section A: Credit quality_Credit exposures_Restructured_Australia_Total provisions",
+          "2025-06-15": 27574,
+          "2025-06-30": "",
+          "Difference": -27574,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "R00993",
+          "Cell Description": "Section C: >=90 days past-due well-secured items_Portfolio managed facilities_Housing loans_Total exposure_Past-due_Australia",
+          "2025-06-15": 7834057.05,
+          "2025-06-30": "",
+          "Difference": -7834057.05,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "R01015",
+          "Cell Description": "Section C: >=90 days past-due well-secured items_Portfolio managed facilities_Revolving credit_Total exposure_Total portfolio_Australia",
+          "2025-06-15": 8945951.12,
+          "2025-06-30": "",
+          "Difference": -8945951.12,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "R01016",
+          "Cell Description": "Section C: >=90 days past-due well-secured items_Portfolio managed facilities_Credit card_Total exposure_Total portfolio_Australia",
+          "2025-06-15": 13267975.76,
+          "2025-06-30": "",
+          "Difference": -13267975.76,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "R01017",
+          "Cell Description": "Section C: >=90 days past-due well-secured items_Portfolio managed facilities_Housing loans_Total exposure_Total portfolio_Australia",
+          "2025-06-15": 2151301102.57,
+          "2025-06-30": "",
+          "Difference": -2151301102.57,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "R01018",
+          "Cell Description": "Section C: >=90 days past-due well-secured items_Portfolio managed facilities_Term loans_Total exposure_Total portfolio_Australia",
+          "2025-06-15": 63999599.11,
+          "2025-06-30": "",
+          "Difference": -63999599.11,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "R01020",
+          "Cell Description": "Section C: >=90 days past-due well-secured items_Portfolio managed facilities_Other loans_Total exposure_Total portfolio_Australia",
+          "2025-06-15": 261289.47,
+          "2025-06-30": "",
+          "Difference": -261289.47,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "R01033",
+          "Cell Description": "Section C: >=90 days past-due well-secured items_Portfolio managed facilities_Revolving credit_Total provisions_Australia",
+          "2025-06-15": 108608.13,
+          "2025-06-30": "",
+          "Difference": -108608.13,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "R01034",
+          "Cell Description": "Section C: >=90 days past-due well-secured items_Portfolio managed facilities_Credit card_Total provisions_Australia",
+          "2025-06-15": 577114.26,
+          "2025-06-30": "",
+          "Difference": -577114.26,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "R01035",
+          "Cell Description": "Section C: >=90 days past-due well-secured items_Portfolio managed facilities_Housing loans_Total provisions_Australia",
+          "2025-06-15": 7187778.18,
+          "2025-06-30": "",
+          "Difference": -7187778.18,
+          "% Difference": -100
+        }
+      ]
+    },
+    {
+      "formName": "2203",
+      "formCode": "ARF2203",
+      "confirmed": false,
+      "varianceCount": 21,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-15",
+      "topVariances": [
+        {
+          "Cell Reference": "R01244",
+          "Cell Description": "Term of payments past due/period of irregularity_Category One facilities_90 days and less than 182 days_Outstanding balances",
+          "2025-06-15": 3015799,
+          "2025-06-30": 3015798.6,
+          "Difference": -0.4,
+          "% Difference": 0
+        },
+        {
+          "Cell Reference": "R01246",
+          "Cell Description": "Term of payments past due/period of irregularity_Category One facilities_182 days and less than 273 days_Outstanding balances",
+          "2025-06-15": 858619,
+          "2025-06-30": 858618.95,
+          "Difference": -0.05,
+          "% Difference": 0
+        },
+        {
+          "Cell Reference": "R01248",
+          "Cell Description": "Term of payments past due/period of irregularity_Category One facilities_273 days and less than 365 days_Outstanding balances",
+          "2025-06-15": 1171142,
+          "2025-06-30": 1171142.27,
+          "Difference": 0.27,
+          "% Difference": 0
+        },
+        {
+          "Cell Reference": "R01250",
+          "Cell Description": "Term of payments past due/period of irregularity_Category One facilities_365 days and over_Outstanding balances",
+          "2025-06-15": 1680283,
+          "2025-06-30": 1680283.2,
+          "Difference": 0.2,
+          "% Difference": 0
+        },
+        {
+          "Cell Reference": "R01279",
+          "Cell Description": "Term of payments past due/period of irregularity_Category Three facilities_90 days and less than 182 days_Outstanding balances",
+          "2025-06-15": 422413,
+          "2025-06-30": 422412.62,
+          "Difference": -0.38,
+          "% Difference": 0
+        },
+        {
+          "Cell Reference": "R01280",
+          "Cell Description": "Term of payments past due/period of irregularity_Category Three facilities_90 days and less than 182 days_Adjusted balances",
+          "2025-06-15": 422413,
+          "2025-06-30": 422412.62,
+          "Difference": -0.38,
+          "% Difference": 0
+        },
+        {
+          "Cell Reference": "R01284",
+          "Cell Description": "Term of payments past due/period of irregularity_Category Three facilities_182 days and less than 273 days_Outstanding balances",
+          "2025-06-15": 169464,
+          "2025-06-30": 169463.63,
+          "Difference": -0.37,
+          "% Difference": 0
+        },
+        {
+          "Cell Reference": "R01285",
+          "Cell Description": "Term of payments past due/period of irregularity_Category Three facilities_182 days and less than 273 days_Adjusted balances",
+          "2025-06-15": 169464,
+          "2025-06-30": 169463.63,
+          "Difference": -0.37,
+          "% Difference": 0
+        },
+        {
+          "Cell Reference": "R01289",
+          "Cell Description": "Term of payments past due/period of irregularity_Category Three facilities_273 days and less than 365 days_Outstanding balances",
+          "2025-06-15": 764829,
+          "2025-06-30": 764828.65,
+          "Difference": -0.35,
+          "% Difference": 0
+        },
+        {
+          "Cell Reference": "R01290",
+          "Cell Description": "Term of payments past due/period of irregularity_Category Three facilities_273 days and less than 365 days_Adjusted balances",
+          "2025-06-15": 47860,
+          "2025-06-30": 47859.72,
+          "Difference": -0.28,
+          "% Difference": 0
+        }
+      ]
+    },
+    {
+      "formName": "2210",
+      "formCode": "ARF2210",
+      "confirmed": false,
+      "varianceCount": 52,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-15",
+      "topVariances": [
+        {
+          "Cell Reference": "AMP Bank Limited 15081596009_E16135",
+          "Cell Description": "Large exposures_Twenty largest exposures and all those exposures exceeding or equal to 10% of Tier 1 Capital_On-balance sheet exposures - other",
+          "2025-06-15": "",
+          "2025-06-30": 5029877.04,
+          "Difference": 5029877.04,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "AMP Bank Limited 15081596009_E16169",
+          "Cell Description": "Large exposures (without credit risk mitigation effects)_Twenty largest exposures and all those exposures exceeding or equal to 10% of Tier 1 Capital_On-balance sheet exposures - other",
+          "2025-06-15": "",
+          "2025-06-30": 5029877.04,
+          "Difference": 5029877.04,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "Australia and New Zealand Banking Group Limited 11005357522_E16135",
+          "Cell Description": "Large exposures_Twenty largest exposures and all those exposures exceeding or equal to 10% of Tier 1 Capital_On-balance sheet exposures - other",
+          "2025-06-15": "",
+          "2025-06-30": 19166805.28,
+          "Difference": 19166805.28,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "Australia and New Zealand Banking Group Limited 11005357522_E16169",
+          "Cell Description": "Large exposures (without credit risk mitigation effects)_Twenty largest exposures and all those exposures exceeding or equal to 10% of Tier 1 Capital_On-balance sheet exposures - other",
+          "2025-06-15": "",
+          "2025-06-30": 19166805.28,
+          "Difference": 19166805.28,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "Australian Military Bank Ltd 48087649741_E16135",
+          "Cell Description": "Large exposures_Twenty largest exposures and all those exposures exceeding or equal to 10% of Tier 1 Capital_On-balance sheet exposures - other",
+          "2025-06-15": "",
+          "2025-06-30": 4959764.51,
+          "Difference": 4959764.51,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "Australian Military Bank Ltd 48087649741_E16169",
+          "Cell Description": "Large exposures (without credit risk mitigation effects)_Twenty largest exposures and all those exposures exceeding or equal to 10% of Tier 1 Capital_On-balance sheet exposures - other",
+          "2025-06-15": "",
+          "2025-06-30": 4959764.51,
+          "Difference": 4959764.51,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "Auswide Bank Ltd 40087652060_E16135",
+          "Cell Description": "Large exposures_Twenty largest exposures and all those exposures exceeding or equal to 10% of Tier 1 Capital_On-balance sheet exposures - other",
+          "2025-06-15": "",
+          "2025-06-30": 4971665.15,
+          "Difference": 4971665.15,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "Auswide Bank Ltd 40087652060_E16169",
+          "Cell Description": "Large exposures (without credit risk mitigation effects)_Twenty largest exposures and all those exposures exceeding or equal to 10% of Tier 1 Capital_On-balance sheet exposures - other",
+          "2025-06-15": "",
+          "2025-06-30": 4971665.15,
+          "Difference": 4971665.15,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "Bank Australia Limited 21087651607_E16135",
+          "Cell Description": "Large exposures_Twenty largest exposures and all those exposures exceeding or equal to 10% of Tier 1 Capital_On-balance sheet exposures - other",
+          "2025-06-15": "",
+          "2025-06-30": 20004353.22,
+          "Difference": 20004353.22,
+          "% Difference": ""
+        },
+        {
+          "Cell Reference": "Bank Australia Limited 21087651607_E16169",
+          "Cell Description": "Large exposures (without credit risk mitigation effects)_Twenty largest exposures and all those exposures exceeding or equal to 10% of Tier 1 Capital_On-balance sheet exposures - other",
+          "2025-06-15": "",
+          "2025-06-30": 20004353.22,
+          "Difference": 20004353.22,
+          "% Difference": ""
+        }
+      ]
+    },
+    {
+      "formName": "2230",
+      "formCode": "ARF2230",
+      "confirmed": false,
+      "varianceCount": 92,
+      "validationErrorCount": 1,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-15",
+      "topVariances": [
+        {
+          "Cell Reference": "BSAO27809",
+          "Cell Description": "Outstanding loans secured by residential property_Credit limits (including redrawable amounts)_Term loans - owner-occupied_Secured in Australia",
+          "2025-06-15": 1833749239030000.2,
+          "2025-06-30": 1830080918.06,
+          "Difference": -1833747408949082.2,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "BSAO27810",
+          "Cell Description": "Outstanding loans secured by residential property_Credit limits (including redrawable amounts)_Term loans - investment_Secured in Australia",
+          "2025-06-15": 452805134860000,
+          "2025-06-30": 450348853.07,
+          "Difference": -452804684511146.94,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "BSAO27811",
+          "Cell Description": "Outstanding loans secured by residential property_Credit limits (including redrawable amounts)_Term loans - non-housing purposes_Secured in Australia",
+          "2025-06-15": 132669310000,
+          "2025-06-30": "",
+          "Difference": -132669310000,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "BSAO27812",
+          "Cell Description": "Outstanding loans secured by residential property_Credit limits (including redrawable amounts)_Revolving credit_Secured in Australia",
+          "2025-06-15": 13143741850000,
+          "2025-06-30": 4460543.54,
+          "Difference": -13143737389456.46,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "BSAO27813",
+          "Cell Description": "Outstanding loans secured by residential property_Balances in offset accounts_Secured in Australia",
+          "2025-06-15": 156847585810000,
+          "2025-06-30": "",
+          "Difference": -156847585810000,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "BSAO27816",
+          "Cell Description": "Outstanding loans secured by residential property_Credit outstanding_Term loans - owner-occupied_Secured in Australia",
+          "2025-06-15": 1717746617260000,
+          "2025-06-30": 1721329541.84,
+          "Difference": -1717744895930458.2,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "BSAO27817",
+          "Cell Description": "Outstanding loans secured by residential property_Credit outstanding_Term loans - owner-occupied_Secured in Australia: non-performing",
+          "2025-06-15": 7704244660000,
+          "2025-06-30": 7475413.53,
+          "Difference": -7704237184586.47,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "BSAO27818",
+          "Cell Description": "Outstanding loans secured by residential property_Credit outstanding_Term loans - owner-occupied_of which : interest-only_Secured in Australia",
+          "2025-06-15": 42088886880000,
+          "2025-06-30": 42088886.88,
+          "Difference": -42088844791113.12,
+          "% Difference": -100
+        },
+        {
+          "Cell Reference": "BSAO27819",
+          "Cell Description": "Outstanding loans secured by residential property_Credit outstanding_Term loans - owner-occupied_of which : interest-only_Secured in Australia: non-performing",
+          "2025-06-15": "",
+          "2025-06-30": 44554.83,
+          "Difference": 44554.83,
+          "% Difference": 100
+        },
+        {
+          "Cell Reference": "BSAO27822",
+          "Cell Description": "Outstanding loans secured by residential property_Credit outstanding_Term loans - investment_Secured in Australia",
+          "2025-06-15": 433157203330000,
+          "2025-06-30": 432910437.45,
+          "Difference": -433156770419562.56,
+          "% Difference": -100
+        }
+      ]
+    },
+    {
+      "formName": "3300L",
+      "formCode": "ARF3300L",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 1,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": []
+    },
+    {
+      "formName": "3301L",
+      "formCode": "ARF3301L",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": []
+    },
+    {
+      "formName": "3302L",
+      "formCode": "ARF3302L",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": []
+    },
+    {
+      "formName": "3303",
+      "formCode": "ARF3303",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": []
+    },
+    {
+      "formName": "7200A",
+      "formCode": "ARF7200A",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-15",
+      "topVariances": []
+    },
+    {
+      "formName": "7201A",
+      "formCode": "ARF7201A",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": []
+    },
+    {
+      "formName": "7202A",
+      "formCode": "ARF7202A",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-15",
+      "topVariances": []
+    },
+    {
+      "formName": "7203",
+      "formCode": "ARF7203",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-15",
+      "topVariances": []
+    },
+    {
+      "formName": "7204",
+      "formCode": "ARF7204",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-15",
+      "topVariances": []
+    },
+    {
+      "formName": "7206",
+      "formCode": "ARF7206",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-15",
+      "topVariances": []
+    },
+    {
+      "formName": "7311",
+      "formCode": "ARF7311",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": []
+    },
+    {
+      "formName": "7313A",
+      "formCode": "ARF7313A",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": []
+    },
+    {
+      "formName": "7314",
+      "formCode": "ARF7314",
+      "confirmed": true,
+      "varianceCount": 0,
+      "validationErrorCount": 0,
+      "baseDate": "2025-06-30",
+      "comparisonDate": "2025-06-16",
+      "topVariances": []
+    }
+  ]
+}

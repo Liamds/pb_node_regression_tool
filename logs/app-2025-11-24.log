@@ -1,0 +1,1556 @@
+2025-11-24 08:00:08 - INFO       - Dashboard client connected
+2025-11-24 08:45:44 - INFO       - Dashboard client disconnected
+2025-11-24 08:45:51 - INFO       - Dashboard client connected
+2025-11-24 08:45:51 - INFO       - Executing query:
+2025-11-24 08:45:51 - INFO       - Fetched 5 reports from database
+2025-11-24 08:45:51 - INFO       - Fetched 5 reports
+2025-11-24 08:45:51 - INFO       - Report 0: report-1763613912871-664e80da - 2025-11-20T04:45:12.880Z - 2025-06-30
+2025-11-24 08:45:51 - INFO       - Report 1: report-1763608611774-b647b89c - 2025-11-20T03:16:51.776Z - 2025-06-30
+2025-11-24 08:45:51 - INFO       - Report 2: report-1763584020478 - 2025-11-19T20:27:40.085Z - 2025-06-30
+2025-11-24 08:45:51 - INFO       - Report 3: report-1763583475223 - 2025-11-19T20:18:46.424Z - 2025-06-30
+2025-11-24 08:45:51 - INFO       - Report 4: report-1763581052928 - 2025-11-19T19:37:32.929Z - 2025-06-30
+2025-11-24 08:45:51 - INFO       - Executing query:
+2025-11-24 08:45:51 - INFO       - Fetched 5 reports from database
+2025-11-24 09:19:51 - INFO       - 
+Shutting down dashboard server...
+2025-11-24 09:19:51 - INFO       - Database closed
+2025-11-24 09:19:54 - INFO       - Dashboard client disconnected
+2025-11-24 09:47:40 - INFO       - Serving static files from: C:\temp\apraFilecompare\node_regression_tool\src\dashboard\public-react
+2025-11-24 09:47:40 - INFO       - Initializing SQLite database...
+2025-11-24 09:47:40 - INFO       - Loaded existing database
+2025-11-24 09:47:40 - INFO       - Database initialized successfully
+2025-11-24 09:47:40 - INFO       - Dashboard server running at http://localhost:3000
+2025-11-24 09:48:19 - INFO       - Fetched 5 reports from database
+2025-11-24 09:48:19 - INFO       - Fetched 5 reports
+2025-11-24 09:48:19 - INFO       - Fetched 5 reports from database
+2025-11-24 09:48:57 - INFO       - Fetched 5 reports from database
+2025-11-24 09:48:57 - INFO       - Fetched 5 reports
+2025-11-24 09:48:57 - INFO       - Fetched 5 reports from database
+2025-11-24 10:02:23 - INFO       - Serving static files from: C:\temp\apraFilecompare\node_regression_tool\src\dashboard\public-react
+2025-11-24 10:02:23 - INFO       - Initializing SQLite database...
+2025-11-24 10:02:23 - INFO       - Loaded existing database
+2025-11-24 10:02:23 - INFO       - Database initialized successfully
+2025-11-24 10:02:23 - INFO       - Dashboard server running at http://localhost:3000
+2025-11-24 10:02:25 - INFO       - Fetched 5 reports from database
+2025-11-24 10:02:25 - INFO       - Fetched 5 reports
+2025-11-24 10:02:25 - INFO       - Fetched 5 reports from database
+2025-11-24 10:02:25 - INFO       - Fetched 5 reports
+2025-11-24 10:02:25 - INFO       - Fetched 5 reports from database
+2025-11-24 10:02:25 - INFO       - Fetched 5 reports from database
+2025-11-24 10:02:42 - INFO       - Fetched 5 reports from database
+2025-11-24 10:02:42 - INFO       - Fetched 5 reports
+2025-11-24 10:02:42 - INFO       - Fetched 5 reports from database
+2025-11-24 10:02:52 - INFO       - Fetched 5 reports from database
+2025-11-24 10:02:52 - INFO       - Fetched 5 reports
+2025-11-24 10:02:52 - INFO       - Fetched 5 reports from database
+2025-11-24 10:03:39 - INFO       - Fetched 5 reports from database
+2025-11-24 10:03:39 - INFO       - Fetched 5 reports
+2025-11-24 10:03:39 - INFO       - Fetched 5 reports from database
+2025-11-24 10:03:39 - INFO       - Fetched 5 reports
+2025-11-24 10:03:39 - INFO       - Fetched 5 reports from database
+2025-11-24 10:03:39 - INFO       - Fetched 5 reports from database
+2025-11-24 10:03:49 - INFO       - Fetched 5 reports from database
+2025-11-24 10:03:49 - INFO       - Fetched 5 reports
+2025-11-24 10:03:49 - INFO       - Fetched 5 reports from database
+2025-11-24 10:04:28 - INFO       - Fetched 5 reports from database
+2025-11-24 10:04:28 - INFO       - Fetched 5 reports
+2025-11-24 10:04:28 - INFO       - Fetched 5 reports from database
+2025-11-24 10:04:28 - INFO       - Fetched 5 reports
+2025-11-24 10:04:28 - INFO       - Fetched 5 reports from database
+2025-11-24 10:04:28 - INFO       - Fetched 5 reports from database
+2025-11-24 10:29:23 - INFO       - Database closed
+2025-11-24 10:31:48 - INFO       - Serving static files from: C:\temp\apraFilecompare\node_regression_tool\src\dashboard\public
+2025-11-24 10:31:48 - INFO       - Initializing SQLite database...
+2025-11-24 10:31:48 - INFO       - Loaded existing database
+2025-11-24 10:31:48 - INFO       - Database initialized successfully
+2025-11-24 10:31:48 - INFO       - Dashboard server running at http://localhost:3000
+2025-11-24 10:31:48 - INFO       - Dashboard server started successfully
+2025-11-24 10:31:48 - INFO       - Open your browser to: http://localhost:3000
+2025-11-24 10:32:00 - INFO       - Executing query:
+2025-11-24 10:32:00 - INFO       - Fetched 5 reports from database
+2025-11-24 10:32:00 - INFO       - Fetched 5 reports
+2025-11-24 10:32:00 - INFO       - Report 0: report-1763613912871-664e80da - 2025-11-20T04:45:12.880Z - 2025-06-30
+2025-11-24 10:32:00 - INFO       - Report 1: report-1763608611774-b647b89c - 2025-11-20T03:16:51.776Z - 2025-06-30
+2025-11-24 10:32:00 - INFO       - Report 2: report-1763584020478 - 2025-11-19T20:27:40.085Z - 2025-06-30
+2025-11-24 10:32:00 - INFO       - Report 3: report-1763583475223 - 2025-11-19T20:18:46.424Z - 2025-06-30
+2025-11-24 10:32:00 - INFO       - Report 4: report-1763581052928 - 2025-11-19T19:37:32.929Z - 2025-06-30
+2025-11-24 10:32:00 - INFO       - Executing query:
+2025-11-24 10:32:00 - INFO       - Fetched 5 reports from database
+2025-11-24 10:32:01 - INFO       - Executing query:
+2025-11-24 10:32:01 - INFO       - Fetched 5 reports from database
+2025-11-24 10:32:02 - INFO       - Dashboard client connected
+2025-11-24 10:49:48 - INFO       - Starting analysis: C:\Users\ldyersteel\AppData\Local\node\node-v22.19.0-win-x64\node.exe C:\temp\apraFilecompare\node_regression_tool\dist\main.js C:\temp\apraFilecompare\node_regression_tool\config.json --output C:\temp\apraFilecompare\node_regression_tool\reports\report-1763941788923.xlsx --report-id report-1763941788923 --verbose
+2025-11-24 10:49:49 - INFO       - Executing query:
+2025-11-24 10:49:49 - INFO       - Fetched 5 reports from database
+2025-11-24 10:49:49 - INFO       - Fetched 5 reports
+2025-11-24 10:49:49 - INFO       - Report 0: report-1763613912871-664e80da - 2025-11-20T04:45:12.880Z - 2025-06-30
+2025-11-24 10:49:49 - INFO       - Report 1: report-1763608611774-b647b89c - 2025-11-20T03:16:51.776Z - 2025-06-30
+2025-11-24 10:49:49 - INFO       - Report 2: report-1763584020478 - 2025-11-19T20:27:40.085Z - 2025-06-30
+2025-11-24 10:49:49 - INFO       - Report 3: report-1763583475223 - 2025-11-19T20:18:46.424Z - 2025-06-30
+2025-11-24 10:49:49 - INFO       - Report 4: report-1763581052928 - 2025-11-19T19:37:32.929Z - 2025-06-30
+2025-11-24 10:49:50 - INFO       - Executing query:
+2025-11-24 10:49:50 - INFO       - Fetched 5 reports from database
+2025-11-24 10:49:52 - INFO       - [report-1763941788923] [dotenv@17.2.3] injecting env (11) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+2025-11-24 10:49:54 - INFO       - [report-1763941788923] 2025-11-24 10:49:54 - [32MINFO[39M - Loading configuration from: C:\temp\apraFilecompare\node_regression_tool\config.json
+2025-11-24 10:49:54 - INFO       - Loading configuration from: C:\temp\apraFilecompare\node_regression_tool\config.json
+2025-11-24 10:49:54 - INFO       - Base date: 2025-06-30
+2025-11-24 10:49:54 - INFO       - [report-1763941788923] 2025-11-24 10:49:54 - [32MINFO[39M - Base date: 2025-06-30
+2025-11-24 10:49:54 - INFO       - [report-1763941788923] 2025-11-24 10:49:54 - [32MINFO[39M - Number of returns to process: 24
+2025-11-24 10:49:54 - INFO       - Authenticating with AgileReporter...
+2025-11-24 10:49:54 - INFO       - [report-1763941788923] 2025-11-24 10:49:54 - [32MINFO[39M - ================================================================================
+2025-11-24 10:49:54 - INFO       - [report-1763941788923] 2025-11-24 10:49:54 - [32MINFO[39M - STEP 1: AUTHENTICATION
+2025-11-24 10:49:54 - INFO       - [report-1763941788923] 2025-11-24 10:49:54 - [32MINFO[39M - ================================================================================
+2025-11-24 10:49:54 - INFO       - [report-1763941788923] {
+2025-11-24 10:49:54 - INFO       - [report-1763941788923]   baseUrl: 'https://policebank-uat.agilereporter.com/agilereporter/rest/api',
+2025-11-24 10:49:54 - INFO       - [report-1763941788923]   returnsEndpoint: 'https://policebank-uat.agilereporter.com/agilereporter/rest/api/returns',
+2025-11-24 10:49:54 - INFO       - [report-1763941788923]   analysisEndpoint: 'https://policebank-uat.agilereporter.com/agilereporter/rest/api/analysis/cellAnalyses'
+2025-11-24 10:49:54 - INFO       - [report-1763941788923] }
+2025-11-24 10:49:54 - INFO       - [report-1763941788923] 2025-11-24 10:49:54 - [32MINFO[39M - Authenticating with AgileReporter...
+2025-11-24 10:49:54 - INFO       - Number of returns to process: 24
+2025-11-24 10:49:54 - INFO       - ================================================================================
+2025-11-24 10:49:54 - INFO       - STEP 1: AUTHENTICATION
+2025-11-24 10:49:54 - INFO       - ================================================================================
+2025-11-24 10:49:55 - INFO       - Authentication successful
+2025-11-24 10:49:55 - INFO       - ✓ Authentication successful
+2025-11-24 10:49:55 - INFO       - [report-1763941788923] 2025-11-24 10:49:55 - [32MINFO[39M - Authentication successful
+2025-11-24 10:49:55 - INFO       - [report-1763941788923] 2025-11-24 10:49:55 - [32MINFO[39M - ✓ Authentication successful
+2025-11-24 10:49:55 - INFO       - [report-1763941788923] 2025-11-24 10:49:55 - [32MINFO[39M - ================================================================================
+2025-11-24 10:49:55 - INFO       - [report-1763941788923] 2025-11-24 10:49:55 - [32MINFO[39M - STEP 2: ANALYZING 24 RETURNS
+2025-11-24 10:49:55 - INFO       - [report-1763941788923] 2025-11-24 10:49:55 - [32MINFO[39M - ================================================================================
+2025-11-24 10:49:55 - INFO       - [report-1763941788923] 2025-11-24 10:49:55 - [32MINFO[39M - Fetching form versions for ARF1180
+2025-11-24 10:49:55 - INFO       - [report-1763941788923] 2025-11-24 10:49:55 - [32MINFO[39M - Fetching form versions for ARF1100
+2025-11-24 10:49:55 - INFO       - [report-1763941788923] 2025-11-24 10:49:55 - [32MINFO[39M - Fetching form versions for ARF2200
+2025-11-24 10:49:55 - INFO       - Fetching form versions for ARF1180
+2025-11-24 10:49:55 - INFO       - ================================================================================
+2025-11-24 10:49:55 - INFO       - Fetching form versions for ARF1100
+2025-11-24 10:49:55 - INFO       - Fetching form versions for ARF2200
+2025-11-24 10:49:55 - INFO       - STEP 2: ANALYZING 24 RETURNS
+2025-11-24 10:49:55 - INFO       - ================================================================================
+2025-11-24 10:49:57 - INFO       - Found 6 instances
+2025-11-24 10:49:57 - INFO       - [report-1763941788923] 2025-11-24 10:49:57 - [32MINFO[39M - Found 6 instances
+2025-11-24 10:49:57 - INFO       - [report-1763941788923] 2025-11-24 10:49:57 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112704667)
+2025-11-24 10:49:57 - INFO       - [report-1763941788923] 2025-11-24 10:49:57 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 95672555)
+2025-11-24 10:49:57 - INFO       - [report-1763941788923] 2025-11-24 10:49:57 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:49:57 - INFO       - [report-1763941788923] 2025-11-24 10:49:57 - [32MINFO[39M - Fetching variance analysis for ARF2200 (attempt 1/3)...
+2025-11-24 10:49:57 - INFO       - Base instance: 2025-06-30 (ID: 112704667)
+2025-11-24 10:49:57 - INFO       - Comparison instance: 2025-06-15 (ID: 95672555)
+2025-11-24 10:49:57 - INFO       - Fetching variance data...
+2025-11-24 10:49:57 - INFO       - Fetching variance analysis for ARF2200 (attempt 1/3)...
+2025-11-24 10:49:57 - INFO       - Found 5 instances
+2025-11-24 10:49:57 - INFO       - Base instance: 2025-06-30 (ID: 112476274)
+2025-11-24 10:49:57 - WARN       - No comparison instance found for expected date 2025-06-16 picking next closest instance before 2025-06-16
+2025-11-24 10:49:57 - INFO       - Comparison instance: 2025-06-15 (ID: 70280255)
+2025-11-24 10:49:57 - INFO       - Fetching variance data...
+2025-11-24 10:49:57 - INFO       - Fetching variance analysis for ARF1100 (attempt 1/3)...
+2025-11-24 10:49:57 - INFO       - [report-1763941788923] 2025-11-24 10:49:57 - [32MINFO[39M - Found 5 instances
+2025-11-24 10:49:57 - INFO       - [report-1763941788923] 2025-11-24 10:49:57 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112476274)
+2025-11-24 10:49:57 - INFO       - [report-1763941788923] 2025-11-24 10:49:57 - [33MWARN[39M - No comparison instance found for expected date 2025-06-16 picking next closest instance before 2025-06-16
+2025-11-24 10:49:57 - INFO       - [report-1763941788923] 2025-11-24 10:49:57 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 70280255)
+2025-11-24 10:49:57 - INFO       - [report-1763941788923] 2025-11-24 10:49:57 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:49:57 - INFO       - [report-1763941788923] 2025-11-24 10:49:57 - [32MINFO[39M - Fetching variance analysis for ARF1100 (attempt 1/3)...
+2025-11-24 10:49:58 - INFO       - Found 8 instances
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Found 8 instances
+2025-11-24 10:49:58 - INFO       - Base instance: 2025-06-30 (ID: 112284635)
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112284635)
+2025-11-24 10:49:58 - INFO       - Comparison instance: 2025-06-16 (ID: 84960698)
+2025-11-24 10:49:58 - INFO       - Fetching variance data...
+2025-11-24 10:49:58 - INFO       - Fetching variance analysis for ARF1180 (attempt 1/3)...
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 84960698)
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Fetching variance analysis for ARF1180 (attempt 1/3)...
+2025-11-24 10:49:58 - INFO       - Received complete response for ARF2200
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Received complete response for ARF2200
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Retrieved 162 variance records
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Fetching validation results for 112704667 (attempt 1/1)...
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Received complete response for ARF1100
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Retrieved 144 variance records
+2025-11-24 10:49:58 - INFO       - Retrieved 162 variance records
+2025-11-24 10:49:58 - INFO       - Fetching validation results...
+2025-11-24 10:49:58 - INFO       - Fetching validation results for 112704667 (attempt 1/1)...
+2025-11-24 10:49:58 - INFO       - Received complete response for ARF1100
+2025-11-24 10:49:58 - INFO       - Retrieved 144 variance records
+2025-11-24 10:49:58 - INFO       - Fetching validation results...
+2025-11-24 10:49:58 - INFO       - Fetching validation results for 112476274 (attempt 1/1)...
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Fetching validation results for 112476274 (attempt 1/1)...
+2025-11-24 10:49:58 - INFO       - Received complete response for ARF1180
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Received complete response for ARF1180
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Retrieved 205 variance records
+2025-11-24 10:49:58 - INFO       - Retrieved 205 variance records
+2025-11-24 10:49:58 - INFO       - Fetching validation results...
+2025-11-24 10:49:58 - INFO       - Fetching validation results for 112284635 (attempt 1/1)...
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:49:58 - INFO       - [report-1763941788923] 2025-11-24 10:49:58 - [32MINFO[39M - Fetching validation results for 112284635 (attempt 1/1)...
+2025-11-24 10:49:59 - INFO       - Received validation response for 112704667
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Received validation response for 112704667
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Parsed 0 validation results for 112704667
+2025-11-24 10:49:59 - INFO       - Parsed 0 validation results for 112704667
+2025-11-24 10:49:59 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:49:59 - INFO       - Retrieved 0 validation records
+2025-11-24 10:49:59 - INFO       - Found 0 validation errors
+2025-11-24 10:49:59 - INFO       - ✓ Completed: 162 variance records, 0 validation errors
+2025-11-24 10:49:59 - INFO       - Fetching form versions for ARF2203
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Retrieved 0 validation records
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - ✓ Completed: 162 variance records, 0 validation errors
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Fetching form versions for ARF2203
+2025-11-24 10:49:59 - INFO       - Found 4 instances
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Found 4 instances
+2025-11-24 10:49:59 - INFO       - Base instance: 2025-06-30 (ID: 112476323)
+2025-11-24 10:49:59 - INFO       - Comparison instance: 2025-06-15 (ID: 113914703)
+2025-11-24 10:49:59 - INFO       - Fetching variance data...
+2025-11-24 10:49:59 - INFO       - Fetching variance analysis for ARF2203 (attempt 1/3)...
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112476323)
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 113914703)
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Fetching variance analysis for ARF2203 (attempt 1/3)...
+2025-11-24 10:49:59 - INFO       - Received validation response for 112284635
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Received validation response for 112284635
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Parsed 10 validation results for 112284635
+2025-11-24 10:49:59 - INFO       - Parsed 10 validation results for 112284635
+2025-11-24 10:49:59 - INFO       - Failures: 0, Warnings: 2
+2025-11-24 10:49:59 - INFO       - Retrieved 10 validation records
+2025-11-24 10:49:59 - INFO       - Found 0 validation errors
+2025-11-24 10:49:59 - INFO       - ✓ Completed: 205 variance records, 0 validation errors
+2025-11-24 10:49:59 - INFO       - Fetching form versions for ARF3300L
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Failures: 0, Warnings: 2
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Retrieved 10 validation records
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - ✓ Completed: 205 variance records, 0 validation errors
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Fetching form versions for ARF3300L
+2025-11-24 10:49:59 - INFO       - Received complete response for ARF2203
+2025-11-24 10:49:59 - INFO       - Retrieved 89 variance records
+2025-11-24 10:49:59 - INFO       - Fetching validation results...
+2025-11-24 10:49:59 - INFO       - Fetching validation results for 112476323 (attempt 1/1)...
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Received complete response for ARF2203
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Retrieved 89 variance records
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:49:59 - INFO       - [report-1763941788923] 2025-11-24 10:49:59 - [32MINFO[39M - Fetching validation results for 112476323 (attempt 1/1)...
+2025-11-24 10:50:00 - INFO       - Received validation response for 112476323
+2025-11-24 10:50:00 - INFO       - [report-1763941788923] 2025-11-24 10:50:00 - [32MINFO[39M - Received validation response for 112476323
+2025-11-24 10:50:00 - INFO       - Parsed 5 validation results for 112476323
+2025-11-24 10:50:00 - INFO       - Failures: 0, Warnings: 1
+2025-11-24 10:50:00 - INFO       - Retrieved 5 validation records
+2025-11-24 10:50:00 - INFO       - [report-1763941788923] 2025-11-24 10:50:00 - [32MINFO[39M - Parsed 5 validation results for 112476323
+2025-11-24 10:50:00 - INFO       - Found 0 validation errors
+2025-11-24 10:50:00 - INFO       - ✓ Completed: 89 variance records, 0 validation errors
+2025-11-24 10:50:00 - INFO       - Fetching form versions for ARF3301L
+2025-11-24 10:50:00 - INFO       - [report-1763941788923] 2025-11-24 10:50:00 - [32MINFO[39M - Failures: 0, Warnings: 1
+2025-11-24 10:50:00 - INFO       - [report-1763941788923] 2025-11-24 10:50:00 - [32MINFO[39M - Retrieved 5 validation records
+2025-11-24 10:50:00 - INFO       - [report-1763941788923] 2025-11-24 10:50:00 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:00 - INFO       - [report-1763941788923] 2025-11-24 10:50:00 - [32MINFO[39M - ✓ Completed: 89 variance records, 0 validation errors
+2025-11-24 10:50:00 - INFO       - [report-1763941788923] 2025-11-24 10:50:00 - [32MINFO[39M - Fetching form versions for ARF3301L
+2025-11-24 10:50:01 - INFO       - Found 20 instances
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Found 20 instances
+2025-11-24 10:50:01 - INFO       - Base instance: 2025-06-30 (ID: 112134564)
+2025-11-24 10:50:01 - INFO       - Comparison instance: 2025-06-16 (ID: 69870250)
+2025-11-24 10:50:01 - INFO       - Fetching variance data...
+2025-11-24 10:50:01 - INFO       - Fetching variance analysis for ARF3300L (attempt 1/3)...
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112134564)
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 69870250)
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Fetching variance analysis for ARF3300L (attempt 1/3)...
+2025-11-24 10:50:01 - INFO       - Received validation response for 112476274
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Received validation response for 112476274
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Parsed 64 validation results for 112476274
+2025-11-24 10:50:01 - INFO       - Parsed 64 validation results for 112476274
+2025-11-24 10:50:01 - INFO       - Failures: 0, Warnings: 36
+2025-11-24 10:50:01 - INFO       - Retrieved 64 validation records
+2025-11-24 10:50:01 - INFO       - Found 0 validation errors
+2025-11-24 10:50:01 - INFO       - ✓ Completed: 144 variance records, 0 validation errors
+2025-11-24 10:50:01 - INFO       - Fetching form versions for ARF3302L
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Failures: 0, Warnings: 36
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Retrieved 64 validation records
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - ✓ Completed: 144 variance records, 0 validation errors
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Fetching form versions for ARF3302L
+2025-11-24 10:50:01 - INFO       - Received complete response for ARF3300L
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Received complete response for ARF3300L
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Retrieved 24 variance records
+2025-11-24 10:50:01 - INFO       - Retrieved 24 variance records
+2025-11-24 10:50:01 - INFO       - Fetching validation results...
+2025-11-24 10:50:01 - INFO       - Fetching validation results for 112134564 (attempt 1/1)...
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:01 - INFO       - [report-1763941788923] 2025-11-24 10:50:01 - [32MINFO[39M - Fetching validation results for 112134564 (attempt 1/1)...
+2025-11-24 10:50:02 - INFO       - Found 19 instances
+2025-11-24 10:50:02 - INFO       - [report-1763941788923] 2025-11-24 10:50:02 - [32MINFO[39M - Found 19 instances
+2025-11-24 10:50:02 - INFO       - Base instance: 2025-06-30 (ID: 112174573)
+2025-11-24 10:50:02 - INFO       - Comparison instance: 2025-06-16 (ID: 69890250)
+2025-11-24 10:50:02 - INFO       - Fetching variance data...
+2025-11-24 10:50:02 - INFO       - Fetching variance analysis for ARF3302L (attempt 1/3)...
+2025-11-24 10:50:02 - INFO       - [report-1763941788923] 2025-11-24 10:50:02 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112174573)
+2025-11-24 10:50:02 - INFO       - [report-1763941788923] 2025-11-24 10:50:02 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 69890250)
+2025-11-24 10:50:02 - INFO       - [report-1763941788923] 2025-11-24 10:50:02 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:02 - INFO       - [report-1763941788923] 2025-11-24 10:50:02 - [32MINFO[39M - Fetching variance analysis for ARF3302L (attempt 1/3)...
+2025-11-24 10:50:03 - INFO       - Received validation response for 112134564
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Received validation response for 112134564
+2025-11-24 10:50:03 - INFO       - Parsed 17 validation results for 112134564
+2025-11-24 10:50:03 - INFO       - Failures: 1, Warnings: 17
+2025-11-24 10:50:03 - INFO       - Retrieved 17 validation records
+2025-11-24 10:50:03 - INFO       - Found 1 validation errors
+2025-11-24 10:50:03 - INFO       - ✓ Completed: 24 variance records, 1 validation errors
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Parsed 17 validation results for 112134564
+2025-11-24 10:50:03 - INFO       - Fetching form versions for ARF3303
+2025-11-24 10:50:03 - INFO       - Received complete response for ARF3302L
+2025-11-24 10:50:03 - INFO       - Retrieved 36 variance records
+2025-11-24 10:50:03 - INFO       - Fetching validation results...
+2025-11-24 10:50:03 - INFO       - Fetching validation results for 112174573 (attempt 1/1)...
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Failures: 1, Warnings: 17
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Retrieved 17 validation records
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Found 1 validation errors
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - ✓ Completed: 24 variance records, 1 validation errors
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Fetching form versions for ARF3303
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Received complete response for ARF3302L
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Retrieved 36 variance records
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Fetching validation results for 112174573 (attempt 1/1)...
+2025-11-24 10:50:03 - INFO       - Found 19 instances
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Found 19 instances
+2025-11-24 10:50:03 - INFO       - Base instance: 2025-06-30 (ID: 112214540)
+2025-11-24 10:50:03 - INFO       - Comparison instance: 2025-06-16 (ID: 71850252)
+2025-11-24 10:50:03 - INFO       - Fetching variance data...
+2025-11-24 10:50:03 - INFO       - Fetching variance analysis for ARF3301L (attempt 1/3)...
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112214540)
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 71850252)
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Fetching variance analysis for ARF3301L (attempt 1/3)...
+2025-11-24 10:50:03 - INFO       - Received complete response for ARF3301L
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Received complete response for ARF3301L
+2025-11-24 10:50:03 - INFO       - Retrieved 52 variance records
+2025-11-24 10:50:03 - INFO       - Fetching validation results...
+2025-11-24 10:50:03 - INFO       - Fetching validation results for 112214540 (attempt 1/1)...
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Retrieved 52 variance records
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:03 - INFO       - [report-1763941788923] 2025-11-24 10:50:03 - [32MINFO[39M - Fetching validation results for 112214540 (attempt 1/1)...
+2025-11-24 10:50:04 - INFO       - Found 19 instances
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Found 19 instances
+2025-11-24 10:50:04 - INFO       - Base instance: 2025-06-30 (ID: 112204539)
+2025-11-24 10:50:04 - INFO       - Comparison instance: 2025-06-16 (ID: 69870317)
+2025-11-24 10:50:04 - INFO       - Fetching variance data...
+2025-11-24 10:50:04 - INFO       - Fetching variance analysis for ARF3303 (attempt 1/3)...
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112204539)
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 69870317)
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Fetching variance analysis for ARF3303 (attempt 1/3)...
+2025-11-24 10:50:04 - INFO       - Received validation response for 112174573
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Received validation response for 112174573
+2025-11-24 10:50:04 - INFO       - Parsed 1 validation results for 112174573
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Parsed 1 validation results for 112174573
+2025-11-24 10:50:04 - INFO       - Failures: 0, Warnings: 1
+2025-11-24 10:50:04 - INFO       - Retrieved 1 validation records
+2025-11-24 10:50:04 - INFO       - Found 0 validation errors
+2025-11-24 10:50:04 - INFO       - ✓ Completed: 36 variance records, 0 validation errors
+2025-11-24 10:50:04 - INFO       - Fetching form versions for ARF7200A
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Failures: 0, Warnings: 1
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Retrieved 1 validation records
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - ✓ Completed: 36 variance records, 0 validation errors
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Fetching form versions for ARF7200A
+2025-11-24 10:50:04 - INFO       - Received complete response for ARF3303
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Received complete response for ARF3303
+2025-11-24 10:50:04 - INFO       - Retrieved 23 variance records
+2025-11-24 10:50:04 - INFO       - Fetching validation results...
+2025-11-24 10:50:04 - INFO       - Fetching validation results for 112204539 (attempt 1/1)...
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Retrieved 23 variance records
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:04 - INFO       - [report-1763941788923] 2025-11-24 10:50:04 - [32MINFO[39M - Fetching validation results for 112204539 (attempt 1/1)...
+2025-11-24 10:50:05 - INFO       - Received validation response for 112214540
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Received validation response for 112214540
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Parsed 8 validation results for 112214540
+2025-11-24 10:50:05 - INFO       - Parsed 8 validation results for 112214540
+2025-11-24 10:50:05 - INFO       - Failures: 0, Warnings: 8
+2025-11-24 10:50:05 - INFO       - Retrieved 8 validation records
+2025-11-24 10:50:05 - INFO       - Found 0 validation errors
+2025-11-24 10:50:05 - INFO       - ✓ Completed: 52 variance records, 0 validation errors
+2025-11-24 10:50:05 - INFO       - Fetching form versions for ARF7201A
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Failures: 0, Warnings: 8
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Retrieved 8 validation records
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - ✓ Completed: 52 variance records, 0 validation errors
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Fetching form versions for ARF7201A
+2025-11-24 10:50:05 - INFO       - Received validation response for 112204539
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Received validation response for 112204539
+2025-11-24 10:50:05 - INFO       - Parsed 0 validation results for 112204539
+2025-11-24 10:50:05 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:05 - INFO       - Retrieved 0 validation records
+2025-11-24 10:50:05 - INFO       - Found 0 validation errors
+2025-11-24 10:50:05 - INFO       - ✓ Completed: 23 variance records, 0 validation errors
+2025-11-24 10:50:05 - INFO       - Fetching form versions for ARF7202A
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Parsed 0 validation results for 112204539
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Retrieved 0 validation records
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - ✓ Completed: 23 variance records, 0 validation errors
+2025-11-24 10:50:05 - INFO       - [report-1763941788923] 2025-11-24 10:50:05 - [32MINFO[39M - Fetching form versions for ARF7202A
+2025-11-24 10:50:06 - INFO       - Found 25 instances
+2025-11-24 10:50:06 - INFO       - [report-1763941788923] 2025-11-24 10:50:06 - [32MINFO[39M - Found 25 instances
+2025-11-24 10:50:06 - INFO       - Base instance: 2025-06-30 (ID: 112124557)
+2025-11-24 10:50:06 - INFO       - Comparison instance: 2025-06-15 (ID: 69690251)
+2025-11-24 10:50:06 - INFO       - Fetching variance data...
+2025-11-24 10:50:06 - INFO       - Fetching variance analysis for ARF7200A (attempt 1/3)...
+2025-11-24 10:50:06 - INFO       - [report-1763941788923] 2025-11-24 10:50:06 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112124557)
+2025-11-24 10:50:06 - INFO       - [report-1763941788923] 2025-11-24 10:50:06 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 69690251)
+2025-11-24 10:50:06 - INFO       - [report-1763941788923] 2025-11-24 10:50:06 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:06 - INFO       - [report-1763941788923] 2025-11-24 10:50:06 - [32MINFO[39M - Fetching variance analysis for ARF7200A (attempt 1/3)...
+2025-11-24 10:50:06 - INFO       - Received complete response for ARF7200A
+2025-11-24 10:50:06 - INFO       - [report-1763941788923] 2025-11-24 10:50:06 - [32MINFO[39M - Received complete response for ARF7200A
+2025-11-24 10:50:06 - INFO       - [report-1763941788923] 2025-11-24 10:50:06 - [32MINFO[39M - Retrieved 229 variance records
+2025-11-24 10:50:06 - INFO       - Retrieved 229 variance records
+2025-11-24 10:50:06 - INFO       - Fetching validation results...
+2025-11-24 10:50:06 - INFO       - Fetching validation results for 112124557 (attempt 1/1)...
+2025-11-24 10:50:06 - INFO       - [report-1763941788923] 2025-11-24 10:50:06 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:06 - INFO       - [report-1763941788923] 2025-11-24 10:50:06 - [32MINFO[39M - Fetching validation results for 112124557 (attempt 1/1)...
+2025-11-24 10:50:08 - INFO       - Found 24 instances
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Found 24 instances
+2025-11-24 10:50:08 - INFO       - Base instance: 2025-06-30 (ID: 112234539)
+2025-11-24 10:50:08 - INFO       - Comparison instance: 2025-06-15 (ID: 69740250)
+2025-11-24 10:50:08 - INFO       - Fetching variance data...
+2025-11-24 10:50:08 - INFO       - Fetching variance analysis for ARF7202A (attempt 1/3)...
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112234539)
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 69740250)
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Fetching variance analysis for ARF7202A (attempt 1/3)...
+2025-11-24 10:50:08 - INFO       - Received validation response for 112124557
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Received validation response for 112124557
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Parsed 92 validation results for 112124557
+2025-11-24 10:50:08 - INFO       - Parsed 92 validation results for 112124557
+2025-11-24 10:50:08 - INFO       - Failures: 0, Warnings: 13
+2025-11-24 10:50:08 - INFO       - Retrieved 92 validation records
+2025-11-24 10:50:08 - INFO       - Found 0 validation errors
+2025-11-24 10:50:08 - INFO       - ✓ Completed: 229 variance records, 0 validation errors
+2025-11-24 10:50:08 - INFO       - Fetching form versions for ARF7203
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Failures: 0, Warnings: 13
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Retrieved 92 validation records
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - ✓ Completed: 229 variance records, 0 validation errors
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Fetching form versions for ARF7203
+2025-11-24 10:50:08 - INFO       - Received complete response for ARF7202A
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Received complete response for ARF7202A
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Retrieved 231 variance records
+2025-11-24 10:50:08 - INFO       - Retrieved 231 variance records
+2025-11-24 10:50:08 - INFO       - Fetching validation results...
+2025-11-24 10:50:08 - INFO       - Fetching validation results for 112234539 (attempt 1/1)...
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Fetching validation results for 112234539 (attempt 1/1)...
+2025-11-24 10:50:08 - INFO       - Found 25 instances
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Found 25 instances
+2025-11-24 10:50:08 - INFO       - Base instance: 2025-06-30 (ID: 112214580)
+2025-11-24 10:50:08 - INFO       - Comparison instance: 2025-06-16 (ID: 91651946)
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112214580)
+2025-11-24 10:50:08 - INFO       - Fetching variance data...
+2025-11-24 10:50:08 - INFO       - Fetching variance analysis for ARF7201A (attempt 1/3)...
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 91651946)
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:08 - INFO       - [report-1763941788923] 2025-11-24 10:50:08 - [32MINFO[39M - Fetching variance analysis for ARF7201A (attempt 1/3)...
+2025-11-24 10:50:09 - INFO       - Found 22 instances
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Found 22 instances
+2025-11-24 10:50:09 - INFO       - Base instance: 2025-06-30 (ID: 112194540)
+2025-11-24 10:50:09 - INFO       - Comparison instance: 2025-06-15 (ID: 69740379)
+2025-11-24 10:50:09 - INFO       - Fetching variance data...
+2025-11-24 10:50:09 - INFO       - Fetching variance analysis for ARF7203 (attempt 1/3)...
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112194540)
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 69740379)
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Fetching variance analysis for ARF7203 (attempt 1/3)...
+2025-11-24 10:50:09 - INFO       - Received complete response for ARF7201A
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Received complete response for ARF7201A
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Retrieved 309 variance records
+2025-11-24 10:50:09 - INFO       - Retrieved 309 variance records
+2025-11-24 10:50:09 - INFO       - Fetching validation results...
+2025-11-24 10:50:09 - INFO       - Fetching validation results for 112214580 (attempt 1/1)...
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Fetching validation results for 112214580 (attempt 1/1)...
+2025-11-24 10:50:09 - INFO       - Received complete response for ARF7203
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Received complete response for ARF7203
+2025-11-24 10:50:09 - INFO       - Retrieved 98 variance records
+2025-11-24 10:50:09 - INFO       - Fetching validation results...
+2025-11-24 10:50:09 - INFO       - Fetching validation results for 112194540 (attempt 1/1)...
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Retrieved 98 variance records
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:09 - INFO       - [report-1763941788923] 2025-11-24 10:50:09 - [32MINFO[39M - Fetching validation results for 112194540 (attempt 1/1)...
+2025-11-24 10:50:10 - INFO       - Received validation response for 112234539
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Received validation response for 112234539
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Parsed 117 validation results for 112234539
+2025-11-24 10:50:10 - INFO       - Parsed 117 validation results for 112234539
+2025-11-24 10:50:10 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:10 - INFO       - Retrieved 117 validation records
+2025-11-24 10:50:10 - INFO       - Found 0 validation errors
+2025-11-24 10:50:10 - INFO       - ✓ Completed: 231 variance records, 0 validation errors
+2025-11-24 10:50:10 - INFO       - Fetching form versions for ARF7204
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Retrieved 117 validation records
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - ✓ Completed: 231 variance records, 0 validation errors
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Fetching form versions for ARF7204
+2025-11-24 10:50:10 - INFO       - Received validation response for 112194540
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Received validation response for 112194540
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Parsed 36 validation results for 112194540
+2025-11-24 10:50:10 - INFO       - Parsed 36 validation results for 112194540
+2025-11-24 10:50:10 - INFO       - Failures: 0, Warnings: 1
+2025-11-24 10:50:10 - INFO       - Retrieved 36 validation records
+2025-11-24 10:50:10 - INFO       - Found 0 validation errors
+2025-11-24 10:50:10 - INFO       - ✓ Completed: 98 variance records, 0 validation errors
+2025-11-24 10:50:10 - INFO       - Fetching form versions for ARF7206
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Failures: 0, Warnings: 1
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Retrieved 36 validation records
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - ✓ Completed: 98 variance records, 0 validation errors
+2025-11-24 10:50:10 - INFO       - [report-1763941788923] 2025-11-24 10:50:10 - [32MINFO[39M - Fetching form versions for ARF7206
+2025-11-24 10:50:11 - INFO       - Found 22 instances
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Found 22 instances
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112174601)
+2025-11-24 10:50:11 - INFO       - Base instance: 2025-06-30 (ID: 112174601)
+2025-11-24 10:50:11 - INFO       - Comparison instance: 2025-06-15 (ID: 69740436)
+2025-11-24 10:50:11 - INFO       - Fetching variance data...
+2025-11-24 10:50:11 - INFO       - Fetching variance analysis for ARF7204 (attempt 1/3)...
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 69740436)
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Fetching variance analysis for ARF7204 (attempt 1/3)...
+2025-11-24 10:50:11 - INFO       - Found 22 instances
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Found 22 instances
+2025-11-24 10:50:11 - INFO       - Base instance: 2025-06-30 (ID: 112244603)
+2025-11-24 10:50:11 - INFO       - Comparison instance: 2025-06-15 (ID: 69710398)
+2025-11-24 10:50:11 - INFO       - Fetching variance data...
+2025-11-24 10:50:11 - INFO       - Fetching variance analysis for ARF7206 (attempt 1/3)...
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112244603)
+2025-11-24 10:50:11 - INFO       - Received complete response for ARF7204
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 69710398)
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Fetching variance analysis for ARF7206 (attempt 1/3)...
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Received complete response for ARF7204
+2025-11-24 10:50:11 - INFO       - Retrieved 149 variance records
+2025-11-24 10:50:11 - INFO       - Fetching validation results...
+2025-11-24 10:50:11 - INFO       - Fetching validation results for 112174601 (attempt 1/1)...
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Retrieved 149 variance records
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Fetching validation results for 112174601 (attempt 1/1)...
+2025-11-24 10:50:11 - INFO       - Received complete response for ARF7206
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Received complete response for ARF7206
+2025-11-24 10:50:11 - INFO       - Retrieved 48 variance records
+2025-11-24 10:50:11 - INFO       - Fetching validation results...
+2025-11-24 10:50:11 - INFO       - Fetching validation results for 112244603 (attempt 1/1)...
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Retrieved 48 variance records
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:11 - [32MINFO[39M - Fetching validation results for 112244603 (attempt 1/1)...
+2025-11-24 10:50:12 - INFO       - Received validation response for 112214580
+2025-11-24 10:50:11 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Received validation response for 112214580
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Parsed 182 validation results for 112214580
+2025-11-24 10:50:12 - INFO       - Parsed 182 validation results for 112214580
+2025-11-24 10:50:12 - INFO       - Failures: 0, Warnings: 7
+2025-11-24 10:50:12 - INFO       - Retrieved 182 validation records
+2025-11-24 10:50:12 - INFO       - Found 0 validation errors
+2025-11-24 10:50:12 - INFO       - ✓ Completed: 309 variance records, 0 validation errors
+2025-11-24 10:50:12 - INFO       - Fetching form versions for ARF7311
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Failures: 0, Warnings: 7
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Retrieved 182 validation records
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - ✓ Completed: 309 variance records, 0 validation errors
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Fetching form versions for ARF7311
+2025-11-24 10:50:12 - INFO       - Received validation response for 112244603
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Received validation response for 112244603
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Parsed 27 validation results for 112244603
+2025-11-24 10:50:12 - INFO       - Parsed 27 validation results for 112244603
+2025-11-24 10:50:12 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:12 - INFO       - Retrieved 27 validation records
+2025-11-24 10:50:12 - INFO       - Found 0 validation errors
+2025-11-24 10:50:12 - INFO       - ✓ Completed: 48 variance records, 0 validation errors
+2025-11-24 10:50:12 - INFO       - Fetching form versions for ARF7313A
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Retrieved 27 validation records
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - ✓ Completed: 48 variance records, 0 validation errors
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Fetching form versions for ARF7313A
+2025-11-24 10:50:12 - INFO       - Received validation response for 112174601
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Received validation response for 112174601
+2025-11-24 10:50:12 - INFO       - Parsed 89 validation results for 112174601
+2025-11-24 10:50:12 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:12 - INFO       - Retrieved 89 validation records
+2025-11-24 10:50:12 - INFO       - Found 0 validation errors
+2025-11-24 10:50:12 - INFO       - ✓ Completed: 149 variance records, 0 validation errors
+2025-11-24 10:50:12 - INFO       - Fetching form versions for ARF7314
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Parsed 89 validation results for 112174601
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Retrieved 89 validation records
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - ✓ Completed: 149 variance records, 0 validation errors
+2025-11-24 10:50:12 - INFO       - [report-1763941788923] 2025-11-24 10:50:12 - [32MINFO[39M - Fetching form versions for ARF7314
+2025-11-24 10:50:13 - INFO       - Found 14 instances
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Found 14 instances
+2025-11-24 10:50:13 - INFO       - Base instance: 2025-06-30 (ID: 112184634)
+2025-11-24 10:50:13 - INFO       - Comparison instance: 2025-06-16 (ID: 81680250)
+2025-11-24 10:50:13 - INFO       - Fetching variance data...
+2025-11-24 10:50:13 - INFO       - Fetching variance analysis for ARF7314 (attempt 1/3)...
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112184634)
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 81680250)
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Fetching variance analysis for ARF7314 (attempt 1/3)...
+2025-11-24 10:50:13 - INFO       - Received complete response for ARF7314
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Received complete response for ARF7314
+2025-11-24 10:50:13 - INFO       - Retrieved 9 variance records
+2025-11-24 10:50:13 - INFO       - Fetching validation results...
+2025-11-24 10:50:13 - INFO       - Fetching validation results for 112184634 (attempt 1/1)...
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Retrieved 9 variance records
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Fetching validation results for 112184634 (attempt 1/1)...
+2025-11-24 10:50:13 - INFO       - Received validation response for 112184634
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Received validation response for 112184634
+2025-11-24 10:50:13 - INFO       - Parsed 0 validation results for 112184634
+2025-11-24 10:50:13 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:13 - INFO       - Retrieved 0 validation records
+2025-11-24 10:50:13 - INFO       - Found 0 validation errors
+2025-11-24 10:50:13 - INFO       - ✓ Completed: 9 variance records, 0 validation errors
+2025-11-24 10:50:13 - INFO       - Fetching form versions for ARF2102
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Parsed 0 validation results for 112184634
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Retrieved 0 validation records
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - ✓ Completed: 9 variance records, 0 validation errors
+2025-11-24 10:50:13 - INFO       - [report-1763941788923] 2025-11-24 10:50:13 - [32MINFO[39M - Fetching form versions for ARF2102
+2025-11-24 10:50:14 - INFO       - Found 14 instances
+2025-11-24 10:50:14 - INFO       - [report-1763941788923] 2025-11-24 10:50:14 - [32MINFO[39M - Found 14 instances
+2025-11-24 10:50:14 - INFO       - Base instance: 2025-06-30 (ID: 112174892)
+2025-11-24 10:50:14 - INFO       - Comparison instance: 2025-06-16 (ID: 81590253)
+2025-11-24 10:50:14 - INFO       - Fetching variance data...
+2025-11-24 10:50:14 - INFO       - [report-1763941788923] 2025-11-24 10:50:14 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112174892)
+2025-11-24 10:50:14 - INFO       - Fetching variance analysis for ARF7313A (attempt 1/3)...
+2025-11-24 10:50:14 - INFO       - [report-1763941788923] 2025-11-24 10:50:14 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 81590253)
+2025-11-24 10:50:14 - INFO       - [report-1763941788923] 2025-11-24 10:50:14 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:14 - INFO       - [report-1763941788923] 2025-11-24 10:50:14 - [32MINFO[39M - Fetching variance analysis for ARF7313A (attempt 1/3)...
+2025-11-24 10:50:16 - INFO       - Received complete response for ARF7313A
+2025-11-24 10:50:16 - INFO       - [report-1763941788923] 2025-11-24 10:50:16 - [32MINFO[39M - Received complete response for ARF7313A
+2025-11-24 10:50:16 - INFO       - [report-1763941788923] 2025-11-24 10:50:16 - [32MINFO[39M - Retrieved 219 variance records
+2025-11-24 10:50:16 - INFO       - Retrieved 219 variance records
+2025-11-24 10:50:16 - INFO       - Fetching validation results...
+2025-11-24 10:50:16 - INFO       - Fetching validation results for 112174892 (attempt 1/1)...
+2025-11-24 10:50:16 - INFO       - [report-1763941788923] 2025-11-24 10:50:16 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:16 - INFO       - [report-1763941788923] 2025-11-24 10:50:16 - [32MINFO[39M - Fetching validation results for 112174892 (attempt 1/1)...
+2025-11-24 10:50:16 - INFO       - Found 14 instances
+2025-11-24 10:50:16 - INFO       - [report-1763941788923] 2025-11-24 10:50:16 - [32MINFO[39M - Found 14 instances
+2025-11-24 10:50:16 - INFO       - Base instance: 2025-06-30 (ID: 112154797)
+2025-11-24 10:50:16 - INFO       - Comparison instance: 2025-06-16 (ID: 78080252)
+2025-11-24 10:50:16 - INFO       - Fetching variance data...
+2025-11-24 10:50:16 - INFO       - Fetching variance analysis for ARF2102 (attempt 1/3)...
+2025-11-24 10:50:16 - INFO       - [report-1763941788923] 2025-11-24 10:50:16 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112154797)
+2025-11-24 10:50:16 - INFO       - [report-1763941788923] 2025-11-24 10:50:16 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 78080252)
+2025-11-24 10:50:16 - INFO       - [report-1763941788923] 2025-11-24 10:50:16 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:16 - INFO       - [report-1763941788923] 2025-11-24 10:50:16 - [32MINFO[39M - Fetching variance analysis for ARF2102 (attempt 1/3)...
+2025-11-24 10:50:17 - INFO       - Received validation response for 112174892
+2025-11-24 10:50:17 - INFO       - [report-1763941788923] 2025-11-24 10:50:17 - [32MINFO[39M - Received validation response for 112174892
+2025-11-24 10:50:17 - INFO       - [report-1763941788923] 2025-11-24 10:50:17 - [32MINFO[39M - Parsed 35 validation results for 112174892
+2025-11-24 10:50:17 - INFO       - Parsed 35 validation results for 112174892
+2025-11-24 10:50:17 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:17 - INFO       - Retrieved 35 validation records
+2025-11-24 10:50:17 - INFO       - Found 0 validation errors
+2025-11-24 10:50:17 - INFO       - ✓ Completed: 219 variance records, 0 validation errors
+2025-11-24 10:50:17 - INFO       - Fetching form versions for ARF21031
+2025-11-24 10:50:17 - INFO       - [report-1763941788923] 2025-11-24 10:50:17 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:17 - INFO       - [report-1763941788923] 2025-11-24 10:50:17 - [32MINFO[39M - Retrieved 35 validation records
+2025-11-24 10:50:17 - INFO       - [report-1763941788923] 2025-11-24 10:50:17 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:17 - INFO       - [report-1763941788923] 2025-11-24 10:50:17 - [32MINFO[39M - ✓ Completed: 219 variance records, 0 validation errors
+2025-11-24 10:50:17 - INFO       - [report-1763941788923] 2025-11-24 10:50:17 - [32MINFO[39M - Fetching form versions for ARF21031
+2025-11-24 10:50:19 - INFO       - Found 12 instances
+2025-11-24 10:50:19 - INFO       - [report-1763941788923] 2025-11-24 10:50:19 - [32MINFO[39M - Found 12 instances
+2025-11-24 10:50:19 - INFO       - Base instance: 2025-06-30 (ID: 112354570)
+2025-11-24 10:50:19 - INFO       - Comparison instance: 2025-06-16 (ID: 112744698)
+2025-11-24 10:50:19 - INFO       - Fetching variance data...
+2025-11-24 10:50:19 - INFO       - Fetching variance analysis for ARF21031 (attempt 1/3)...
+2025-11-24 10:50:19 - INFO       - [report-1763941788923] 2025-11-24 10:50:19 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112354570)
+2025-11-24 10:50:19 - INFO       - [report-1763941788923] 2025-11-24 10:50:19 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 112744698)
+2025-11-24 10:50:19 - INFO       - [report-1763941788923] 2025-11-24 10:50:19 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:19 - INFO       - [report-1763941788923] 2025-11-24 10:50:19 - [32MINFO[39M - Fetching variance analysis for ARF21031 (attempt 1/3)...
+2025-11-24 10:50:19 - INFO       - Found 14 instances
+2025-11-24 10:50:19 - INFO       - [report-1763941788923] 2025-11-24 10:50:19 - [32MINFO[39M - Found 14 instances
+2025-11-24 10:50:19 - INFO       - Base instance: 2025-06-30 (ID: 112184645)
+2025-11-24 10:50:19 - INFO       - [report-1763941788923] 2025-11-24 10:50:19 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112184645)
+2025-11-24 10:50:19 - INFO       - Comparison instance: 2025-06-16 (ID: 81600251)
+2025-11-24 10:50:19 - INFO       - Fetching variance data...
+2025-11-24 10:50:19 - INFO       - Fetching variance analysis for ARF7311 (attempt 1/3)...
+2025-11-24 10:50:19 - INFO       - [report-1763941788923] 2025-11-24 10:50:19 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 81600251)
+2025-11-24 10:50:19 - INFO       - [report-1763941788923] 2025-11-24 10:50:19 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:19 - INFO       - [report-1763941788923] 2025-11-24 10:50:19 - [32MINFO[39M - Fetching variance analysis for ARF7311 (attempt 1/3)...
+2025-11-24 10:50:20 - INFO       - Received complete response for ARF2102
+2025-11-24 10:50:19 - INFO       - [report-1763941788923] 2025-11-24 10:50:20 - [32MINFO[39M - Received complete response for ARF2102
+2025-11-24 10:50:20 - INFO       - [report-1763941788923] 2025-11-24 10:50:20 - [32MINFO[39M - Retrieved 161 variance records
+2025-11-24 10:50:20 - INFO       - Retrieved 161 variance records
+2025-11-24 10:50:20 - INFO       - Fetching validation results...
+2025-11-24 10:50:20 - INFO       - Fetching validation results for 112154797 (attempt 1/1)...
+2025-11-24 10:50:20 - INFO       - [report-1763941788923] 2025-11-24 10:50:20 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:20 - INFO       - [report-1763941788923] 2025-11-24 10:50:20 - [32MINFO[39M - Fetching validation results for 112154797 (attempt 1/1)...
+2025-11-24 10:50:20 - INFO       - Received complete response for ARF21031
+2025-11-24 10:50:20 - INFO       - [report-1763941788923] 2025-11-24 10:50:20 - [32MINFO[39M - Received complete response for ARF21031
+2025-11-24 10:50:20 - INFO       - [report-1763941788923] 2025-11-24 10:50:20 - [32MINFO[39M - Retrieved 1024 variance records
+2025-11-24 10:50:20 - INFO       - Retrieved 1024 variance records
+2025-11-24 10:50:20 - INFO       - Fetching validation results...
+2025-11-24 10:50:20 - INFO       - Fetching validation results for 112354570 (attempt 1/1)...
+2025-11-24 10:50:20 - INFO       - [report-1763941788923] 2025-11-24 10:50:20 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:20 - INFO       - [report-1763941788923] 2025-11-24 10:50:20 - [32MINFO[39M - Fetching validation results for 112354570 (attempt 1/1)...
+2025-11-24 10:50:21 - INFO       - Received complete response for ARF7311
+2025-11-24 10:50:21 - INFO       - [report-1763941788923] 2025-11-24 10:50:21 - [32MINFO[39M - Received complete response for ARF7311
+2025-11-24 10:50:21 - INFO       - [report-1763941788923] 2025-11-24 10:50:21 - [32MINFO[39M - Retrieved 391 variance records
+2025-11-24 10:50:21 - INFO       - Retrieved 391 variance records
+2025-11-24 10:50:21 - INFO       - Fetching validation results...
+2025-11-24 10:50:21 - INFO       - Fetching validation results for 112184645 (attempt 1/1)...
+2025-11-24 10:50:21 - INFO       - [report-1763941788923] 2025-11-24 10:50:21 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:21 - INFO       - [report-1763941788923] 2025-11-24 10:50:21 - [32MINFO[39M - Fetching validation results for 112184645 (attempt 1/1)...
+2025-11-24 10:50:21 - INFO       - Received validation response for 112354570
+2025-11-24 10:50:21 - INFO       - [report-1763941788923] 2025-11-24 10:50:21 - [32MINFO[39M - Received validation response for 112354570
+2025-11-24 10:50:21 - INFO       - Parsed 0 validation results for 112354570
+2025-11-24 10:50:21 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:21 - INFO       - Retrieved 0 validation records
+2025-11-24 10:50:21 - INFO       - Found 0 validation errors
+2025-11-24 10:50:21 - INFO       - ✓ Completed: 1024 variance records, 0 validation errors
+2025-11-24 10:50:21 - INFO       - Fetching form versions for ARF21032
+2025-11-24 10:50:21 - INFO       - [report-1763941788923] 2025-11-24 10:50:21 - [32MINFO[39M - Parsed 0 validation results for 112354570
+2025-11-24 10:50:21 - INFO       - [report-1763941788923] 2025-11-24 10:50:21 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:21 - INFO       - [report-1763941788923] 2025-11-24 10:50:21 - [32MINFO[39M - Retrieved 0 validation records
+2025-11-24 10:50:21 - INFO       - [report-1763941788923] 2025-11-24 10:50:21 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:21 - INFO       - [report-1763941788923] 2025-11-24 10:50:21 - [32MINFO[39M - ✓ Completed: 1024 variance records, 0 validation errors
+2025-11-24 10:50:21 - INFO       - [report-1763941788923] 2025-11-24 10:50:21 - [32MINFO[39M - Fetching form versions for ARF21032
+2025-11-24 10:50:23 - INFO       - Received validation response for 112184645
+2025-11-24 10:50:23 - INFO       - [report-1763941788923] 2025-11-24 10:50:23 - [32MINFO[39M - Received validation response for 112184645
+2025-11-24 10:50:23 - INFO       - Parsed 285 validation results for 112184645
+2025-11-24 10:50:23 - INFO       - [report-1763941788923] 2025-11-24 10:50:23 - [32MINFO[39M - Parsed 285 validation results for 112184645
+2025-11-24 10:50:23 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:23 - INFO       - Retrieved 285 validation records
+2025-11-24 10:50:23 - INFO       - Found 0 validation errors
+2025-11-24 10:50:23 - INFO       - ✓ Completed: 391 variance records, 0 validation errors
+2025-11-24 10:50:23 - INFO       - Fetching form versions for ARF2210
+2025-11-24 10:50:23 - INFO       - [report-1763941788923] 2025-11-24 10:50:23 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:23 - INFO       - [report-1763941788923] 2025-11-24 10:50:23 - [32MINFO[39M - Retrieved 285 validation records
+2025-11-24 10:50:23 - INFO       - [report-1763941788923] 2025-11-24 10:50:23 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:23 - INFO       - [report-1763941788923] 2025-11-24 10:50:23 - [32MINFO[39M - ✓ Completed: 391 variance records, 0 validation errors
+2025-11-24 10:50:23 - INFO       - [report-1763941788923] 2025-11-24 10:50:23 - [32MINFO[39M - Fetching form versions for ARF2210
+2025-11-24 10:50:24 - INFO       - Found 5 instances
+2025-11-24 10:50:24 - INFO       - [report-1763941788923] 2025-11-24 10:50:24 - [32MINFO[39M - Found 5 instances
+2025-11-24 10:50:24 - INFO       - Base instance: 2025-06-30 (ID: 112644745)
+2025-11-24 10:50:24 - INFO       - Comparison instance: 2025-06-15 (ID: 99853418)
+2025-11-24 10:50:24 - INFO       - Fetching variance data...
+2025-11-24 10:50:24 - INFO       - Fetching variance analysis for ARF2210 (attempt 1/3)...
+2025-11-24 10:50:24 - INFO       - [report-1763941788923] 2025-11-24 10:50:24 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112644745)
+2025-11-24 10:50:24 - INFO       - [report-1763941788923] 2025-11-24 10:50:24 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 99853418)
+2025-11-24 10:50:24 - INFO       - [report-1763941788923] 2025-11-24 10:50:24 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:24 - INFO       - [report-1763941788923] 2025-11-24 10:50:24 - [32MINFO[39M - Fetching variance analysis for ARF2210 (attempt 1/3)...
+2025-11-24 10:50:25 - INFO       - Received complete response for ARF2210
+2025-11-24 10:50:25 - INFO       - [report-1763941788923] 2025-11-24 10:50:25 - [32MINFO[39M - Received complete response for ARF2210
+2025-11-24 10:50:25 - INFO       - [report-1763941788923] 2025-11-24 10:50:25 - [32MINFO[39M - Retrieved 955 variance records
+2025-11-24 10:50:25 - INFO       - [report-1763941788923] 2025-11-24 10:50:25 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:25 - INFO       - Retrieved 955 variance records
+2025-11-24 10:50:25 - INFO       - Fetching validation results...
+2025-11-24 10:50:25 - INFO       - Fetching validation results for 112644745 (attempt 1/1)...
+2025-11-24 10:50:25 - INFO       - [report-1763941788923] 2025-11-24 10:50:25 - [32MINFO[39M - Fetching validation results for 112644745 (attempt 1/1)...
+2025-11-24 10:50:26 - INFO       - Received validation response for 112644745
+2025-11-24 10:50:26 - INFO       - [report-1763941788923] 2025-11-24 10:50:26 - [32MINFO[39M - Received validation response for 112644745
+2025-11-24 10:50:26 - INFO       - [report-1763941788923] 2025-11-24 10:50:26 - [32MINFO[39M - Parsed 0 validation results for 112644745
+2025-11-24 10:50:26 - INFO       - Parsed 0 validation results for 112644745
+2025-11-24 10:50:26 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:26 - INFO       - Retrieved 0 validation records
+2025-11-24 10:50:26 - INFO       - Found 0 validation errors
+2025-11-24 10:50:26 - INFO       - ✓ Completed: 955 variance records, 0 validation errors
+2025-11-24 10:50:26 - INFO       - Fetching form versions for ARF2105
+2025-11-24 10:50:26 - INFO       - [report-1763941788923] 2025-11-24 10:50:26 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:26 - INFO       - [report-1763941788923] 2025-11-24 10:50:26 - [32MINFO[39M - Retrieved 0 validation records
+2025-11-24 10:50:26 - INFO       - [report-1763941788923] 2025-11-24 10:50:26 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:26 - INFO       - [report-1763941788923] 2025-11-24 10:50:26 - [32MINFO[39M - ✓ Completed: 955 variance records, 0 validation errors
+2025-11-24 10:50:26 - INFO       - [report-1763941788923] 2025-11-24 10:50:26 - [32MINFO[39M - Fetching form versions for ARF2105
+2025-11-24 10:50:27 - INFO       - Found 7 instances
+2025-11-24 10:50:27 - INFO       - [report-1763941788923] 2025-11-24 10:50:27 - [32MINFO[39M - Found 7 instances
+2025-11-24 10:50:27 - INFO       - Base instance: 2025-06-30 (ID: 112584762)
+2025-11-24 10:50:27 - INFO       - Comparison instance: 2025-06-15 (ID: 99413098)
+2025-11-24 10:50:27 - INFO       - Fetching variance data...
+2025-11-24 10:50:27 - INFO       - Fetching variance analysis for ARF2105 (attempt 1/3)...
+2025-11-24 10:50:27 - INFO       - [report-1763941788923] 2025-11-24 10:50:27 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112584762)
+2025-11-24 10:50:27 - INFO       - [report-1763941788923] 2025-11-24 10:50:27 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 99413098)
+2025-11-24 10:50:27 - INFO       - [report-1763941788923] 2025-11-24 10:50:27 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:27 - INFO       - [report-1763941788923] 2025-11-24 10:50:27 - [32MINFO[39M - Fetching variance analysis for ARF2105 (attempt 1/3)...
+2025-11-24 10:50:29 - INFO       - Received complete response for ARF2105
+2025-11-24 10:50:29 - INFO       - [report-1763941788923] 2025-11-24 10:50:29 - [32MINFO[39M - Received complete response for ARF2105
+2025-11-24 10:50:29 - INFO       - [report-1763941788923] 2025-11-24 10:50:29 - [32MINFO[39M - Retrieved 319 variance records
+2025-11-24 10:50:29 - INFO       - Retrieved 319 variance records
+2025-11-24 10:50:29 - INFO       - Fetching validation results...
+2025-11-24 10:50:29 - INFO       - Fetching validation results for 112584762 (attempt 1/1)...
+2025-11-24 10:50:29 - INFO       - [report-1763941788923] 2025-11-24 10:50:29 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:29 - INFO       - [report-1763941788923] 2025-11-24 10:50:29 - [32MINFO[39M - Fetching validation results for 112584762 (attempt 1/1)...
+2025-11-24 10:50:31 - INFO       - Received validation response for 112154797
+2025-11-24 10:50:31 - INFO       - [report-1763941788923] 2025-11-24 10:50:31 - [32MINFO[39M - Received validation response for 112154797
+2025-11-24 10:50:31 - INFO       - [report-1763941788923] 2025-11-24 10:50:31 - [32MINFO[39M - Parsed 7 validation results for 112154797
+2025-11-24 10:50:31 - INFO       - Parsed 7 validation results for 112154797
+2025-11-24 10:50:31 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:31 - INFO       - Retrieved 7 validation records
+2025-11-24 10:50:31 - INFO       - Found 0 validation errors
+2025-11-24 10:50:31 - INFO       - ✓ Completed: 161 variance records, 0 validation errors
+2025-11-24 10:50:31 - INFO       - Fetching form versions for ARF2230
+2025-11-24 10:50:31 - INFO       - [report-1763941788923] 2025-11-24 10:50:31 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:31 - INFO       - [report-1763941788923] 2025-11-24 10:50:31 - [32MINFO[39M - Retrieved 7 validation records
+2025-11-24 10:50:31 - INFO       - [report-1763941788923] 2025-11-24 10:50:31 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:31 - INFO       - [report-1763941788923] 2025-11-24 10:50:31 - [32MINFO[39M - ✓ Completed: 161 variance records, 0 validation errors
+2025-11-24 10:50:31 - INFO       - [report-1763941788923] 2025-11-24 10:50:31 - [32MINFO[39M - Fetching form versions for ARF2230
+2025-11-24 10:50:32 - INFO       - Found 6 instances
+2025-11-24 10:50:32 - INFO       - [report-1763941788923] 2025-11-24 10:50:32 - [32MINFO[39M - Found 6 instances
+2025-11-24 10:50:32 - INFO       - Base instance: 2025-06-30 (ID: 112584700)
+2025-11-24 10:50:32 - INFO       - Comparison instance: 2025-06-15 (ID: 110784506)
+2025-11-24 10:50:32 - INFO       - Fetching variance data...
+2025-11-24 10:50:32 - INFO       - Fetching variance analysis for ARF2230 (attempt 1/3)...
+2025-11-24 10:50:32 - INFO       - [report-1763941788923] 2025-11-24 10:50:32 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112584700)
+2025-11-24 10:50:32 - INFO       - [report-1763941788923] 2025-11-24 10:50:32 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 110784506)
+2025-11-24 10:50:32 - INFO       - [report-1763941788923] 2025-11-24 10:50:32 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:32 - INFO       - [report-1763941788923] 2025-11-24 10:50:32 - [32MINFO[39M - Fetching variance analysis for ARF2230 (attempt 1/3)...
+2025-11-24 10:50:32 - INFO       - Received complete response for ARF2230
+2025-11-24 10:50:32 - INFO       - [report-1763941788923] 2025-11-24 10:50:32 - [32MINFO[39M - Received complete response for ARF2230
+2025-11-24 10:50:32 - INFO       - Retrieved 160 variance records
+2025-11-24 10:50:32 - INFO       - Fetching validation results...
+2025-11-24 10:50:32 - INFO       - Fetching validation results for 112584700 (attempt 1/1)...
+2025-11-24 10:50:32 - INFO       - [report-1763941788923] 2025-11-24 10:50:32 - [32MINFO[39M - Retrieved 160 variance records
+2025-11-24 10:50:32 - INFO       - [report-1763941788923] 2025-11-24 10:50:32 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:32 - INFO       - [report-1763941788923] 2025-11-24 10:50:32 - [32MINFO[39M - Fetching validation results for 112584700 (attempt 1/1)...
+2025-11-24 10:50:33 - INFO       - Received validation response for 112584700
+2025-11-24 10:50:33 - INFO       - [report-1763941788923] 2025-11-24 10:50:33 - [32MINFO[39M - Received validation response for 112584700
+2025-11-24 10:50:33 - INFO       - [report-1763941788923] 2025-11-24 10:50:33 - [32MINFO[39M - Parsed 47 validation results for 112584700
+2025-11-24 10:50:33 - INFO       - Parsed 47 validation results for 112584700
+2025-11-24 10:50:33 - INFO       - Failures: 5, Warnings: 0
+2025-11-24 10:50:33 - INFO       - Retrieved 47 validation records
+2025-11-24 10:50:33 - INFO       - Found 5 validation errors
+2025-11-24 10:50:33 - INFO       - ✓ Completed: 160 variance records, 5 validation errors
+2025-11-24 10:50:33 - INFO       - Fetching form versions for ARF1120
+2025-11-24 10:50:33 - INFO       - [report-1763941788923] 2025-11-24 10:50:33 - [32MINFO[39M - Failures: 5, Warnings: 0
+2025-11-24 10:50:33 - INFO       - [report-1763941788923] 2025-11-24 10:50:33 - [32MINFO[39M - Retrieved 47 validation records
+2025-11-24 10:50:33 - INFO       - [report-1763941788923] 2025-11-24 10:50:33 - [32MINFO[39M - Found 5 validation errors
+2025-11-24 10:50:33 - INFO       - [report-1763941788923] 2025-11-24 10:50:33 - [32MINFO[39M - ✓ Completed: 160 variance records, 5 validation errors
+2025-11-24 10:50:33 - INFO       - [report-1763941788923] 2025-11-24 10:50:33 - [32MINFO[39M - Fetching form versions for ARF1120
+2025-11-24 10:50:35 - INFO       - Received validation response for 112584762
+2025-11-24 10:50:35 - INFO       - Parsed 0 validation results for 112584762
+2025-11-24 10:50:35 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:35 - INFO       - Retrieved 0 validation records
+2025-11-24 10:50:35 - INFO       - Found 0 validation errors
+2025-11-24 10:50:35 - INFO       - ✓ Completed: 319 variance records, 0 validation errors
+2025-11-24 10:50:35 - INFO       - [report-1763941788923] 2025-11-24 10:50:35 - [32MINFO[39M - Received validation response for 112584762
+2025-11-24 10:50:35 - INFO       - [report-1763941788923] 2025-11-24 10:50:35 - [32MINFO[39M - Parsed 0 validation results for 112584762
+2025-11-24 10:50:35 - INFO       - [report-1763941788923] 2025-11-24 10:50:35 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:35 - INFO       - [report-1763941788923] 2025-11-24 10:50:35 - [32MINFO[39M - Retrieved 0 validation records
+2025-11-24 10:50:35 - INFO       - [report-1763941788923] 2025-11-24 10:50:35 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:35 - INFO       - [report-1763941788923] 2025-11-24 10:50:35 - [32MINFO[39M - ✓ Completed: 319 variance records, 0 validation errors
+2025-11-24 10:50:39 - INFO       - Found 11 instances
+2025-11-24 10:50:39 - INFO       - [report-1763941788923] 2025-11-24 10:50:39 - [32MINFO[39M - Found 11 instances
+2025-11-24 10:50:39 - INFO       - Base instance: 2025-06-30 (ID: 112454602)
+2025-11-24 10:50:39 - INFO       - Comparison instance: 2025-06-16 (ID: 95762856)
+2025-11-24 10:50:39 - INFO       - Fetching variance data...
+2025-11-24 10:50:39 - INFO       - Fetching variance analysis for ARF21032 (attempt 1/3)...
+2025-11-24 10:50:39 - INFO       - [report-1763941788923] 2025-11-24 10:50:39 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112454602)
+2025-11-24 10:50:39 - INFO       - [report-1763941788923] 2025-11-24 10:50:39 - [32MINFO[39M - Comparison instance: 2025-06-16 (ID: 95762856)
+2025-11-24 10:50:39 - INFO       - [report-1763941788923] 2025-11-24 10:50:39 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:39 - INFO       - [report-1763941788923] 2025-11-24 10:50:39 - [32MINFO[39M - Fetching variance analysis for ARF21032 (attempt 1/3)...
+2025-11-24 10:50:42 - INFO       - Found 11 instances
+2025-11-24 10:50:42 - INFO       - [report-1763941788923] 2025-11-24 10:50:42 - [32MINFO[39M - Found 11 instances
+2025-11-24 10:50:42 - INFO       - [report-1763941788923] 2025-11-24 10:50:42 - [32MINFO[39M - Base instance: 2025-06-30 (ID: 112475109)
+2025-11-24 10:50:42 - INFO       - Base instance: 2025-06-30 (ID: 112475109)
+2025-11-24 10:50:42 - INFO       - [report-1763941788923] 2025-11-24 10:50:42 - [33MWARN[39M - No comparison instance found for expected date 2025-06-16 picking next closest instance before 2025-06-16
+2025-11-24 10:50:42 - WARN       - No comparison instance found for expected date 2025-06-16 picking next closest instance before 2025-06-16
+2025-11-24 10:50:42 - INFO       - Comparison instance: 2025-06-15 (ID: 87331179)
+2025-11-24 10:50:42 - INFO       - Fetching variance data...
+2025-11-24 10:50:42 - INFO       - Fetching variance analysis for ARF1120 (attempt 1/3)...
+2025-11-24 10:50:42 - INFO       - [report-1763941788923] 2025-11-24 10:50:42 - [32MINFO[39M - Comparison instance: 2025-06-15 (ID: 87331179)
+2025-11-24 10:50:42 - INFO       - [report-1763941788923] 2025-11-24 10:50:42 - [32MINFO[39M - Fetching variance data...
+2025-11-24 10:50:42 - INFO       - [report-1763941788923] 2025-11-24 10:50:42 - [32MINFO[39M - Fetching variance analysis for ARF1120 (attempt 1/3)...
+2025-11-24 10:50:42 - INFO       - Received complete response for ARF21032
+2025-11-24 10:50:42 - INFO       - [report-1763941788923] 2025-11-24 10:50:42 - [32MINFO[39M - Received complete response for ARF21032
+2025-11-24 10:50:42 - INFO       - [report-1763941788923] 2025-11-24 10:50:42 - [32MINFO[39M - Retrieved 2092 variance records
+2025-11-24 10:50:42 - INFO       - [report-1763941788923] 2025-11-24 10:50:42 - [32MINFO[39M - Fetching validation results...
+2025-11-24 10:50:42 - INFO       - Retrieved 2092 variance records
+2025-11-24 10:50:42 - INFO       - Fetching validation results...
+2025-11-24 10:50:42 - INFO       - Fetching validation results for 112454602 (attempt 1/1)...
+2025-11-24 10:50:42 - INFO       - [report-1763941788923] 2025-11-24 10:50:42 - [32MINFO[39M - Fetching validation results for 112454602 (attempt 1/1)...
+2025-11-24 10:50:45 - INFO       - Received validation response for 112454602
+2025-11-24 10:50:45 - INFO       - Parsed 0 validation results for 112454602
+2025-11-24 10:50:45 - INFO       - Failures: 0, Warnings: 0
+2025-11-24 10:50:45 - INFO       - Retrieved 0 validation records
+2025-11-24 10:50:45 - INFO       - [report-1763941788923] 2025-11-24 10:50:45 - [32MINFO[39M - Received validation response for 112454602
+2025-11-24 10:50:45 - INFO       - Found 0 validation errors
+2025-11-24 10:50:45 - INFO       - ✓ Completed: 2092 variance records, 0 validation errors
+2025-11-24 10:50:45 - INFO       - [report-1763941788923] 2025-11-24 10:50:45 - [32MINFO[39M - Parsed 0 validation results for 112454602
+2025-11-24 10:50:45 - INFO       - [report-1763941788923] 2025-11-24 10:50:45 - [32MINFO[39M - Failures: 0, Warnings: 0
+2025-11-24 10:50:45 - INFO       - [report-1763941788923] 2025-11-24 10:50:45 - [32MINFO[39M - Retrieved 0 validation records
+2025-11-24 10:50:45 - INFO       - [report-1763941788923] 2025-11-24 10:50:45 - [32MINFO[39M - Found 0 validation errors
+2025-11-24 10:50:45 - INFO       - [report-1763941788923] 2025-11-24 10:50:45 - [32MINFO[39M - ✓ Completed: 2092 variance records, 0 validation errors
+2025-11-24 10:57:04 - WARN       - Connection error on attempt 1
+{
+  "error": "aborted"
+}
+2025-11-24 10:57:04 - INFO       - Retrying in 10 seconds...
+2025-11-24 10:57:04 - INFO       - [report-1763941788923] 2025-11-24 10:57:04 - [33MWARN[39M - Connection error on attempt 1
+2025-11-24 10:57:04 - INFO       - [report-1763941788923] {
+2025-11-24 10:57:04 - INFO       - [report-1763941788923]   "error": "aborted"
+2025-11-24 10:57:04 - INFO       - [report-1763941788923] }
+2025-11-24 10:57:04 - INFO       - [report-1763941788923] 2025-11-24 10:57:04 - [32MINFO[39M - Retrying in 10 seconds...
+2025-11-24 10:57:14 - INFO       - Fetching variance analysis for ARF1120 (attempt 2/3)...
+2025-11-24 10:57:14 - INFO       - [report-1763941788923] 2025-11-24 10:57:14 - [32MINFO[39M - Fetching variance analysis for ARF1120 (attempt 2/3)...
+2025-11-24 11:07:37 - INFO       - Received complete response for ARF1120
+2025-11-24 11:07:37 - INFO       - [report-1763941788923] 2025-11-24 11:07:37 - [32MINFO[39M - Received complete response for ARF1120
+2025-11-24 11:07:37 - INFO       - [report-1763941788923] 2025-11-24 11:07:37 - [32MINFO[39M - Retrieved 967 variance records
+2025-11-24 11:07:37 - INFO       - Retrieved 967 variance records
+2025-11-24 11:07:37 - INFO       - Fetching validation results...
+2025-11-24 11:07:37 - INFO       - Fetching validation results for 112475109 (attempt 1/1)...
+2025-11-24 11:07:37 - INFO       - [report-1763941788923] 2025-11-24 11:07:37 - [32MINFO[39M - Fetching validation results...
+2025-11-24 11:07:37 - INFO       - [report-1763941788923] 2025-11-24 11:07:37 - [32MINFO[39M - Fetching validation results for 112475109 (attempt 1/1)...
+2025-11-24 11:17:37 - WARN       - Connection error on attempt 1
+{
+  "error": "timeout of 600000ms exceeded"
+}
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [33MWARN[39M - Connection error on attempt 1
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] {
+2025-11-24 11:17:37 - INFO       - [report-1763941788923]   "error": "timeout of 600000ms exceeded"
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] }
+2025-11-24 11:17:37 - INFO       - ✓ Analyzed 24 returns
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [31MERROR[39M - Failed after 1 attempts
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [31MERROR[39M - Failed to fetch validation results
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] {
+2025-11-24 11:17:37 - INFO       - [report-1763941788923]   "error": "timeout of 600000ms exceeded"
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] }
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - ✓ Completed: 967 variance records, 0 validation errors
+2025-11-24 11:17:37 - ERROR      - [report-1763941788923] [36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+[36m{name}[39m |[32m█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░[39m| [33m3%[39m | 3/100 | [90m✓ Complete[39m
+
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - ✓ Analyzed 24 returns
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - ================================================================================
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - SUMMARY
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - ================================================================================
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 2200 (ARF2200):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 162 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 1180 (ARF1180):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 205 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 2203 (ARF2203):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 89 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 1100 (ARF1100):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 144 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 3300L (ARF3300L):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 24 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 1 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 3302L (ARF3302L):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 36 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 3301L (ARF3301L):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 52 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 3303 (ARF3303):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 23 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 7200A (ARF7200A):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 229 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 7202A (ARF7202A):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 231 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 7203 (ARF7203):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 98 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 7201A (ARF7201A):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 309 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 7206 (ARF7206):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 48 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 7204 (ARF7204):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 149 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 7314 (ARF7314):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 9 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 7313A (ARF7313A):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 219 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 21031 (ARF21031):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 1024 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 7311 (ARF7311):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 391 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 2210 (ARF2210):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 955 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 2102 (ARF2102):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 161 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 2230 (ARF2230):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 160 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 5 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 2105 (ARF2105):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 319 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 21032 (ARF21032):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 2092 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - 1120 (ARF1120):
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Variances: 967 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - ================================================================================
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - STEP 3: EXPORTING TO EXCEL
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - ================================================================================
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Exporting 24 sheets to Excel
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 1100 (ARF1100) -> Sheet: 1100
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟡 ✓ Tab colored YELLOW (1 differences found)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 144 rows to sheet '1100'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 1120 (ARF1120) -> Sheet: 1120
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟡 ✓ Tab colored YELLOW (541 differences found)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 967 rows to sheet '1120'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 1180 (ARF1180) -> Sheet: 1180
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 205 rows to sheet '1180'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 2102 (ARF2102) -> Sheet: 2102
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 161 rows to sheet '2102'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 21031 (ARF21031) -> Sheet: 21031
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟡 ✓ Tab colored YELLOW (6 differences found)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 1024 rows to sheet '21031'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 21032 (ARF21032) -> Sheet: 21032
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟡 ✓ Tab colored YELLOW (256 differences found)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 2092 rows to sheet '21032'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 2105 (ARF2105) -> Sheet: 2105
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟡 ✓ Tab colored YELLOW (57 differences found)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 319 rows to sheet '2105'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 2200 (ARF2200) -> Sheet: 2200
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟡 ✓ Tab colored YELLOW (27 differences found)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 162 rows to sheet '2200'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 2203 (ARF2203) -> Sheet: 2203
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 89 rows to sheet '2203'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 2210 (ARF2210) -> Sheet: 2210
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟡 ✓ Tab colored YELLOW (52 differences found)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 955 rows to sheet '2210'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 2230 (ARF2230) -> Sheet: 2230
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟡 ✓ Tab colored YELLOW (78 differences found)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 160 rows to sheet '2230'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing Validation Errors: 2230 (ARF2230) -> Sheet: 2230_ValidationErrors
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 5 rows to sheet '2230_ValidationErrors'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 3300L (ARF3300L) -> Sheet: 3300L
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 24 rows to sheet '3300L'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing Validation Errors: 3300L (ARF3300L) -> Sheet: 3300L_ValidationErrors
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 1 rows to sheet '3300L_ValidationErrors'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 3301L (ARF3301L) -> Sheet: 3301L
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 52 rows to sheet '3301L'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 3302L (ARF3302L) -> Sheet: 3302L
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 36 rows to sheet '3302L'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 3303 (ARF3303) -> Sheet: 3303
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 23 rows to sheet '3303'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 7200A (ARF7200A) -> Sheet: 7200A
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 229 rows to sheet '7200A'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 7201A (ARF7201A) -> Sheet: 7201A
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 309 rows to sheet '7201A'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 7202A (ARF7202A) -> Sheet: 7202A
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 231 rows to sheet '7202A'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 7203 (ARF7203) -> Sheet: 7203
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 98 rows to sheet '7203'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 7204 (ARF7204) -> Sheet: 7204
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 149 rows to sheet '7204'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 7206 (ARF7206) -> Sheet: 7206
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 48 rows to sheet '7206'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 7311 (ARF7311) -> Sheet: 7311
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 391 rows to sheet '7311'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 7313A (ARF7313A) -> Sheet: 7313A
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 219 rows to sheet '7313A'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing: 7314 (ARF7314) -> Sheet: 7314
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 9 rows to sheet '7314'
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M - Processing Summary results: -> Sheet: Summary
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 1100 (ARF1100) | Variances: 1 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 1120 (ARF1120) | Variances: 541 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 1180 (ARF1180) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 2102 (ARF2102) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 21031 (ARF21031) | Variances: 6 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 21032 (ARF21032) | Variances: 256 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 2105 (ARF2105) | Variances: 57 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 2200 (ARF2200) | Variances: 27 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 2203 (ARF2203) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 2210 (ARF2210) | Variances: 52 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 2230 (ARF2230) | Variances: 78 | Validation Errors: 5
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 3300L (ARF3300L) | Variances: 0 | Validation Errors: 1
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 3301L (ARF3301L) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 3302L (ARF3302L) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 3303 (ARF3303) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 7200A (ARF7200A) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 7201A (ARF7201A) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 7202A (ARF7202A) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 7203 (ARF7203) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 7204 (ARF7204) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 7206 (ARF7206) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 7311 (ARF7311) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 7313A (ARF7313A) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   Summary - Form: 7314 (ARF7314) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       - [report-1763941788923] 2025-11-24 11:17:37 - [32MINFO[39M -   ✓ Written 24 rows to sheet 'Summary'
+2025-11-24 11:17:37 - ERROR      - Failed after 1 attempts
+2025-11-24 11:17:37 - INFO       - ================================================================================
+2025-11-24 11:17:37 - ERROR      - Failed to fetch validation results
+{
+  "error": "timeout of 600000ms exceeded"
+}
+2025-11-24 11:17:37 - INFO       - STEP 3: EXPORTING TO EXCEL
+2025-11-24 11:17:37 - INFO       - ✓ Completed: 967 variance records, 0 validation errors
+2025-11-24 11:17:37 - INFO       - ================================================================================
+2025-11-24 11:17:37 - INFO       - ================================================================================
+2025-11-24 11:17:37 - INFO       - SUMMARY
+2025-11-24 11:17:37 - INFO       - ================================================================================
+2025-11-24 11:17:37 - INFO       - 2200 (ARF2200):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 162 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 1180 (ARF1180):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 205 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 2203 (ARF2203):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 89 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 1100 (ARF1100):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 144 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 3300L (ARF3300L):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 24 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 1 records
+2025-11-24 11:17:37 - INFO       - 3302L (ARF3302L):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 36 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 3301L (ARF3301L):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 52 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 3303 (ARF3303):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 23 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 7200A (ARF7200A):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 229 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 7202A (ARF7202A):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 231 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 7203 (ARF7203):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 98 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 7201A (ARF7201A):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 309 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 7206 (ARF7206):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 48 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 7204 (ARF7204):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 149 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 7314 (ARF7314):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 9 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 7313A (ARF7313A):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 219 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 21031 (ARF21031):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 1024 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 7311 (ARF7311):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 391 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 2210 (ARF2210):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 955 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 2102 (ARF2102):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 161 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 2230 (ARF2230):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 160 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 5 records
+2025-11-24 11:17:37 - INFO       - 2105 (ARF2105):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 319 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 21032 (ARF21032):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-16 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 2092 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - 1120 (ARF1120):
+2025-11-24 11:17:37 - INFO       -   Comparison: 2025-06-15 vs 2025-06-30
+2025-11-24 11:17:37 - INFO       -   Variances: 967 records
+2025-11-24 11:17:37 - INFO       -   Validation Errors: 0 records
+2025-11-24 11:17:37 - INFO       - Exporting 24 sheets to Excel
+2025-11-24 11:17:37 - INFO       - Processing: 1100 (ARF1100) -> Sheet: 1100
+2025-11-24 11:17:37 - INFO       -  🟡 ✓ Tab colored YELLOW (1 differences found)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 144 rows to sheet '1100'
+2025-11-24 11:17:37 - INFO       - Processing: 1120 (ARF1120) -> Sheet: 1120
+2025-11-24 11:17:37 - INFO       -  🟡 ✓ Tab colored YELLOW (541 differences found)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 967 rows to sheet '1120'
+2025-11-24 11:17:37 - INFO       - Processing: 1180 (ARF1180) -> Sheet: 1180
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 205 rows to sheet '1180'
+2025-11-24 11:17:37 - INFO       - Processing: 2102 (ARF2102) -> Sheet: 2102
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 161 rows to sheet '2102'
+2025-11-24 11:17:37 - INFO       - Processing: 21031 (ARF21031) -> Sheet: 21031
+2025-11-24 11:17:37 - INFO       -  🟡 ✓ Tab colored YELLOW (6 differences found)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 1024 rows to sheet '21031'
+2025-11-24 11:17:37 - INFO       - Processing: 21032 (ARF21032) -> Sheet: 21032
+2025-11-24 11:17:37 - INFO       -  🟡 ✓ Tab colored YELLOW (256 differences found)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 2092 rows to sheet '21032'
+2025-11-24 11:17:37 - INFO       - Processing: 2105 (ARF2105) -> Sheet: 2105
+2025-11-24 11:17:37 - INFO       -  🟡 ✓ Tab colored YELLOW (57 differences found)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 319 rows to sheet '2105'
+2025-11-24 11:17:37 - INFO       - Processing: 2200 (ARF2200) -> Sheet: 2200
+2025-11-24 11:17:37 - INFO       -  🟡 ✓ Tab colored YELLOW (27 differences found)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 162 rows to sheet '2200'
+2025-11-24 11:17:37 - INFO       - Processing: 2203 (ARF2203) -> Sheet: 2203
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 89 rows to sheet '2203'
+2025-11-24 11:17:37 - INFO       - Processing: 2210 (ARF2210) -> Sheet: 2210
+2025-11-24 11:17:37 - INFO       -  🟡 ✓ Tab colored YELLOW (52 differences found)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 955 rows to sheet '2210'
+2025-11-24 11:17:37 - INFO       - Processing: 2230 (ARF2230) -> Sheet: 2230
+2025-11-24 11:17:37 - INFO       -  🟡 ✓ Tab colored YELLOW (78 differences found)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 160 rows to sheet '2230'
+2025-11-24 11:17:37 - INFO       - Processing Validation Errors: 2230 (ARF2230) -> Sheet: 2230_ValidationErrors
+2025-11-24 11:17:37 - INFO       -   ✓ Written 5 rows to sheet '2230_ValidationErrors'
+2025-11-24 11:17:37 - INFO       - Processing: 3300L (ARF3300L) -> Sheet: 3300L
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 24 rows to sheet '3300L'
+2025-11-24 11:17:37 - INFO       - Processing Validation Errors: 3300L (ARF3300L) -> Sheet: 3300L_ValidationErrors
+2025-11-24 11:17:37 - INFO       -   ✓ Written 1 rows to sheet '3300L_ValidationErrors'
+2025-11-24 11:17:37 - INFO       - Processing: 3301L (ARF3301L) -> Sheet: 3301L
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 52 rows to sheet '3301L'
+2025-11-24 11:17:37 - INFO       - Processing: 3302L (ARF3302L) -> Sheet: 3302L
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 36 rows to sheet '3302L'
+2025-11-24 11:17:37 - INFO       - Processing: 3303 (ARF3303) -> Sheet: 3303
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 23 rows to sheet '3303'
+2025-11-24 11:17:37 - INFO       - Processing: 7200A (ARF7200A) -> Sheet: 7200A
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 229 rows to sheet '7200A'
+2025-11-24 11:17:37 - INFO       - Processing: 7201A (ARF7201A) -> Sheet: 7201A
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 309 rows to sheet '7201A'
+2025-11-24 11:17:37 - INFO       - Processing: 7202A (ARF7202A) -> Sheet: 7202A
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 231 rows to sheet '7202A'
+2025-11-24 11:17:37 - INFO       - Processing: 7203 (ARF7203) -> Sheet: 7203
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 98 rows to sheet '7203'
+2025-11-24 11:17:37 - INFO       - Processing: 7204 (ARF7204) -> Sheet: 7204
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 149 rows to sheet '7204'
+2025-11-24 11:17:37 - INFO       - Processing: 7206 (ARF7206) -> Sheet: 7206
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 48 rows to sheet '7206'
+2025-11-24 11:17:37 - INFO       - Processing: 7311 (ARF7311) -> Sheet: 7311
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 391 rows to sheet '7311'
+2025-11-24 11:17:37 - INFO       - Processing: 7313A (ARF7313A) -> Sheet: 7313A
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 219 rows to sheet '7313A'
+2025-11-24 11:17:37 - INFO       - Processing: 7314 (ARF7314) -> Sheet: 7314
+2025-11-24 11:17:37 - INFO       -  🟢 ✓ Tab colored GREEN (no differences)
+2025-11-24 11:17:37 - INFO       -   ✓ Written 9 rows to sheet '7314'
+2025-11-24 11:17:37 - INFO       - Processing Summary results: -> Sheet: Summary
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 1100 (ARF1100) | Variances: 1 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 1120 (ARF1120) | Variances: 541 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 1180 (ARF1180) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 2102 (ARF2102) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 21031 (ARF21031) | Variances: 6 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 21032 (ARF21032) | Variances: 256 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 2105 (ARF2105) | Variances: 57 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 2200 (ARF2200) | Variances: 27 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 2203 (ARF2203) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 2210 (ARF2210) | Variances: 52 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 2230 (ARF2230) | Variances: 78 | Validation Errors: 5
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 3300L (ARF3300L) | Variances: 0 | Validation Errors: 1
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 3301L (ARF3301L) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 3302L (ARF3302L) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 3303 (ARF3303) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 7200A (ARF7200A) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 7201A (ARF7201A) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 7202A (ARF7202A) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 7203 (ARF7203) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 7204 (ARF7204) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 7206 (ARF7206) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 7311 (ARF7311) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 7313A (ARF7313A) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   Summary - Form: 7314 (ARF7314) | Variances: 0 | Validation Errors: 0
+2025-11-24 11:17:37 - INFO       -   ✓ Written 24 rows to sheet 'Summary'
+2025-11-24 11:17:38 - INFO       - 
+✓ Excel file created successfully: C:\temp\apraFilecompare\node_regression_tool\reports\report-1763941788923.xlsx
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - 
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] ✓ Excel file created successfully: C:\temp\apraFilecompare\node_regression_tool\reports\report-1763941788923.xlsx
+2025-11-24 11:17:38 - INFO       - ✓ Excel file created: C:\temp\apraFilecompare\node_regression_tool\reports\report-1763941788923.xlsx
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - Total sheets: 27
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - 
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] Color coding:
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   🔴 RED tabs = Confirmed return with differences (filters applied)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   🟢 GREEN tabs = No differences (no filters applied)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   🟡 YELLOW tabs = Differences found (filters applied)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - ========================================================================================================================================================================================================
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - SUMMARY OF RESULTS
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - ========================================================================================================================================================================================================
+2025-11-24 11:17:38 - INFO       - Total sheets: 27
+2025-11-24 11:17:38 - INFO       - 
+Color coding:
+2025-11-24 11:17:38 - INFO       -   🔴 RED tabs = Confirmed return with differences (filters applied)
+2025-11-24 11:17:38 - INFO       -   🟢 GREEN tabs = No differences (no filters applied)
+2025-11-24 11:17:38 - INFO       -   🟡 YELLOW tabs = Differences found (filters applied)
+2025-11-24 11:17:38 - INFO       - ========================================================================================================================================================================================================
+2025-11-24 11:17:38 - INFO       - SUMMARY OF RESULTS
+2025-11-24 11:17:38 - INFO       - ========================================================================================================================================================================================================
+2025-11-24 11:17:38 - INFO       -   Form: 1100 (ARF1100)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 1
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 1120 (ARF1120)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 541
+2025-11-24 11:17:38 - INFO       - ================================================================================
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 1180 (ARF1180)
+2025-11-24 11:17:38 - INFO       - STEP 4: SAVING REPORT FOR DASHBOARD
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - ================================================================================
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 2102 (ARF2102)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 21031 (ARF21031)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 6
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 21032 (ARF21032)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 256
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 2105 (ARF2105)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 57
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 2200 (ARF2200)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 27
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 2203 (ARF2203)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 2210 (ARF2210)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 52
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 2230 (ARF2230)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 78
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 5
+2025-11-24 11:17:38 - INFO       -   Form: 3300L (ARF3300L)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 1
+2025-11-24 11:17:38 - INFO       -   Form: 3301L (ARF3301L)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 3302L (ARF3302L)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 3303 (ARF3303)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 7200A (ARF7200A)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 7201A (ARF7201A)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 7202A (ARF7202A)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 7203 (ARF7203)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 7204 (ARF7204)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 7206 (ARF7206)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 7311 (ARF7311)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 7313A (ARF7313A)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       -   Form: 7314 (ARF7314)
+2025-11-24 11:17:38 - INFO       -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - Initializing SQLite database...
+2025-11-24 11:17:38 - INFO       - Loaded existing database
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 1100 (ARF1100)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 1
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 1120 (ARF1120)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 541
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 1180 (ARF1180)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 2102 (ARF2102)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 21031 (ARF21031)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 6
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 21032 (ARF21032)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 256
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 2105 (ARF2105)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 57
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 2200 (ARF2200)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 27
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 2203 (ARF2203)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 2210 (ARF2210)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 52
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 2230 (ARF2230)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 78
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 5
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 3300L (ARF3300L)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 1
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 3301L (ARF3301L)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 3302L (ARF3302L)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 3303 (ARF3303)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 7200A (ARF7200A)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 7201A (ARF7201A)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 7202A (ARF7202A)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 7203 (ARF7203)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 7204 (ARF7204)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 7206 (ARF7206)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 7311 (ARF7311)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 7313A (ARF7313A)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -   Form: 7314 (ARF7314)
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Variance Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M -     Validation Error Count: 0
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - ✓ Excel file created: C:\temp\apraFilecompare\node_regression_tool\reports\report-1763941788923.xlsx
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - ================================================================================
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - STEP 4: SAVING REPORT FOR DASHBOARD
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - ================================================================================
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - Initializing SQLite database...
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - Loaded existing database
+2025-11-24 11:17:38 - INFO       - Database initialized successfully
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - Database initialized successfully
+2025-11-24 11:17:38 - INFO       - Report report-1763943458607-410967bb saved to database
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - Report report-1763943458607-410967bb saved to database
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - Saved report report-1763943458607-410967bb to database with 8096 variances
+2025-11-24 11:17:38 - INFO       - Saved report report-1763943458607-410967bb to database with 8096 variances
+2025-11-24 11:17:38 - INFO       - Database closed
+2025-11-24 11:17:38 - INFO       - ✓ Report saved to dashboard: report-1763943458607-410967bb
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - Database closed
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - ✓ Report saved to dashboard: report-1763943458607-410967bb
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - ================================================================================
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - ✓ PROCESS COMPLETED SUCCESSFULLY
+2025-11-24 11:17:38 - INFO       - [report-1763941788923] 2025-11-24 11:17:38 - [32MINFO[39M - ================================================================================
+2025-11-24 11:17:38 - INFO       - Analysis completed successfully: report-1763941788923
+2025-11-24 11:17:41 - INFO       - Executing query:
+2025-11-24 11:17:41 - INFO       - Fetched 6 reports from database
+2025-11-24 11:17:41 - INFO       - Fetched 6 reports
+2025-11-24 11:17:41 - INFO       - Report 0: report-1763943458607-410967bb - 2025-11-24T00:17:38.610Z - 2025-06-30
+2025-11-24 11:17:41 - INFO       - Report 1: report-1763613912871-664e80da - 2025-11-20T04:45:12.880Z - 2025-06-30
+2025-11-24 11:17:41 - INFO       - Report 2: report-1763608611774-b647b89c - 2025-11-20T03:16:51.776Z - 2025-06-30
+2025-11-24 11:17:41 - INFO       - Report 3: report-1763584020478 - 2025-11-19T20:27:40.085Z - 2025-06-30
+2025-11-24 11:17:41 - INFO       - Report 4: report-1763583475223 - 2025-11-19T20:18:46.424Z - 2025-06-30
+2025-11-24 11:17:41 - INFO       - Report 5: report-1763581052928 - 2025-11-19T19:37:32.929Z - 2025-06-30
+2025-11-24 11:17:42 - INFO       - Executing query:
+2025-11-24 11:17:42 - INFO       - Fetched 6 reports from database
+2025-11-24 11:17:42 - INFO       - Executing query:
+2025-11-24 11:17:42 - INFO       - Fetched 6 reports from database

@@ -1,0 +1,12 @@
+{
+  "id": "report-1763583475223",
+  "timestamp": "2025-11-19T20:18:46.424Z",
+  "baseDate": "2025-06-30",
+  "totalReturns": 23,
+  "totalVariances": 501,
+  "totalValidationErrors": 6,
+  "configFile": "config.json",
+  "outputFile": "report-1763583475223.xlsx",
+  "duration": 46092,
+  "status": "completed"
+}

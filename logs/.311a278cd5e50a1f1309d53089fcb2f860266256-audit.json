@@ -1,0 +1,30 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 5
+    },
+    "auditLog": "C:\\temp\\apraFilecompare\\node_regression_tool\\logs\\.311a278cd5e50a1f1309d53089fcb2f860266256-audit.json",
+    "files": [
+        {
+            "date": 1763501726870,
+            "name": "C:\\temp\\apraFilecompare\\node_regression_tool\\logs\\app-2025-11-19.log",
+            "hash": "12065850c238f1abe7b3644921fb76cc1a712f3aeb1c7df00086d2ff92301b45"
+        },
+        {
+            "date": 1763579754800,
+            "name": "C:\\temp\\apraFilecompare\\node_regression_tool\\logs\\app-2025-11-20.log",
+            "hash": "1548416de206c6f3d0529fe7ef5b23dccd28c38f41df7450f49ff61e20a91a34"
+        },
+        {
+            "date": 1763670134677,
+            "name": "C:\\temp\\apraFilecompare\\node_regression_tool\\logs\\app-2025-11-21.log",
+            "hash": "3eb823d759c2f5e21cb0844d67e1dbcb485fa48a78e3306c1319797a5fe0adef"
+        },
+        {
+            "date": 1763931609111,
+            "name": "C:\\temp\\apraFilecompare\\node_regression_tool\\logs\\app-2025-11-24.log",
+            "hash": "849b1c009bb31acfcc203b9dc5db0551181fd5f207f1650b3dfcda115d3d608e"
+        }
+    ],
+    "hashType": "sha256"
+}

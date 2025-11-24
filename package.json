@@ -1,0 +1,58 @@
+{
+  "name": "agilereporter-variance-analysis",
+  "version": "1.0.0",
+  "description": "Variance analysis tool for AgileReporter API",
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc && npm run copy-static",
+    "copy-static": "mkdir dist\\dashboard\\public 2>nul & xcopy src\\dashboard\\public\\* dist\\dashboard\\public\\ /E /I /Y >nul",
+    "start": "node dist/main.js",
+    "dev": "tsx src/main.ts",
+    "dashboard": "tsx src/dashboard-cli.ts",
+    "dashboard:build": "node dist/dashboard-cli.js",
+    "check-env": "tsx src/check-env.ts",
+    "debug-auth": "tsx src/debug-auth.ts",
+    "lint": "eslint src --ext .ts",
+    "clean": "rimraf dist",
+    "setup": "node -e \"require('fs').mkdirSync('src/dashboard/public', {recursive: true}); require('fs').mkdirSync('reports', {recursive: true}); console.log('✅ Directories created')\""
+  },
+  "keywords": [
+    "variance-analysis",
+    "agilereporter",
+    "excel",
+    "reporting"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ansi-colors": "^4.1.3",
+    "axios": "^1.6.0",
+    "cli-progress": "^3.12.0",
+    "commander": "^14.0.2",
+    "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.2.3",
+    "exceljs": "^4.4.0",
+    "express": "^5.1.0",
+    "json-2-csv": "^5.5.10",
+    "p-limit": "^7.2.0",
+    "sql.js": "^1.10.2",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^5.0.0",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "@types/cli-progress": "^3.11.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^24.10.1",
+    "@types/ws": "^8.5.10",
+    "copyfiles": "^2.4.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
