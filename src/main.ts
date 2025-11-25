@@ -5,7 +5,8 @@
 import { readFile } from 'fs/promises';
 import { Command } from 'commander';
 import { logger, setupLogging } from './logger.js';
-import { Config } from './config.js';
+//import { Config } from './config.js';
+import { getApiConfig, getAuthConfig } from './config.js';
 import { AgileReporterClient } from './api-client.js';
 import { VarianceAnalyzer } from './variance-analyzer.js';
 import { ExcelExporter } from './excel-exporter.js';
@@ -158,8 +159,8 @@ async function main(): Promise<number> {
     globalDashboard = dashboard;
 
     // Get application config
-    const authConfig = Config.getAuthConfig();
-    const apiConfig = Config.getApiConfig();
+    const authConfig = getAuthConfig();
+    const apiConfig = getApiConfig();
 
     // STEP 1: Authentication
     appLogger.info('='.repeat(80));

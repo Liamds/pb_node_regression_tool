@@ -1,0 +1,20 @@
+{
+    "baseDate": "2025-06-30",
+    "returns": [
+        {
+            "name": "1180",
+            "code": "ARF1180",
+            "expectedDate": "2025-06-16",
+            "confirmed": true
+        },
+        {
+            "name": "1100",
+            "code": "ARF1100",
+            "expectedDate": "2025-06-16",
+            "confirmed": false
+        }
+    ],
+    "excluded": [
+        
+    ]
+}
