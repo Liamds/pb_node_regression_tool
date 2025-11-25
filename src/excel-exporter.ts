@@ -10,7 +10,7 @@ import { AnalysisResult, SummaryRecord, ValidationResult } from './models.js';
 
 export class ExcelExporter {
   constructor(
-    private config: typeof ExcelConfig,
+    private config = ExcelConfig,
     private excelProperties = getExcelProperties()
   ) {}
 
