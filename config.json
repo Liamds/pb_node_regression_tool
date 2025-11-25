@@ -110,7 +110,8 @@
         {
             "name": "21031",
             "code": "ARF21031",
-            "expectedDate": "2025-06-16"
+            "expectedDate": "2025-06-16",
+            "confirmed": true
         },
         {
             "name": "21032",

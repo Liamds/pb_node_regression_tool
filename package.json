@@ -9,7 +9,8 @@
     "copy-static": "mkdir dist\\dashboard\\public 2>nul & xcopy src\\dashboard\\public\\* dist\\dashboard\\public\\ /E /I /Y >nul",
     "start": "node dist/main.js",
     "dev": "tsx src/main.ts",
-    "dashboard": "tsx src/dashboard-cli.ts",
+    "dashboard": "npm run build && node dist/dashboard-cli.js",
+    "dashboard:dev": "tsx src/dashboard-cli.ts",
     "dashboard:build": "node dist/dashboard-cli.js",
     "check-env": "tsx src/check-env.ts",
     "debug-auth": "tsx src/debug-auth.ts",
@@ -44,7 +45,8 @@
     "swagger-ui-express": "^5.0.0",
     "winston": "^3.11.0",
     "winston-daily-rotate-file": "^5.0.0",
-    "ws": "^8.14.2"
+    "ws": "^8.14.2",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@types/cli-progress": "^3.11.6",
