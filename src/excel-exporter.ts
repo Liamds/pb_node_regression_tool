@@ -4,12 +4,15 @@
 
 import ExcelJS from 'exceljs';
 import { logger } from './logger.js';
-import { Config } from './config.js';
+import { getExcelProperties, ExcelConfig } from './config.js';
 import { DataProcessor } from './data-processor.js';
 import { AnalysisResult, SummaryRecord, ValidationResult } from './models.js';
 
 export class ExcelExporter {
-  constructor(private config: typeof Config = Config) {}
+  constructor(
+    private config: typeof ExcelConfig,
+    private excelProperties = getExcelProperties()
+  ) {}
 
   /**
    * Export variance analysis results to Excel with formatting and filters
@@ -25,9 +28,9 @@ export class ExcelExporter {
     const workbook = new ExcelJS.Workbook();
 
     // Set document properties
-    workbook.creator = this.config.EXCEL_AUTHOR;
-    workbook.title = this.config.EXCEL_TITLE;
-    workbook.category = this.config.EXCEL_CATEGORY;
+    workbook.creator = this.excelProperties.author;
+    workbook.title = this.excelProperties.title;
+    workbook.category = this.excelProperties.category;
     workbook.created = new Date();
     workbook.modified = new Date();
 
@@ -79,7 +82,7 @@ export class ExcelExporter {
   ): Promise<number> {
     const sheetName = DataProcessor.sanitizeSheetName(
       result.formName,
-      this.config.EXCEL_SHEET_NAME_MAX_LENGTH
+      this.config.SHEET_NAME_MAX_LENGTH
     );
 
     logger.info(`Processing: ${result.formName} (${result.formCode}) -> Sheet: ${sheetName}`);
@@ -97,7 +100,7 @@ export class ExcelExporter {
     // Check for differences
     const countDiff = DataProcessor.hasDifferences(
       result.variances,
-      this.config.COLUMN_NAME_DIFFERENCE
+      this.config.COLUMN_NAMES.DIFFERENCE
     );
 
     // Apply tab color
@@ -120,7 +123,7 @@ export class ExcelExporter {
   ): Promise<void> {
     let sheetName = DataProcessor.sanitizeSheetName(
       result.formName,
-      this.config.EXCEL_SHEET_NAME_MAX_LENGTH - 18
+      this.config.SHEET_NAME_MAX_LENGTH - 18
     );
     sheetName = (sheetName + '_ValidationErrors').substring(0, 31);
 
@@ -387,13 +390,13 @@ export class ExcelExporter {
     countDiff: number
   ): void {
     if (confirmed && countDiff > 0) {
-      worksheet.properties.tabColor = { argb: this.config.COLOR_RED };
+      worksheet.properties.tabColor = { argb: this.config.COLORS.RED };
       logger.info(` 🔴 ✓ Tab colored RED (confirmed return with ${countDiff} differences)`);
     } else if (countDiff > 0) {
-      worksheet.properties.tabColor = { argb: this.config.COLOR_YELLOW };
+      worksheet.properties.tabColor = { argb: this.config.COLORS.YELLOW };
       logger.info(` 🟡 ✓ Tab colored YELLOW (${countDiff} differences found)`);
     } else {
-      worksheet.properties.tabColor = { argb: this.config.COLOR_GREEN };
+      worksheet.properties.tabColor = { argb: this.config.COLORS.GREEN };
       logger.info(' 🟢 ✓ Tab colored GREEN (no differences)');
     }
   }
