@@ -31,178 +31,13 @@ This guide provides the complete approach to refactoring the variance analysis t
 - ✅ Validation of API responses
 - ✅ Retry logic with exponential backoff
 
+### 5. Data Processing (`src/data-processor.ts`)
+- ✅ Type-safe data processing utilities
+- ✅ Validation of variance data
+- ✅ Filtering of variances
+- ✅ Statistics calculation
+
 ## Files That Need Refactoring
-
-### Priority 1: Core Infrastructure
-
-#### 1. `src/variance-analyzer.ts`
-
-**Current Issues:**
-- Event emitter not strictly typed
-- No validation of analysis results
-- Progress events loosely typed
-- Error handling not consistent
-
-**Refactoring Approach:**
-
-```typescript
-import { EventEmitter } from 'events';
-import pLimit from 'p-limit';
-import type {
-  ReturnConfig,
-  AnalysisResult,
-  FormInstance,
-  ValidationResult,
-  ProgressEvent,
-  Result,
-} from './types/index.js';
-import { AgileReporterClient, ApiClientError } from './api-client.js';
-import { DataProcessor } from './data-processor.js';
-import { logger } from './logger.js';
-
-/**
- * Analysis error type
- */
-export class AnalysisError extends Error {
-  constructor(
-    message: string,
-    public readonly formCode: string,
-    public readonly cause?: Error
-  ) {
-    super(message);
-    this.name = 'AnalysisError';
-  }
-}
-
-/**
- * Typed event emitter for progress events
- */
-interface AnalyzerEvents {
-  progress: (event: ProgressEvent) => void;
-  error: (error: AnalysisError) => void;
-}
-
-/**
- * Declare event emitter interface for TypeScript
- */
-declare interface VarianceAnalyzer {
-  on<U extends keyof AnalyzerEvents>(
-    event: U,
-    listener: AnalyzerEvents[U]
-  ): this;
-  emit<U extends keyof AnalyzerEvents>(
-    event: U,
-    ...args: Parameters<AnalyzerEvents[U]>
-  ): boolean;
-}
-
-/**
- * Variance analyzer with strict typing and error handling
- */
-class VarianceAnalyzer extends EventEmitter {
-  constructor(private readonly client: AgileReporterClient) {
-    super();
-  }
-
-  /**
-   * Analyze multiple returns against a base date
-   * @param returns - Return configurations
-   * @param baseDate - Base date for comparison
-   * @returns Result with analysis results or errors
-   */
-  async analyzeReturns(
-    returns: readonly ReturnConfig[],
-    baseDate: string
-  ): Promise<Result<readonly AnalysisResult[], AnalysisError>> {
-    const limit = pLimit(3);
-    const results: AnalysisResult[] = [];
-    const errors: AnalysisError[] = [];
-
-    const totalSteps = returns.length * 3;
-    let currentStep = 0;
-
-    this.emitProgress('analyzing', currentStep, totalSteps, 'Starting...');
-
-    const promises = returns.map((returnConfig) =>
-      limit(async () => {
-        try {
-          currentStep++;
-          this.emitProgress(
-            'analyzing',
-            currentStep,
-            totalSteps,
-            `Fetching ${returnConfig.name} versions`
-          );
-
-          const result = await this.analyzeReturn(returnConfig, baseDate);
-          
-          if (result.success) {
-            results.push(result.data);
-          } else {
-            errors.push(result.error);
-            this.emit('error', result.error);
-          }
-        } catch (error) {
-          const analysisError = new AnalysisError(
-            `Unexpected error analyzing ${returnConfig.name}`,
-            returnConfig.code,
-            error instanceof Error ? error : undefined
-          );
-          errors.push(analysisError);
-          this.emit('error', analysisError);
-        }
-      })
-    );
-
-    await Promise.all(promises);
-
-    if (results.length === 0) {
-      return {
-        success: false,
-        error: new AnalysisError(
-          'No returns were successfully analyzed',
-          'ALL',
-          errors[0]
-        ),
-      };
-    }
-
-    if (errors.length > 0) {
-      logger.warn(`Completed with ${errors.length} errors`);
-    }
-
-    return { success: true, data: results };
-  }
-
-  /**
-   * Emit typed progress event
-   */
-  private emitProgress(
-    step: string,
-    current: number,
-    total: number,
-    message: string
-  ): void {
-    this.emit('progress', {
-      type: 'progress',
-      step,
-      current,
-      total,
-      message,
-    });
-  }
-
-  /**
-   * Analyze single return (implementation continues...)
-   */
-  private async analyzeReturn(
-    returnConfig: ReturnConfig,
-    baseDate: string
-  ): Promise<Result<AnalysisResult, AnalysisError>> {
-    // Implementation with strict typing...
-  }
-}
-```
 
 ### Priority 2: Database Layer
 
@@ -262,7 +97,7 @@ npm install -D @types/node
    2. types/index.ts ✅
    3. validation/schemas.ts ✅
    4. api-client.ts ✅
-   5. data-processor.ts
+   5. data-processor.ts ✅
    6. db-manager.ts
    7. variance-analyzer.ts
    8. excel-exporter.ts
