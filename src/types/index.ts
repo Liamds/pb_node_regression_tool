@@ -50,8 +50,8 @@ export interface ConfigFile {
  * Form instance from AgileReporter API
  */
 export interface FormInstance {
-  readonly instanceId: string;
-  readonly refDate: string;
+  readonly id: string;
+  readonly referenceDate: string;
 }
 
 /**

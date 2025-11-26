@@ -3,7 +3,7 @@
  */
 
 import { logger } from './logger.js';
-import { AnalysisResult, ConfigFile } from './models.js';
+import { ConfigFile } from './models.js';
 import { randomUUID } from 'crypto';
 import {
   DatabaseManager,
@@ -11,6 +11,7 @@ import {
   FormDetail,
   VarianceDetail,
 } from './db-manager.js';
+import { AnalysisResult } from './types/index.js';
 
 export class ReportSaver {
   private dbManager: DatabaseManager;
@@ -45,7 +46,7 @@ export class ReportSaver {
           (v) =>
             v.Difference !== 0 &&
             v.Difference !== '' &&
-            !v['Cell Reference'].includes('Subtotal')
+            typeof v['Cell Reference'] === 'string' && !v['Cell Reference'].includes('Subtotal')
         ).length,
       0
     );
@@ -78,11 +79,11 @@ export class ReportSaver {
         (v) =>
           v.Difference !== 0 &&
           v.Difference !== '' &&
-          !v['Cell Reference'].includes('Subtotal')
+          typeof v['Cell Reference'] === 'string' && !v['Cell Reference'].includes('Subtotal')
       ).length,
       validationErrorCount: r.validationsErrors.length,
-      baseDate: r.baseInstance.refDate,
-      comparisonDate: r.comparisonInstance.refDate,
+      baseDate: r.baseInstance.referenceDate,
+      comparisonDate: r.comparisonInstance.referenceDate,
     }));
 
     // Prepare variance details (all variances with non-zero differences)
@@ -93,10 +94,10 @@ export class ReportSaver {
         variances.push({
           reportId,
           formCode: result.formCode,
-          cellReference: v['Cell Reference'],
-          cellDescription: v['Cell Description'],
-          comparisonValue: String(v[result.comparisonInstance.refDate] || '0'),
-          baseValue: String(v[result.baseInstance.refDate] || '0'),
+          cellReference: String((v as any)['Cell Reference'] || ''),
+          cellDescription: String((v as any)['Cell Description'] || ''),
+          comparisonValue: String(v[result.comparisonInstance.referenceDate] || '0'),
+          baseValue: String(v[result.baseInstance.referenceDate] || '0'),
           difference: String(v['Difference'] || '0'),
           percentDifference: String(v['% Difference'] || '0'),
         });

@@ -4,11 +4,12 @@
 
 import { logger } from './logger.js';
 import { AgileReporterClient } from './api-client.js';
-import { DataProcessor } from './data-processor.js';
-import { ReturnConfig, AnalysisResult, FormInstance, ValidationResult } from './models.js';
+import { findInstanceByDate, findInstanceBeforeDate, InstanceSearchResult } from './data-processor.js';
+import { ReturnConfig } from './models.js';
 import { MultiProgressBar } from './progress-bar.js';
 import pLimit from 'p-limit';
 import { EventEmitter } from 'events';
+import { AnalysisResult, ValidationResult } from './types/index.js';
 
 export interface ProgressEvent {
   type: 'progress';
@@ -128,35 +129,41 @@ export class VarianceAnalyzer extends EventEmitter {
   private async analyzeReturn(
 returnConfig: ReturnConfig, baseDate: string, _p0?: (step: string, _message: string) => void  ): Promise<AnalysisResult | null> {
     // Get all versions of the form
-    const instances = await this.client.getFormVersions(returnConfig.code);
+    const versionsResult = await this.client.getFormVersions(returnConfig.code);
 
-    if (instances.length === 0) {
-      logger.warn(`No instances found for ${returnConfig.code}`);
+    if(!versionsResult.success) {
+      logger.warn(`No instances found for ${returnConfig.code}, error: ${versionsResult.error}`);
       return null;
     }
+
+    const instances = versionsResult.data;
 
     logger.info(`Found ${instances.length} instances`);
 
     // Find base instance (exact match on base date)
-    const baseInstance = DataProcessor.findInstanceByDate(instances, baseDate);
+    const bInstance = findInstanceByDate(instances, baseDate);
 
-    if (!baseInstance) {
-      logger.warn(`No instance found for base date ${baseDate}`);
+    if(!bInstance.success){
+      logger.warn(`No instance found for base date ${baseDate}, error: ${bInstance.error}`);
       return null;
     }
 
-    logger.info(`Base instance: ${baseInstance.refDate} (ID: ${baseInstance.instanceId})`);
+    const baseInstance = bInstance.data;
+
+    logger.info(`Base instance: ${baseInstance.instance.referenceDate} (ID: ${baseInstance.instance.id})`);
 
     // Find comparison instance (most recent before base date where expected date not provided)
-    let comparisonInstance: FormInstance | null = null;
-
+    let comparisonInstance: InstanceSearchResult | null
     if (!returnConfig.expectedDate) {
-      comparisonInstance = DataProcessor.findInstanceBeforeDate(instances, baseDate);
+      const beforeResult = findInstanceBeforeDate(instances, baseDate);
+      comparisonInstance = beforeResult.success ? beforeResult.data : null;
     } else {
-      comparisonInstance = DataProcessor.findInstanceByDate(instances, returnConfig.expectedDate);
+      const expectedResult = findInstanceByDate(instances, returnConfig.expectedDate);
+      comparisonInstance = expectedResult.success ? expectedResult.data : null;
       if (!comparisonInstance) {
         logger.warn(`No comparison instance found for expected date ${returnConfig.expectedDate} picking next closest instance before ${returnConfig.expectedDate}`);
-        comparisonInstance = DataProcessor.findInstanceBeforeDate(instances, returnConfig.expectedDate);
+        const beforeResult = findInstanceBeforeDate(instances, returnConfig.expectedDate);
+        comparisonInstance = beforeResult.success ? beforeResult.data : null;
       }
     }
 
@@ -166,22 +173,33 @@ returnConfig: ReturnConfig, baseDate: string, _p0?: (step: string, _message: str
     }
 
     logger.info(
-      `Comparison instance: ${comparisonInstance.refDate} (ID: ${comparisonInstance.instanceId})`
+      `Comparison instance: ${comparisonInstance.instance.referenceDate} (ID: ${comparisonInstance.instance.id})`
     );
 
     // Get variance analysis
     logger.info('Fetching variance data...');
     const variances = await this.client.getFormAnalysis(
       returnConfig.code,
-      comparisonInstance,
-      baseInstance
+      comparisonInstance.instance,
+      baseInstance.instance
     );
+
+    if(!variances.success) {
+      logger.error(`Failed to fetch variance data, error: ${variances.error}`);
+      return null;
+    }
 
     // Get validation errors
     logger.info('Fetching validation results...');
     let validationErrors: ValidationResult[] = [];
     try {
-      const allValidations = await this.client.validateReturn(baseInstance);
+      const validationsResult = await this.client.validateReturn(baseInstance.instance);
+      if(!validationsResult.success) {
+        logger.error(`Failed to fetch validation results, error: ${validationsResult.error}`);
+        return null;
+      }
+
+      const allValidations = validationsResult.data;
       // Filter only failed validations
       validationErrors = allValidations.filter((v) => v.status === 'Fail');
       logger.info(`Found ${validationErrors.length} validation errors`);
@@ -189,18 +207,18 @@ returnConfig: ReturnConfig, baseDate: string, _p0?: (step: string, _message: str
       logger.error('Failed to fetch validation results', { error: error.message });
     }
 
-    const result: AnalysisResult = {
+    const result: AnalysisResult= {
       formName: returnConfig.name,
       formCode: returnConfig.code,
       confirmed: returnConfig.confirmed || false,
-      baseInstance,
-      comparisonInstance,
-      variances,
+      baseInstance: baseInstance.instance,
+      comparisonInstance: comparisonInstance.instance,
+      variances: variances.data,
       validationsErrors: validationErrors,
     };
 
     logger.info(
-      `✓ Completed: ${variances.length} variance records, ${validationErrors.length} validation errors`
+      `✓ Completed: ${variances.data.length} variance records, ${validationErrors.length} validation errors`
     );
 
     return result;

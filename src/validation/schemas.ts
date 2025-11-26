@@ -46,8 +46,8 @@ export const ConfigFileSchema = z.object({
  * Form instance schema
  */
 export const FormInstanceSchema = z.object({
-  instanceId: z.string(),
-  refDate: z.string(),
+  id: z.string(),
+  referenceDate: z.string(),
 }) satisfies z.ZodType<FormInstance>;
 
 /**

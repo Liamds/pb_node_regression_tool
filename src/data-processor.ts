@@ -243,7 +243,7 @@ export function daysBetween(
  * ```typescript
  * const result = findInstanceByDate(instances, '2025-06-30');
  * if (result.success) {
- *   console.log('Found:', result.data.instance.instanceId);
+ *   console.log('Found:', result.data.instance.id);
  * }
  * ```
  */
@@ -269,7 +269,7 @@ export function findInstanceByDate(
   }
 
   // Find exact match
-  const instance = instances.find((inst) => inst.refDate === targetDate);
+  const instance = instances.find((inst) => inst.referenceDate === targetDate);
 
   if (!instance) {
     return {
@@ -279,7 +279,7 @@ export function findInstanceByDate(
         DataProcessorErrorCode.INSTANCE_NOT_FOUND,
         {
           targetDate,
-          availableDates: instances.map((i) => i.refDate),
+          availableDates: instances.map((i) => i.referenceDate),
         }
       ),
     };
@@ -287,7 +287,7 @@ export function findInstanceByDate(
 
   logger.debug('Found exact instance match', {
     targetDate,
-    instanceId: instance.instanceId,
+    instanceId: instance.id,
   });
 
   return {
@@ -343,11 +343,11 @@ export function findInstanceBeforeDate(
 
   // Filter instances before target date
   const beforeInstances = instances.filter((inst) => {
-    const instDateResult = validateDateString(inst.refDate);
+    const instDateResult = validateDateString(inst.referenceDate);
     if (!instDateResult.success) {
       logger.warn('Invalid instance date, skipping', {
-        instanceId: inst.instanceId,
-        refDate: inst.refDate,
+        instanceId: inst.id,
+        refDate: inst.referenceDate,
       });
       return false;
     }
@@ -362,7 +362,7 @@ export function findInstanceBeforeDate(
         DataProcessorErrorCode.INSTANCE_NOT_FOUND,
         {
           targetDate,
-          availableDates: instances.map((i) => i.refDate),
+          availableDates: instances.map((i) => i.referenceDate),
         }
       ),
     };
@@ -370,20 +370,20 @@ export function findInstanceBeforeDate(
 
   // Sort by date (most recent first) and get first
   const sortedInstances = [...beforeInstances].sort((a, b) =>
-    b.refDate.localeCompare(a.refDate)
+    b.referenceDate.localeCompare(a.referenceDate)
   );
 
   const mostRecent = sortedInstances[0];
 
   // Calculate days difference
-  const daysResult = daysBetween(mostRecent.refDate, targetDate);
+  const daysResult = daysBetween(mostRecent.referenceDate, targetDate);
   const daysDiff = daysResult.success ? daysResult.data : 0;
 
   logger.debug('Found instance before target date', {
     targetDate,
-    foundDate: mostRecent.refDate,
+    foundDate: mostRecent.referenceDate,
     daysDifference: daysDiff,
-    instanceId: mostRecent.instanceId,
+    instanceId: mostRecent.id,
   });
 
   return {
@@ -436,7 +436,7 @@ export function sortInstancesByDate(
   order: 'asc' | 'desc' = 'asc'
 ): readonly FormInstance[] {
   const sorted = [...instances].sort((a, b) => {
-    const comparison = a.refDate.localeCompare(b.refDate);
+    const comparison = a.referenceDate.localeCompare(b.referenceDate);
     return order === 'asc' ? comparison : -comparison;
   });
 
@@ -831,11 +831,11 @@ export function groupInstancesByYear(
   const grouped = new Map<number, FormInstance[]>();
 
   for (const instance of instances) {
-    const dateResult = validateDateString(instance.refDate);
+    const dateResult = validateDateString(instance.referenceDate);
     if (!dateResult.success) {
       logger.warn('Skipping instance with invalid date', {
-        instanceId: instance.instanceId,
-        refDate: instance.refDate,
+        instanceId: instance.id,
+        refDate: instance.referenceDate,
       });
       continue;
     }
@@ -857,7 +857,7 @@ export function groupInstancesByYear(
 export function getUniqueDates(
   instances: readonly FormInstance[]
 ): readonly string[] {
-  const dates = new Set(instances.map((i) => i.refDate));
+  const dates = new Set(instances.map((i) => i.referenceDate));
   return Array.from(dates).sort();
 }
 
@@ -872,7 +872,7 @@ export function isSamePeriod(
   instance1: FormInstance,
   instance2: FormInstance
 ): boolean {
-  return instance1.refDate === instance2.refDate;
+  return instance1.referenceDate === instance2.referenceDate;
 }
 
 // ============================================

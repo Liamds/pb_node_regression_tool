@@ -451,7 +451,7 @@ export class AgileReporterClient {
    * const result = await client.getFormVersions('ARF1100');
    * if (result.success) {
    *   result.data.forEach(instance => {
-   *     console.log(instance.refDate, instance.instanceId);
+   *     console.log(instance.refDate, instance.id);
    *   });
    * }
    * ```
@@ -489,6 +489,8 @@ export class AgileReporterClient {
           ),
         };
       }
+      logger.error(`Received response for form versions of ${formCode}`, { status: response.status });
+      logger.error(`Response data: ${JSON.stringify(response.data)}`);
 
       // Validate response
       try {
@@ -496,7 +498,7 @@ export class AgileReporterClient {
 
         // Sort by reference date
         const sorted = [...instances].sort((a, b) =>
-          a.refDate.localeCompare(b.refDate)
+          a.referenceDate.localeCompare(b.referenceDate)
         );
 
         logger.debug(`Retrieved ${sorted.length} versions for ${formCode}`);
@@ -957,7 +959,7 @@ export class AgileReporterClient {
     }
 
     const queryParams = new URLSearchParams({
-      formInstances: `${instance1.instanceId},${instance2.instanceId}`,
+      formInstances: `${instance1.id},${instance2.id}`,
       pageInstance: '1',
       constraintType: 'CELLGROUP',
       constraintId: 'ALL',
@@ -1066,7 +1068,7 @@ export class AgileReporterClient {
   ): AsyncResult<readonly ValidationResult[], ApiClientError> {
     return this.retryOperation(
       async () => this.validateReturnInternal(instance),
-      `validateReturn(${instance.instanceId})`
+      `validateReturn(${instance.id})`
     );
   }
 
@@ -1085,7 +1087,7 @@ export class AgileReporterClient {
       validationResultDetails: 'true',
     });
 
-    const path = `/agilereporter/rest/api/v1/returns/${encodeURIComponent(instance.instanceId)}/validation?${queryParams}`;
+    const path = `/agilereporter/rest/api/v1/returns/${encodeURIComponent(instance.id)}/validation?${queryParams}`;
     const url = `https://${this.host}${path}`;
 
     const headers = {
@@ -1097,7 +1099,7 @@ export class AgileReporterClient {
     } as const;
 
     try {
-      logger.info(`Fetching validation results for ${instance.instanceId}`);
+      logger.info(`Fetching validation results for ${instance.id}`);
 
       const response = await this.axiosInstance.put(url, null, {
         headers,
@@ -1116,7 +1118,7 @@ export class AgileReporterClient {
         };
       }
 
-      logger.info(`Received validation response for ${instance.instanceId}`);
+      logger.info(`Received validation response for ${instance.id}`);
 
       // Parse validation results
       const validations = this.parseValidationResults(response.data, instance);
@@ -1125,7 +1127,7 @@ export class AgileReporterClient {
 
       return { success: true, data: validations };
     } catch (error) {
-      logger.error(`Failed to validate return ${instance.instanceId}`, { error });
+      logger.error(`Failed to validate return ${instance.id}`, { error });
 
       if (axios.isAxiosError(error)) {
         return {
@@ -1192,8 +1194,8 @@ export class AgileReporterClient {
         const variance: Record<string, unknown> = {
           'Cell Reference': cellName,
           'Cell Description': descValue,
-          [instance1.refDate]: instance1Value,
-          [instance2.refDate]: instance2Value,
+          [instance1.referenceDate]: instance1Value,
+          [instance2.referenceDate]: instance2Value,
           'Difference': diffValue,
           '% Difference': diffPerc,
         };
@@ -1249,7 +1251,7 @@ export class AgileReporterClient {
     const warnings = validationResults.filter((v) => v.severity === 'Warning').length;
 
     logger.info(
-      `Parsed ${validationResults.length} validation results for ${instance.instanceId}`
+      `Parsed ${validationResults.length} validation results for ${instance.id}`
     );
     logger.info(`Failures: ${failures}, Warnings: ${warnings}`);
 

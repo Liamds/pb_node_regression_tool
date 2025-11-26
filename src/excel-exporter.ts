@@ -5,8 +5,9 @@
 import ExcelJS from 'exceljs';
 import { logger } from './logger.js';
 import { getExcelProperties, ExcelConfig } from './config.js';
-import { DataProcessor } from './data-processor.js';
-import { AnalysisResult, SummaryRecord, ValidationResult } from './models.js';
+import { sanitizeSheetName, countMeaningfulDifferences } from './data-processor.js';
+import { SummaryRecord } from './models.js';
+import { AnalysisResult, ValidationResult } from './types/index.js';
 
 export class ExcelExporter {
   constructor(
@@ -80,10 +81,18 @@ export class ExcelExporter {
     workbook: ExcelJS.Workbook,
     result: AnalysisResult
   ): Promise<number> {
-    const sheetName = DataProcessor.sanitizeSheetName(
+    let sheetName: string;
+    let sheetNameSantized = sanitizeSheetName(
       result.formName,
       this.config.SHEET_NAME_MAX_LENGTH
     );
+
+    if(!sheetNameSantized.success) {
+      logger.error(`Failed to sanitize sheet name for validation errors: ${result.formName} (${result.formCode}), error: ${sheetNameSantized.error}`);
+      sheetName = result.formCode;
+    } else {
+      sheetName = sheetNameSantized.data.sanitized;
+    }
 
     logger.info(`Processing: ${result.formName} (${result.formCode}) -> Sheet: ${sheetName}`);
 
@@ -98,16 +107,13 @@ export class ExcelExporter {
     this.writeDataToSheet(worksheet, result.variances);
 
     // Check for differences
-    const countDiff = DataProcessor.hasDifferences(
-      result.variances,
-      this.config.COLUMN_NAMES.DIFFERENCE
-    );
+    const countDiff = countMeaningfulDifferences(result.variances);
 
     // Apply tab color
     this.applyTabColor(worksheet, result.confirmed, countDiff);
 
     // Create table
-    await this.createTable(worksheet, sheetName, result.variances);
+    await this.createTable(worksheet, sheetName, [...result.variances]);
 
     logger.info(`  ✓ Written ${result.variances.length} rows to sheet '${sheetName}'`);
 
@@ -121,11 +127,17 @@ export class ExcelExporter {
     workbook: ExcelJS.Workbook,
     result: AnalysisResult
   ): Promise<void> {
-    let sheetName = DataProcessor.sanitizeSheetName(
+    let sheetName: string;
+    let sheetNameSantized = sanitizeSheetName(
       result.formName,
       this.config.SHEET_NAME_MAX_LENGTH - 18
     );
-    sheetName = (sheetName + '_ValidationErrors').substring(0, 31);
+    if(!sheetNameSantized.success) {
+      logger.error(`Failed to sanitize sheet name for validation errors: ${result.formName} (${result.formCode}), error: ${sheetNameSantized.error}`);
+      sheetName = result.formCode;
+    } else {
+      sheetName = sheetNameSantized.data.sanitized;
+    }
 
     logger.info(
       `Processing Validation Errors: ${result.formName} (${result.formCode}) -> Sheet: ${sheetName}`
@@ -164,7 +176,7 @@ export class ExcelExporter {
   /**
    * Write variance data to worksheet
    */
-  private writeDataToSheet(worksheet: ExcelJS.Worksheet, data: Record<string, any>[]): void {
+  private writeDataToSheet(worksheet: ExcelJS.Worksheet, data: readonly Record<string, any>[]): void {
     if (data.length === 0) return;
 
     const headers = Object.keys(data[0]);
@@ -200,7 +212,7 @@ export class ExcelExporter {
    */
   private writeValidationDataToSheet(
     worksheet: ExcelJS.Worksheet,
-    results: ValidationResult[]
+    results: readonly ValidationResult[]
   ): void {
     let currentRow = 1;
 

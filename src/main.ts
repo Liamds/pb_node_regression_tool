@@ -10,9 +10,10 @@ import { getApiConfig, getAuthConfig } from './config.js';
 import { AgileReporterClient } from './api-client.js';
 import { VarianceAnalyzer } from './variance-analyzer.js';
 import { ExcelExporter } from './excel-exporter.js';
-import { ConfigFile, ReturnConfig, AnalysisResult } from './models.js';
+//import {  } from './models.js';
 import { DashboardServer } from './dashboard/server.js';
 import { ReportSaver } from './report-saver.js';
+import { AnalysisResult, ConfigFile, ReturnConfig } from './types/index.js';
 
 /**
  * Global dashboard reference for progress broadcasting
@@ -73,7 +74,7 @@ async function loadConfigFile(configPath: string): Promise<ConfigFile> {
 /**
  * Parse return configurations from config data
  */
-function parseReturnConfigs(returnsData: any[]): ReturnConfig[] {
+function parseReturnConfigs(returnsData: ReadonlyArray<any>): ReturnConfig[] {
   return returnsData.map((r) => ({
     code: r.code,
     name: r.name,
@@ -93,7 +94,7 @@ function printSummary(results: AnalysisResult[]): void {
   for (const result of results) {
     logger.info(`${result.formName} (${result.formCode}):`);
     logger.info(
-      `  Comparison: ${result.comparisonInstance.refDate} vs ${result.baseInstance.refDate}`
+      `  Comparison: ${result.comparisonInstance.referenceDate} vs ${result.baseInstance.referenceDate}`
     );
     logger.info(`  Variances: ${result.variances.length} records`);
     logger.info(`  Validation Errors: ${result.validationsErrors.length} records`);
@@ -206,6 +207,8 @@ async function main(): Promise<number> {
     const results = await analyzer.analyzeReturns(returns, baseDate);
     appLogger.info(`✓ Analyzed ${results.length} returns`);
 
+    if(results.length)
+
     // Print summary
     printSummary(results);
 
@@ -244,7 +247,11 @@ async function main(): Promise<number> {
         
         const reportId = await reportSaver.saveReport(
           results,
-          configData,
+          {
+            ...configData,
+            returns: [...configData.returns],
+            excluded: configData.excluded ? [...configData.excluded] : undefined,
+          },
           options.output,
           Date.now() - startTime,
           'completed'
