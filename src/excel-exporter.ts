@@ -6,8 +6,8 @@ import ExcelJS from 'exceljs';
 import { logger } from './logger.js';
 import { getExcelProperties, ExcelConfig } from './config.js';
 import { sanitizeSheetName, countMeaningfulDifferences } from './data-processor.js';
-import { SummaryRecord } from './models.js';
-import { AnalysisResult, ValidationResult } from './types/index.js';
+//import { SummaryRecord } from './models.js';
+import { AnalysisResult, SummaryRecord, ValidationResult } from './types/index.js';
 
 export class ExcelExporter {
   constructor(

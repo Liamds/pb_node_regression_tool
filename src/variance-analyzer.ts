@@ -5,11 +5,11 @@
 import { logger } from './logger.js';
 import { AgileReporterClient } from './api-client.js';
 import { findInstanceByDate, findInstanceBeforeDate, InstanceSearchResult } from './data-processor.js';
-import { ReturnConfig } from './models.js';
+//import { ReturnConfig } from './models.js';
 import { MultiProgressBar } from './progress-bar.js';
 import pLimit from 'p-limit';
 import { EventEmitter } from 'events';
-import { AnalysisResult, ValidationResult } from './types/index.js';
+import { AnalysisResult, ReturnConfig, ValidationResult } from './types/index.js';
 
 export interface ProgressEvent {
   type: 'progress';

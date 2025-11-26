@@ -3,7 +3,7 @@
  */
 
 import { logger } from './logger.js';
-import { ConfigFile } from './models.js';
+//import { ConfigFile } from './models.js';
 import { randomUUID } from 'crypto';
 import {
   DatabaseManager,
@@ -11,7 +11,7 @@ import {
   FormDetail,
   VarianceDetail,
 } from './db-manager.js';
-import { AnalysisResult } from './types/index.js';
+import { AnalysisResult, ConfigFile } from './types/index.js';
 
 export class ReportSaver {
   private dbManager: DatabaseManager;
