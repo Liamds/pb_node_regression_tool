@@ -129,6 +129,12 @@ export class VarianceAnalyzer extends EventEmitter {
   private async analyzeReturn(
 returnConfig: ReturnConfig, baseDate: string, _p0?: (step: string, _message: string) => void  ): Promise<AnalysisResult | null> {
     // Get all versions of the form
+    this.emitProgress(
+      'analyzing',
+      1,
+      3,
+      `Fetching version ${returnConfig.name} (1/3)`
+    );
     const versionsResult = await this.client.getFormVersions(returnConfig.code);
 
     if(!versionsResult.success) {
@@ -178,6 +184,12 @@ returnConfig: ReturnConfig, baseDate: string, _p0?: (step: string, _message: str
 
     // Get variance analysis
     logger.info('Fetching variance data...');
+    this.emitProgress(
+      'analyzing',
+      2,
+      3,
+      `Retrieving variance results ${returnConfig.name} (2/3)`
+    );
     const variances = await this.client.getFormAnalysis(
       returnConfig.code,
       comparisonInstance.instance,
@@ -191,6 +203,12 @@ returnConfig: ReturnConfig, baseDate: string, _p0?: (step: string, _message: str
 
     // Get validation errors
     logger.info('Fetching validation results...');
+    this.emitProgress(
+      'analyzing',
+      3,
+      3,
+      `Retrieving validation results ${returnConfig.name} (3/3)`
+    );
     let validationErrors: ValidationResult[] = [];
     try {
       const validationsResult = await this.client.validateReturn(baseInstance.instance);
