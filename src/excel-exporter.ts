@@ -129,7 +129,7 @@ export class ExcelExporter {
   ): Promise<void> {
     let sheetName: string;
     let sheetNameSantized = sanitizeSheetName(
-      result.formName,
+      `${result.formName}_ValidationErrors`,
       this.config.SHEET_NAME_MAX_LENGTH - 18
     );
     if(!sheetNameSantized.success) {
