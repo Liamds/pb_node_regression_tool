@@ -18,6 +18,7 @@ import { DatabaseManager } from '../db-manager.js';
 import { json2csv } from 'json-2-csv';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './swagger.js';
+import { ReportStatus } from '../types/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -196,16 +197,20 @@ export class DashboardServer {
       try {
         const { status, baseDate, formCode } = req.query;
         const reports = await this.dbManager.getReports({
-          status: status as string,
+          status: status as ReportStatus,
           baseDate: baseDate as string,
           formCode: formCode as string,
         });
+
+        if(!reports.success) {
+          return res.status(500).json({ error: reports.error.message });
+        }
         
-        logger.info(`Fetched ${reports.length} reports`);
-        res.json({ reports });
+        logger.info(`Fetched ${reports.data.length} reports`);
+        return res.json({ reports });
       } catch (error: any) {
         logger.error('Error listing reports', { error });
-        res.status(500).json({ error: error.message });
+        return res.status(500).json({ error: error.message });
       }
     });
 
@@ -293,12 +298,19 @@ export class DashboardServer {
     this.app.get('/api/reports/:id/details', async (req: Request, res: Response) => {
       try {
         const formDetails = await this.dbManager.getFormDetails(req.params.id);
+        if(!formDetails.success) {
+          return res.status(500).json({ error: formDetails.error.message });
+        }
         
         const results = await Promise.all(
-          formDetails.map(async (form) => {
+          formDetails.data.map(async (form) => {
             const variances = await this.dbManager.getVariances(req.params.id, form.formCode);
+
+            if(!variances.success) {
+              return res.status(500).json({ error: variances.error.message });
+            }
             
-            const topVariances = variances
+            const topVariances = variances.data
               .filter(v => 
                 v.difference !== '0' && 
                 v.difference !== '' && 
@@ -323,10 +335,10 @@ export class DashboardServer {
           })
         );
 
-        res.json({ results });
+        return res.json({ results });
       } catch (error: any) {
         logger.error('Error getting report details', { error });
-        res.status(500).json({ error: error.message });
+        return res.status(500).json({ error: error.message });
       }
     });
 
@@ -434,19 +446,27 @@ export class DashboardServer {
         const { id, formCode } = req.params;
         
         const report = await this.dbManager.getReport(id);
-        if (!report) {
+        if (!report.success) {
           return res.status(404).json({ error: 'Report not found' });
         }
 
         const formDetails = await this.dbManager.getFormDetails(id);
-        const form = formDetails.find(f => f.formCode === formCode);
+        if(!formDetails.success) {
+          return res.status(500).json({ error: formDetails.error.message });
+        }
+
+        const form = formDetails.data.find(f => f.formCode === formCode);
         if (!form) {
           return res.status(404).json({ error: 'Form not found' });
         }
 
         const variances = await this.dbManager.getVariances(id, formCode);
 
-        const csvData = variances.map(v => ({
+        if(!variances.success) {
+          return res.status(500).json({ error: variances.error.message });
+        }
+
+        const csvData = variances.data.map(v => ({
           'Cell Reference': v.cellReference,
           'Cell Description': v.cellDescription,
           [form.comparisonDate]: v.comparisonValue,
@@ -460,7 +480,7 @@ export class DashboardServer {
 
         const csv = await json2csv(csvData);
 
-        const filename = `${formCode}_${report.baseDate}_variances.csv`;
+        const filename = `${formCode}_${report.data.baseDate}_variances.csv`;
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
         res.send(csv);
@@ -505,11 +525,11 @@ export class DashboardServer {
     this.app.get('/api/reports/:id/download', async (req: Request, res: Response) => {
       try {
         const report = await this.dbManager.getReport(req.params.id);
-        if (!report) {
+        if (!report.success) {
           return res.status(404).json({ error: 'Report not found' });
         }
 
-        const filePath = join(this.reportsDir, report.outputFile);
+        const filePath = join(this.reportsDir, report.data.outputFile);
         if (!existsSync(filePath)) {
           return res.status(404).json({ error: 'Excel file not found' });
         }
@@ -596,7 +616,7 @@ export class DashboardServer {
       try {
         const { status, baseDate, formCode } = req.query;
         const stats = await this.dbManager.getStatistics({
-          status: status as string,
+          status: status as ReportStatus,
           baseDate: baseDate as string,
           formCode: formCode as string,
         });

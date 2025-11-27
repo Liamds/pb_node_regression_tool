@@ -125,14 +125,19 @@ export class ReportSaver {
   async cleanupOldReports(keepCount: number = 20): Promise<void> {
     try {
       const reports = await this.dbManager.getReports();
-
-      if (reports.length <= keepCount) {
-        return; // Nothing to clean up
+      
+      if(!reports.success) {
+        logger.error('Failed to get reports to clean up', { error: reports.error.message });
+        return;
       }
 
-      // Sort by timestamp and get reports to delete
-      reports.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-      const toDelete = reports.slice(keepCount);
+      if (reports.data.length <= keepCount) {
+        return; // Nothing to clean up
+      }
+      // Sort by timestamp and get reports to delete (make a mutable copy first because reports.data is readonly)
+      const reportsArray = Array.from(reports.data);
+      reportsArray.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+      const toDelete = reportsArray.slice(keepCount);
 
       // Delete old reports
       for (const report of toDelete) {
