@@ -1,0 +1,13 @@
+{
+    "baseDate": "2025-06-30",
+    "returns": [
+        {
+            "name": "1120",
+            "code": "ARF1120",
+            "expectedDate": "2025-06-16"
+        }
+    ],
+    "excluded": [
+        
+    ]
+}
