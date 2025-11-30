@@ -65,7 +65,7 @@ This document outlines the phased approach to migrate from the current Express-b
 - [x] Add explicit return types to all functions
 - [x] Remove all `any` types
 - [x] Add JSDoc to all exported functions
-- [ ] Create dependency injection patterns
+- [x] Create dependency injection patterns
 
 ### Files to Refactor
 
