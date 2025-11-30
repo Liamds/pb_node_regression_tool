@@ -502,6 +502,25 @@ export class DatabaseManager {
   }
 
   /**
+   * Extract error message from unknown error
+   * 
+   * @param error - Unknown error object
+   * @returns Error message string
+   */
+  private getErrorMessage(error: unknown): string {
+    if (error instanceof Error) {
+      return error.message;
+    }
+    if (typeof error === 'string') {
+      return error;
+    }
+    if (error && typeof error === 'object') {
+      return JSON.stringify(error);
+    }
+    return 'Unknown error occurred';
+  }
+
+  /**
    * Save report with all details in a transaction
    * 
    * @param metadata - Report metadata
@@ -533,76 +552,132 @@ export class DatabaseManager {
       };
     }
 
-    return this.executeTransaction(async () => {
-      // Insert report metadata
-      this.db!.run(
-        `INSERT OR REPLACE INTO reports 
-        (id, timestamp, baseDate, totalReturns, totalVariances, totalValidationErrors, 
-         configFile, outputFile, duration, status)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [
-          metadata.id,
-          metadata.timestamp,
-          metadata.baseDate,
-          metadata.totalReturns,
-          metadata.totalVariances,
-          metadata.totalValidationErrors,
-          metadata.configFile,
-          metadata.outputFile,
-          metadata.duration,
-          metadata.status,
-        ]
-      );
+    logger.info(`Saving report ${metadata.id} with ${variances.length} variances`);
 
-      // Insert form details
-      if (formDetails.length > 0) {
-        const formStmt = this.db!.prepare(
-          `INSERT INTO form_details 
-          (reportId, formName, formCode, confirmed, varianceCount, validationErrorCount, baseDate, comparisonDate)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+    try {
+      // Start transaction
+      this.db!.run('BEGIN TRANSACTION');
+
+      try {
+        // Insert report metadata
+        logger.debug('Inserting report metadata');
+        this.db!.run(
+          `INSERT OR REPLACE INTO reports 
+          (id, timestamp, baseDate, totalReturns, totalVariances, totalValidationErrors, 
+          configFile, outputFile, duration, status)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+          [
+            metadata.id,
+            metadata.timestamp,
+            metadata.baseDate,
+            metadata.totalReturns,
+            metadata.totalVariances,
+            metadata.totalValidationErrors,
+            metadata.configFile,
+            metadata.outputFile,
+            metadata.duration,
+            metadata.status,
+          ]
         );
 
-        for (const form of formDetails) {
-          formStmt.run([
-            form.reportId,
-            form.formName,
-            form.formCode,
-            form.confirmed ? 1 : 0,
-            form.varianceCount,
-            form.validationErrorCount,
-            form.baseDate,
-            form.comparisonDate,
-          ]);
+        // Insert form details
+        if (formDetails.length > 0) {
+          logger.debug(`Inserting ${formDetails.length} form details`);
+          const formStmt = this.db!.prepare(
+            `INSERT INTO form_details 
+            (reportId, formName, formCode, confirmed, varianceCount, validationErrorCount, baseDate, comparisonDate)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+          );
+
+          for (const form of formDetails) {
+            formStmt.run([
+              form.reportId,
+              form.formName,
+              form.formCode,
+              form.confirmed ? 1 : 0,
+              form.varianceCount,
+              form.validationErrorCount,
+              form.baseDate,
+              form.comparisonDate,
+            ]);
+          }
+          formStmt.free();
         }
-        formStmt.free();
-      }
 
-      // Insert variances (batch insert)
-      if (variances.length > 0) {
-        const varianceStmt = this.db!.prepare(
-          `INSERT INTO variances 
-          (reportId, formCode, cellReference, cellDescription, comparisonValue, baseValue, difference, percentDifference)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
-        );
+        // Insert variances (batch insert)
+        if (variances.length > 0) {
+          logger.debug(`Inserting ${variances.length} variances`);
+          const varianceStmt = this.db!.prepare(
+            `INSERT INTO variances 
+            (reportId, formCode, cellReference, cellDescription, comparisonValue, baseValue, difference, percentDifference)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+          );
 
-        for (const variance of variances) {
-          varianceStmt.run([
-            variance.reportId,
-            variance.formCode,
-            variance.cellReference,
-            variance.cellDescription,
-            variance.comparisonValue,
-            variance.baseValue,
-            variance.difference,
-            variance.percentDifference,
-          ]);
+          for (const variance of variances) {
+            varianceStmt.run([
+              variance.reportId,
+              variance.formCode,
+              variance.cellReference,
+              variance.cellDescription,
+              variance.comparisonValue,
+              variance.baseValue,
+              variance.difference,
+              variance.percentDifference,
+            ]);
+          }
+          varianceStmt.free();
         }
-        varianceStmt.free();
-      }
 
-      // Save to disk
-      return await this.save();
-    });
+        // Commit transaction
+        logger.debug('Committing transaction');
+        this.db!.run('COMMIT');
+
+        // Save to disk
+        logger.debug('Saving database to disk');
+        const saveResult = await this.save();
+        if (!saveResult.success) {
+          logger.error('Failed to save database to disk', {
+            error: saveResult.error.message,
+          });
+          return saveResult;
+        }
+
+        logger.info(`Successfully saved report ${metadata.id} to database`);
+        return { success: true, data: undefined };
+
+      } catch (innerError) {
+        // Rollback on error
+        logger.error('Error during transaction, rolling back', { error: innerError });
+        
+        try {
+          this.db!.run('ROLLBACK');
+          logger.debug('Transaction rolled back successfully');
+        } catch (rollbackError) {
+          logger.error('Failed to rollback transaction', { rollbackError });
+        }
+
+        return {
+          success: false,
+          error: new DatabaseError(
+            `Transaction failed: ${this.getErrorMessage(innerError)}`,
+            DbErrorCode.TRANSACTION_FAILED,
+            { reportId: metadata.id },
+            innerError
+          ),
+        };
+      }
+    } catch (outerError) {
+      logger.error('Failed to start transaction', { error: outerError });
+      return {
+        success: false,
+        error: new DatabaseError(
+          `Failed to start transaction: ${this.getErrorMessage(outerError)}`,
+          DbErrorCode.TRANSACTION_FAILED,
+          { reportId: metadata.id },
+          outerError
+        ),
+      };
+    }
   }
 
   // ============================================
@@ -1187,7 +1262,7 @@ export class DatabaseManager {
    * @param operation - Async operation to execute
    * @returns Result from operation
    */
-  private async executeTransaction<T>(
+  /*private async executeTransaction<T>(
     operation: () => AsyncResult<T, DatabaseError>
   ): AsyncResult<T, DatabaseError> {
     try {
@@ -1220,7 +1295,7 @@ export class DatabaseManager {
         ),
       };
     }
-  }
+  } */
 
   // ============================================
   // RETRY LOGIC
