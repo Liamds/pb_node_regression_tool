@@ -651,7 +651,7 @@ function showModal(metadata, details) {
                                                 return `
                                                 <tr style="border-bottom: 1px solid var(--gray-200); background-color: ${i % 2 === 0 ? 'var(--gray-100)' : 'var(--gray-50)'};">
                                                     <td style="text-align: center; padding: 8px; border-right: 1px solid var(--gray-200)">
-                                                        <button id='${buttonId}' class="flag-btn ${isFlagged ? 'flagged' : ''}" onclick="toggleFlag('${metadata.id}', '${varianceKey}', '${category}', '${comment}', this)">
+                                                        <button id='${buttonId}' class="flag-btn ${isFlagged ? 'flagged' : ''}" onclick="toggleFlag('${metadata.id}', '${varianceKey}', '${categoryId}', '${commentId}', this)">
                                                             ${isFlagged ? '🚩' : '⚐'}
                                                         </button>
                                                     </td>
@@ -667,7 +667,7 @@ function showModal(metadata, details) {
                                                     <td style="text-align: right; padding: 8px; border-right: 1px solid var(--gray-200)">${v[result.baseDate] ? Number(v[result.baseDate]).toLocaleString() : '-'}</td>
                                                     <td style="text-align: right; padding: 8px; border-right: 1px solid var(--gray-200)">${Number(v['Difference']).toLocaleString()}</td>
                                                     <td style="text-align: left; padding: 8px; border-right: 1px solid var(--gray-200)">
-                                                        <select id='${categoryId}' class="variance-category" onchange="updateCategory('${metadata.id}', '${varianceKey}', this.value, '${comment}', ${isFlagged})">
+                                                        <select id='${categoryId}' class="variance-category" onchange="updateCategory('${metadata.id}', '${varianceKey}', this.value, '${commentId}', ${isFlagged})">
                                                             <option value="none" ${category === 'none' ? 'selected' : ''}>-</option>
                                                             <option value="expected" ${category === 'expected' ? 'selected' : ''}>✓ Expected</option>
                                                             <option value="unexpected" ${category === 'unexpected' ? 'selected' : ''}>⚠ Unexpected</option>
@@ -680,7 +680,7 @@ function showModal(metadata, details) {
                                                             class="variance-comment" 
                                                             placeholder="Add comment..."
                                                             value="${comment}"
-                                                            onchange="updateComment('${metadata.id}', '${varianceKey}', '${category}', this.value, ${isFlagged})">
+                                                            onchange="updateComment('${metadata.id}', '${varianceKey}', '${categoryId}', this.value, ${isFlagged})">
                                                     </td>
                                                 </tr>
                                             `}).join('')}
@@ -699,10 +699,13 @@ function showModal(metadata, details) {
 }
 
 // Variance interaction functions
-async function toggleFlag(reportId, varianceKey,category, comment, button) {
+async function toggleFlag(reportId, varianceKey,categoryId, commentId, button) {
     const [formCode, cellReference] = varianceKey.split('-');
     const isFlagged = !button.classList.contains('flagged');
     console.log('flag button', button)
+    //const isFlagged = document.getElementById(flagButtonId).classList.contains('flagged');
+    const categoryValue = document.getElementById(categoryId).value;
+    const commentValue = document.getElementById(commentId).value;
     
     try {
         const response = await fetch(`${API_BASE}/reports/${reportId}/annotations`, {
@@ -713,8 +716,8 @@ async function toggleFlag(reportId, varianceKey,category, comment, button) {
             body: JSON.stringify({
                 formCode,
                 cellReference,
-                category: category === 'none' ? null : category,
-                comment: comment || null,
+                category: categoryValue === 'none' ? null : categoryValue,
+                comment: commentValue || null,
                 flagged: isFlagged,
             }),
         });
@@ -730,11 +733,12 @@ async function toggleFlag(reportId, varianceKey,category, comment, button) {
     }
 }
 
-async function updateCategory(reportId, varianceKey, category, comment, flagged) {
+async function updateCategory(reportId, varianceKey, category, commentId, flagged) {
     const [formCode, cellReference] = varianceKey.split('-');
-    console.log("updateCategory called with:", reportId, varianceKey, category, comment, flagged);
+    console.log("updateCategory called with:", reportId, varianceKey, category, commentId, flagged);
     const flagButtonId = `${reportId}-${varianceKey}_flag`;
     const isFlagged = document.getElementById(flagButtonId).classList.contains('flagged');
+    const commentValue = document.getElementById(commentId).value;
     
     try {
         await fetch(`${API_BASE}/reports/${reportId}/annotations`, {
@@ -746,7 +750,7 @@ async function updateCategory(reportId, varianceKey, category, comment, flagged)
                 formCode,
                 cellReference,
                 category: category === 'none' ? null : category,
-                comment: comment || null,
+                comment: commentValue || null,
                 flagged: isFlagged,
             }),
         });
@@ -755,11 +759,13 @@ async function updateCategory(reportId, varianceKey, category, comment, flagged)
     }
 }
 
-async function updateComment(reportId, varianceKey, category, comment, flagged) {
+async function updateComment(reportId, varianceKey, categoryId, comment, flagged) {
     const [formCode, cellReference] = varianceKey.split('-');
     const flagButtonId = `${reportId}-${varianceKey}_flag`;
     const isFlagged = document.getElementById(flagButtonId).classList.contains('flagged');
-    console.log("updateCategory called with:", reportId, varianceKey, category, comment, isFlagged);
+    const categoryValue = document.getElementById(categoryId).value;
+    console.log("updateCategory called with:", reportId, varianceKey, categoryId, comment, isFlagged);
+    
     
     try {
         await fetch(`${API_BASE}/reports/${reportId}/annotations`, {
@@ -770,7 +776,7 @@ async function updateComment(reportId, varianceKey, category, comment, flagged) 
             body: JSON.stringify({
                 formCode,
                 cellReference,
-                category: category === 'none' ? null : category,
+                category: categoryValue === 'none' ? null : categoryValue,
                 comment: comment || null,
                 flagged: isFlagged,
             }),
