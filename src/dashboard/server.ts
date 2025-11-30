@@ -57,12 +57,14 @@ export class DashboardServer {
     this.server = createServer(this.app);
     this.wss = new WebSocketServer({ server: this.server });
     this.dbManager = new DatabaseManager();
+    //this.initializeDatabase();
 
     this.setupMiddleware();
     this.setupWebSocket();
     this.setupSwagger();
     this.setupRoutes();
     this.ensureReportsDirectory();
+    
   }
 
   private setupMiddleware(): void {
@@ -252,7 +254,7 @@ export class DashboardServer {
     this.app.get('/api/reports/:id', async (req: Request, res: Response) => {
       try {
         const report = await this.dbManager.getReport(req.params.id);
-        if (!report) {
+        if (!report.success) {
           return res.status(404).json({ error: 'Report not found' });
         }
         return res.json(report);
@@ -930,7 +932,11 @@ export class DashboardServer {
   }
 
   async start(): Promise<void> {
-    await this.dbManager.initialize();
+    const initDB = await this.dbManager.initialize();
+    console.log('initDB', initDB);
+    if(!initDB.success) {
+      throw new Error('Failed to initialize database: ' + initDB.error);
+    }
 
     return new Promise((resolve) => {
       this.server.listen(this.port, () => {

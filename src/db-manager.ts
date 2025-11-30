@@ -229,19 +229,22 @@ export class DatabaseManager {
         const buffer = await readFile(this.dbPath);
         this.db = new this.SQL.Database(buffer);
         logger.info('Loaded existing database');
+        this.isInitialized = true;
+        logger.info('Database initialized successfully');
       } else {
         this.db = new this.SQL.Database();
         logger.info('Created new database');
       }
 
       // Create tables
+      logger.info('Creating database tables if not exist...');
       const createResult = await this.createTables();
       if (!createResult.success) {
         return createResult;
       }
 
-      this.isInitialized = true;
-      logger.info('Database initialized successfully');
+      logger.info('Database tables are ready');
+      
 
       return { success: true, data: undefined };
     } catch (error) {
@@ -322,7 +325,9 @@ export class DatabaseManager {
    * @returns Result with void on success or error
    */
   private async createTables(): AsyncResult<void, DatabaseError> {
+    logger.info('Creating database tables...');
     if (!this.db) {
+      logger.error('Database instance is null during table creation');
       return {
         success: false,
         error: new DatabaseError(
@@ -331,6 +336,7 @@ export class DatabaseManager {
         ),
       };
     }
+    logger.info("Database instance is valid, proceeding with table creation.");
 
     try {
       const tables = [
@@ -422,10 +428,15 @@ export class DatabaseManager {
       for (const sql of [...tables, ...indexes]) {
         this.db.run(sql);
       }
+      logger.info('Database tables created or already exist.');
 
       // Save changes
+      logger.info('Saving database after table creation...');
       const saveResult = await this.save();
+      logger.info(`Database save after table creation result: ${saveResult.success}`);
       if (!saveResult.success) {
+        logger.error('Failed to save database after table creation');
+        logger.error('Save result', { saveResult });
         return saveResult;
       }
 
@@ -689,8 +700,6 @@ export class DatabaseManager {
         }
       }
       stmt.free();
-
-      logger.info(`Fetched ${reports.length} reports from database`);
 
       return { success: true, data: reports };
     } catch (error) {

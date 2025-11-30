@@ -98,8 +98,8 @@ npm install -D @types/node
    3. validation/schemas.ts ✅
    4. api-client.ts ✅
    5. data-processor.ts ✅
-   6. db-manager.ts
-   7. variance-analyzer.ts
+   6. db-manager.ts ✅
+   7. variance-analyzer.ts ✅
    8. excel-exporter.ts
    9. report-saver.ts
    10. main.ts

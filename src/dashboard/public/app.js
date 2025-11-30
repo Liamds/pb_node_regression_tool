@@ -109,12 +109,12 @@ async function loadFilterOptions() {
         // Populate base date filter
         const baseDateFilter = document.getElementById('baseDateFilter');
         baseDateFilter.innerHTML = '<option value="">All Base Dates</option>' + 
-            data.baseDates.map(date => `<option value="${date}">${date}</option>`).join('');
+            data.baseDates.data.map(date => `<option value="${date}">${date}</option>`).join('');
         
         // Populate form filter
         const formFilter = document.getElementById('formFilter');
         formFilter.innerHTML = '<option value="">All Forms</option>' + 
-            data.formCodes.map(form => `<option value="${form.code}">${form.name} (${form.code})</option>`).join('');
+            data.formCodes.data.map(form => `<option value="${form.code}">${form.name} (${form.code})</option>`).join('');
     } catch (error) {
         console.error('Error loading filter options:', error);
     }
@@ -282,7 +282,8 @@ async function loadStatistics() {
         if (currentFilters.formCode) params.append('formCode', currentFilters.formCode);
         
         const response = await fetch(`${API_BASE}/statistics?${params}`);
-        const stats = await response.json();
+        const statsData = await response.json();
+        const stats = statsData.data;
         
         document.getElementById('totalReports').textContent = stats.totalReports;
         document.getElementById('completedReports').textContent = stats.completedReports;
@@ -312,7 +313,7 @@ async function loadReports() {
             }
         });
         const data = await response.json();
-        allReports = data.reports;
+        allReports = data.reports.data;
         
         console.log(`Loaded ${allReports.length} reports from API`);
         
@@ -540,16 +541,26 @@ function getChartOptions(yLabel, textColor, gridColor) {
 
 // View report details
 async function viewDetails(reportId) {
+     console.log("viewDetails called with:", reportId);
+    console.log("metadata URL:", `${API_BASE}/reports/${reportId}`);
+    console.log("details URL:", `${API_BASE}/reports/${reportId}/details`);
+
     try {
         const [metadataRes, detailsRes] = await Promise.all([
             fetch(`${API_BASE}/reports/${reportId}`),
             fetch(`${API_BASE}/reports/${reportId}/details`)
         ]);
+
+        const metadataText = await metadataRes.text();
+        const detailsText = await detailsRes.text();
+
+        console.log("RAW metadata response:", metadataText);
+        console.log("RAW details response:", detailsText);
         
-        const metadata = await metadataRes.json();
-        const details = await detailsRes.json();
+        const metadata = JSON.parse(metadataText);
+        const details = JSON.parse(detailsText);
         
-        showModal(metadata, details);
+        showModal(metadata.data, details);
     } catch (error) {
         console.error('Error loading report details:', error);
         alert('Error loading report details');
@@ -630,6 +641,9 @@ function showModal(metadata, details) {
                                         <tbody>
                                             ${result.topVariances.map((v, i) => {
                                                 const varianceKey = `${result.formCode}-${v['Cell Reference']}`;
+                                                const buttonId = `${metadata.id}-${varianceKey}_flag`;
+                                                const commentId = `${metadata.id}-${varianceKey}_comment`;
+                                                const categoryId = `${metadata.id}-${varianceKey}_category`;
                                                 const isFlagged = v.flagged || false;
                                                 const category = v.category || 'none';
                                                 const comment = v.comment || '';
@@ -637,7 +651,7 @@ function showModal(metadata, details) {
                                                 return `
                                                 <tr style="border-bottom: 1px solid var(--gray-200); background-color: ${i % 2 === 0 ? 'var(--gray-100)' : 'var(--gray-50)'};">
                                                     <td style="text-align: center; padding: 8px; border-right: 1px solid var(--gray-200)">
-                                                        <button class="flag-btn ${isFlagged ? 'flagged' : ''}" onclick="toggleFlag('${metadata.id}', '${varianceKey}', this)">
+                                                        <button id='${buttonId}' class="flag-btn ${isFlagged ? 'flagged' : ''}" onclick="toggleFlag('${metadata.id}', '${varianceKey}', '${category}', '${comment}', this)">
                                                             ${isFlagged ? '🚩' : '⚐'}
                                                         </button>
                                                     </td>
@@ -653,7 +667,7 @@ function showModal(metadata, details) {
                                                     <td style="text-align: right; padding: 8px; border-right: 1px solid var(--gray-200)">${v[result.baseDate] ? Number(v[result.baseDate]).toLocaleString() : '-'}</td>
                                                     <td style="text-align: right; padding: 8px; border-right: 1px solid var(--gray-200)">${Number(v['Difference']).toLocaleString()}</td>
                                                     <td style="text-align: left; padding: 8px; border-right: 1px solid var(--gray-200)">
-                                                        <select class="variance-category" onchange="updateCategory('${metadata.id}', '${varianceKey}', this.value)">
+                                                        <select id='${categoryId}' class="variance-category" onchange="updateCategory('${metadata.id}', '${varianceKey}', this.value, '${comment}', ${isFlagged})">
                                                             <option value="none" ${category === 'none' ? 'selected' : ''}>-</option>
                                                             <option value="expected" ${category === 'expected' ? 'selected' : ''}>✓ Expected</option>
                                                             <option value="unexpected" ${category === 'unexpected' ? 'selected' : ''}>⚠ Unexpected</option>
@@ -662,11 +676,11 @@ function showModal(metadata, details) {
                                                         </select>
                                                     </td>
                                                     <td style="text-align: left; padding: 8px;">
-                                                        <input type="text" 
+                                                        <input id='${commentId}' type="text" 
                                                             class="variance-comment" 
                                                             placeholder="Add comment..."
                                                             value="${comment}"
-                                                            onchange="updateComment('${metadata.id}', '${varianceKey}', this.value)">
+                                                            onchange="updateComment('${metadata.id}', '${varianceKey}', '${category}', this.value, ${isFlagged})">
                                                     </td>
                                                 </tr>
                                             `}).join('')}
@@ -685,9 +699,10 @@ function showModal(metadata, details) {
 }
 
 // Variance interaction functions
-async function toggleFlag(reportId, varianceKey, button) {
+async function toggleFlag(reportId, varianceKey,category, comment, button) {
     const [formCode, cellReference] = varianceKey.split('-');
     const isFlagged = !button.classList.contains('flagged');
+    console.log('flag button', button)
     
     try {
         const response = await fetch(`${API_BASE}/reports/${reportId}/annotations`, {
@@ -698,6 +713,8 @@ async function toggleFlag(reportId, varianceKey, button) {
             body: JSON.stringify({
                 formCode,
                 cellReference,
+                category: category === 'none' ? null : category,
+                comment: comment || null,
                 flagged: isFlagged,
             }),
         });
@@ -713,8 +730,11 @@ async function toggleFlag(reportId, varianceKey, button) {
     }
 }
 
-async function updateCategory(reportId, varianceKey, category) {
+async function updateCategory(reportId, varianceKey, category, comment, flagged) {
     const [formCode, cellReference] = varianceKey.split('-');
+    console.log("updateCategory called with:", reportId, varianceKey, category, comment, flagged);
+    const flagButtonId = `${reportId}-${varianceKey}_flag`;
+    const isFlagged = document.getElementById(flagButtonId).classList.contains('flagged');
     
     try {
         await fetch(`${API_BASE}/reports/${reportId}/annotations`, {
@@ -726,6 +746,8 @@ async function updateCategory(reportId, varianceKey, category) {
                 formCode,
                 cellReference,
                 category: category === 'none' ? null : category,
+                comment: comment || null,
+                flagged: isFlagged,
             }),
         });
     } catch (error) {
@@ -733,8 +755,11 @@ async function updateCategory(reportId, varianceKey, category) {
     }
 }
 
-async function updateComment(reportId, varianceKey, comment) {
+async function updateComment(reportId, varianceKey, category, comment, flagged) {
     const [formCode, cellReference] = varianceKey.split('-');
+    const flagButtonId = `${reportId}-${varianceKey}_flag`;
+    const isFlagged = document.getElementById(flagButtonId).classList.contains('flagged');
+    console.log("updateCategory called with:", reportId, varianceKey, category, comment, isFlagged);
     
     try {
         await fetch(`${API_BASE}/reports/${reportId}/annotations`, {
@@ -745,7 +770,9 @@ async function updateComment(reportId, varianceKey, comment) {
             body: JSON.stringify({
                 formCode,
                 cellReference,
+                category: category === 'none' ? null : category,
                 comment: comment || null,
+                flagged: isFlagged,
             }),
         });
     } catch (error) {

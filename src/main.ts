@@ -205,15 +205,24 @@ async function main(): Promise<number> {
     });
 
     const results = await analyzer.analyzeReturns(returns, baseDate);
-    appLogger.info(`✓ Analyzed ${results.length} returns`);
+    
+    if(!results.success) {
+      appLogger.error(`Failed to analyze returns: ${results.error.message}`);
+      return 0 ;
+    }
 
-    if(results.length)
+    
+    const resultsArray = Array.from(results.data);
+
+    appLogger.info(`✓ Analyzed ${resultsArray.length} returns`);
+
+    if(results.data.length)
 
     // Print summary
-    printSummary(results);
+    printSummary(resultsArray);
 
     // STEP 3: Export to Excel
-    if (results.length > 0) {
+    if (resultsArray.length > 0) {
       appLogger.info('='.repeat(80));
       appLogger.info('STEP 3: EXPORTING TO EXCEL');
       appLogger.info('='.repeat(80));
@@ -227,7 +236,7 @@ async function main(): Promise<number> {
 
       try {
         const exporter = new ExcelExporter();
-        await exporter.exportResults(results, options.output);
+        await exporter.exportResults(resultsArray, options.output);
         appLogger.info(`✓ Excel file created: ${options.output}`);
 
         // STEP 4: Save Report
@@ -246,7 +255,7 @@ async function main(): Promise<number> {
         await reportSaver.initialize();
         
         const reportId = await reportSaver.saveReport(
-          results,
+          resultsArray,
           {
             ...configData,
             returns: [...configData.returns],

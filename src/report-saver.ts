@@ -7,11 +7,8 @@ import { logger } from './logger.js';
 import { randomUUID } from 'crypto';
 import {
   DatabaseManager,
-  ReportMetadata,
-  FormDetail,
-  VarianceDetail,
 } from './db-manager.js';
-import { AnalysisResult, ConfigFile } from './types/index.js';
+import { AnalysisResult, ConfigFile, FormDetail, ReportMetadata, VarianceDetail } from './types/index.js';
 
 export class ReportSaver {
   private dbManager: DatabaseManager;

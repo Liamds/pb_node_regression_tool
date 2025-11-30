@@ -101,6 +101,18 @@ export interface FormProgressEvent {
 }
 
 /**
+ * generic progress event
+ */
+export interface GenericProgressEvent {
+  readonly type: 'progress';
+  readonly current: number;
+  readonly total: number;
+  readonly completedForms: number;
+  readonly failedForms: number;
+  readonly message: string;
+}
+
+/**
  * Overall progress event
  */
 export interface OverallProgressEvent {
@@ -193,6 +205,7 @@ export interface VarianceAnalyzerEvents {
   'overall-progress': (event: OverallProgressEvent) => void;
   'form-complete': (event: FormCompleteEvent) => void;
   'analysis-complete': (event: AnalysisCompleteEvent) => void;
+  'progress': (event: GenericProgressEvent) => void;
 }
 
 /**
