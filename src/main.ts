@@ -254,7 +254,7 @@ async function main(): Promise<number> {
         const reportSaver = new ReportSaver();
         await reportSaver.initialize();
         
-        const reportId = await reportSaver.saveReport(
+        const reportResult = await reportSaver.saveReport(
           resultsArray,
           {
             ...configData,
@@ -265,6 +265,13 @@ async function main(): Promise<number> {
           Date.now() - startTime,
           'completed'
         );
+
+        if(!reportResult.success){
+          appLogger.error(`Failed to save report: ${reportResult.error.message}`);
+          return 1;
+        }
+
+        const reportId = reportResult.data
         
         await reportSaver.close();
         
