@@ -106,12 +106,12 @@ This document outlines the phased approach to migrate from the current Express-b
 
 ### Tasks
 
-- [ ] Create `src/api/` directory structure
-- [ ] Define oRPC-compatible API contracts
-- [ ] Extract business logic from Express routes
-- [ ] Create typed service layer
-- [ ] Implement repository pattern for database
-- [ ] Add API versioning
+- [x] Create `src/api/` directory structure
+- [x] Define oRPC-compatible API contracts
+- [x] Extract business logic from Express routes
+- [x] Create typed service layer
+- [x] Implement repository pattern for database
+- [x] Add API versioning
 
 ### Directory Structure
 
