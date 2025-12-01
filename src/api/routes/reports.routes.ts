@@ -145,7 +145,7 @@ export function createReportsRouter(reportService: ReportService): Router {
    * GET /api/filters
    * Get filter options
    */
-  router.get('/filters', async (req: Request, res: Response) => {
+  router.get('/filters', async (_req: Request, res: Response) => {
     try {
       const result = await handleGetFilterOptions(reportService);
 

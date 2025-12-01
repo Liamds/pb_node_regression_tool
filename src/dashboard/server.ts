@@ -1,5 +1,7 @@
 /**
- * Updated Web dashboard server with Swagger API documentation
+ * Updated Web dashboard server with layered architecture
+ * Now uses Repository -> Service -> Handler -> Route pattern
+ * 
  * File: src/dashboard/server.ts
  */
 
@@ -18,7 +20,25 @@ import { DatabaseManager } from '../db-manager.js';
 import { json2csv } from 'json-2-csv';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './swagger.js';
-import { ReportStatus } from '../types/index.js';
+
+// New imports for layered architecture
+import { ReportRepository } from '../repositories/ReportRepository.js';
+import { VarianceRepository } from '../repositories/VarianceRepository.js';
+import { ReportService } from '../services/ReportService.js';
+import { VarianceService } from '../services/VarianceService.js';
+import { 
+  handleGetReports,
+  handleGetReportById,
+  handleGetReportDetails,
+  handleDeleteReport,
+  handleGetStatistics,
+  handleGetFilterOptions,
+} from '../api/handlers/report.handlers.js';
+import {
+  handleGetVariances,
+  handleUpdateAnnotation,
+} from '../api/handlers/variance.handlers.js';
+import type { ReportFilters, VarianceAnnotation } from '../types/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -50,6 +70,10 @@ export class DashboardServer {
   private runningJobs: Map<string, RunningJob> = new Map();
   private dbManager: DatabaseManager;
 
+  // Service layer instances
+  private reportService!: ReportService;
+  private varianceService!: VarianceService;
+
   constructor(port: number = 3000) {
     this.port = port;
     this.reportsDir = join(process.cwd(), 'reports');
@@ -57,14 +81,28 @@ export class DashboardServer {
     this.server = createServer(this.app);
     this.wss = new WebSocketServer({ server: this.server });
     this.dbManager = new DatabaseManager();
-    //this.initializeDatabase();
 
     this.setupMiddleware();
     this.setupWebSocket();
     this.setupSwagger();
-    this.setupRoutes();
     this.ensureReportsDirectory();
-    
+  }
+
+  /**
+   * Initialize services after database is ready
+   */
+  private initializeServices(): void {
+    logger.info('Initializing service layer...');
+
+    // Create repositories
+    const reportRepo = new ReportRepository(this.dbManager);
+    const varianceRepo = new VarianceRepository(this.dbManager);
+
+    // Create services
+    this.reportService = new ReportService(reportRepo);
+    this.varianceService = new VarianceService(varianceRepo);
+
+    logger.info('Service layer initialized successfully');
   }
 
   private setupMiddleware(): void {
@@ -105,14 +143,12 @@ export class DashboardServer {
   }
 
   private setupSwagger(): void {
-    // Serve Swagger UI
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
       customCss: '.swagger-ui .topbar { display: none }',
       customSiteTitle: 'Variance Analysis API Docs',
       customfavIcon: '/favicon.ico'
     }));
 
-    // Serve OpenAPI JSON spec
     this.app.get('/api-docs.json', (_req: Request, res: Response) => {
       res.setHeader('Content-Type', 'application/json');
       res.send(swaggerSpec);
@@ -121,98 +157,71 @@ export class DashboardServer {
     logger.info('Swagger documentation available at /api-docs');
   }
 
+  /**
+   * Setup all API routes using the new handler architecture
+   */
   private setupRoutes(): void {
     /**
      * @swagger
      * /api/health:
      *   get:
      *     summary: Health check
-     *     description: Check if the API server is running
      *     tags: [Health]
      *     responses:
      *       200:
      *         description: Server is healthy
-     *         content:
-     *           application/json:
-     *             schema:
-     *               type: object
-     *               properties:
-     *                 status:
-     *                   type: string
-     *                   example: ok
-     *                 timestamp:
-     *                   type: string
-     *                   format: date-time
-     *                   example: 2025-11-24T10:00:00.000Z
      */
     this.app.get('/api/health', (_req: Request, res: Response) => {
       res.json({ status: 'ok', timestamp: new Date().toISOString() });
     });
+
+    // ============================================
+    // REPORTS ENDPOINTS
+    // ============================================
 
     /**
      * @swagger
      * /api/reports:
      *   get:
      *     summary: Get all reports
-     *     description: Retrieve a list of all analysis reports with optional filtering
      *     tags: [Reports]
      *     parameters:
      *       - in: query
      *         name: status
      *         schema:
      *           type: string
-     *           enum: [completed, running, failed]
-     *         description: Filter by report status
      *       - in: query
      *         name: baseDate
      *         schema:
      *           type: string
-     *           format: date
-     *         description: Filter by base date (YYYY-MM-DD)
-     *         example: 2025-06-30
      *       - in: query
      *         name: formCode
      *         schema:
      *           type: string
-     *         description: Filter by form code
-     *         example: ARF1100
      *     responses:
      *       200:
      *         description: List of reports
-     *         content:
-     *           application/json:
-     *             schema:
-     *               type: object
-     *               properties:
-     *                 reports:
-     *                   type: array
-     *                   items:
-     *                     $ref: '#/components/schemas/Report'
-     *       500:
-     *         description: Server error
-     *         content:
-     *           application/json:
-     *             schema:
-     *               $ref: '#/components/schemas/Error'
      */
     this.app.get('/api/reports', async (req: Request, res: Response) => {
       try {
-        const { status, baseDate, formCode } = req.query;
-        const reports = await this.dbManager.getReports({
-          status: status as ReportStatus,
-          baseDate: baseDate as string,
-          formCode: formCode as string,
-        });
+        const filters: ReportFilters = {
+          status: req.query.status as any,
+          baseDate: req.query.baseDate as string | undefined,
+          formCode: req.query.formCode as string | undefined,
+        };
 
-        if(!reports.success) {
-          return res.status(500).json({ error: reports.error.message });
+        const result = await handleGetReports(this.reportService, filters);
+
+        if (!result.success) {
+          return res.status(result.error.statusCode).json({
+            error: result.error.message,
+          });
         }
-        
-        logger.info(`Fetched ${reports.data.length} reports`);
-        return res.json({ reports });
+
+        return res.json({ reports: result });
       } catch (error: any) {
-        logger.error('Error listing reports', { error });
-        return res.status(500).json({ error: error.message });
+        logger.error('Route error: GET /reports', { error });
+        return res.status(500).json({ error: 'Internal server error' });
       }
     });
 
@@ -221,7 +230,6 @@ export class DashboardServer {
      * /api/reports/{id}:
      *   get:
      *     summary: Get report by ID
-     *     description: Retrieve detailed metadata for a specific report
      *     tags: [Reports]
      *     parameters:
      *       - in: path
@@ -229,38 +237,26 @@ export class DashboardServer {
      *         required: true
      *         schema:
      *           type: string
-     *         description: Report ID
-     *         example: report-1700000000000-abc123
      *     responses:
      *       200:
      *         description: Report metadata
-     *         content:
-     *           application/json:
-     *             schema:
-     *               $ref: '#/components/schemas/Report'
      *       404:
      *         description: Report not found
-     *         content:
-     *           application/json:
-     *             schema:
-     *               $ref: '#/components/schemas/Error'
-     *       500:
-     *         description: Server error
-     *         content:
-     *           application/json:
-     *             schema:
-     *               $ref: '#/components/schemas/Error'
      */
     this.app.get('/api/reports/:id', async (req: Request, res: Response) => {
       try {
-        const report = await this.dbManager.getReport(req.params.id);
-        if (!report.success) {
-          return res.status(404).json({ error: 'Report not found' });
+        const result = await handleGetReportById(this.reportService, req.params.id);
+
+        if (!result.success) {
+          return res.status(result.error.statusCode).json({
+            error: result.error.message,
+          });
         }
-        return res.json(report);
+
+        return res.json(result);
       } catch (error: any) {
-        logger.error('Error getting report', { error });
-        return res.status(500).json({ error: error.message });
+        logger.error('Route error: GET /reports/:id', { error });
+        return res.status(500).json({ error: 'Internal server error' });
       }
     });
 
@@ -269,7 +265,6 @@ export class DashboardServer {
      * /api/reports/{id}/details:
      *   get:
      *     summary: Get report details
-     *     description: Retrieve detailed form-level data including top variances
      *     tags: [Reports]
      *     parameters:
      *       - in: path
@@ -277,52 +272,41 @@ export class DashboardServer {
      *         required: true
      *         schema:
      *           type: string
-     *         description: Report ID
      *     responses:
      *       200:
-     *         description: Report details with form data
-     *         content:
-     *           application/json:
-     *             schema:
-     *               type: object
-     *               properties:
-     *                 results:
-     *                   type: array
-     *                   items:
-     *                     $ref: '#/components/schemas/FormDetail'
-     *       500:
-     *         description: Server error
-     *         content:
-     *           application/json:
-     *             schema:
-     *               $ref: '#/components/schemas/Error'
+     *         description: Report with form details
      */
     this.app.get('/api/reports/:id/details', async (req: Request, res: Response) => {
       try {
-        const formDetails = await this.dbManager.getFormDetails(req.params.id);
-        if(!formDetails.success) {
-          return res.status(500).json({ error: formDetails.error.message });
-        }
-        
-        const results = await Promise.all(
-          formDetails.data.map(async (form) => {
-            const variances = await this.dbManager.getVariances(req.params.id, form.formCode);
+        // Get report with forms
+        const reportResult = await handleGetReportDetails(this.reportService, req.params.id);
 
-            if(!variances.success) {
-              return res.status(500).json({ error: variances.error.message });
-            }
-            
-            const topVariances = variances.data
+        if (!reportResult.success) {
+          return res.status(reportResult.error.statusCode).json({
+            error: reportResult.error.message,
+          });
+        }
+
+        // Get variances for each form and build results
+        const results = await Promise.all(
+          reportResult.data.forms.map(async (form) => {
+            const variancesResult = await handleGetVariances(
+              this.varianceService,
+              req.params.id,
+              form.formCode
+            );
+
+            const variances = variancesResult.success ? variancesResult.data : [];
+
+            // Get top 100 meaningful variances
+            const topVariances = variances
               .filter(v => 
                 v.difference !== '0' && 
                 v.difference !== '' && 
                 !v.cellReference.includes('Subtotal')
               )
-              .slice(0, 100);
-
-            return {
-              ...form,
-              topVariances: topVariances.map(v => ({
+              .slice(0, 100)
+              .map(v => ({
                 'Cell Reference': v.cellReference,
                 'Cell Description': v.cellDescription,
                 [form.comparisonDate]: v.comparisonValue,
@@ -332,24 +316,128 @@ export class DashboardServer {
                 flagged: v.flagged,
                 category: v.category,
                 comment: v.comment,
-              })),
+              }));
+
+            return {
+              ...form,
+              topVariances,
             };
           })
         );
 
         return res.json({ results });
       } catch (error: any) {
-        logger.error('Error getting report details', { error });
-        return res.status(500).json({ error: error.message });
+        logger.error('Route error: GET /reports/:id/details', { error });
+        return res.status(500).json({ error: 'Internal server error' });
       }
     });
+
+    /**
+     * @swagger
+     * /api/reports/{id}:
+     *   delete:
+     *     summary: Delete report
+     *     tags: [Reports]
+     *     parameters:
+     *       - in: path
+     *         name: id
+     *         required: true
+     *         schema:
+     *           type: string
+     *     responses:
+     *       200:
+     *         description: Report deleted
+     */
+    this.app.delete('/api/reports/:id', async (req: Request, res: Response) => {
+      try {
+        const result = await handleDeleteReport(this.reportService, req.params.id);
+
+        if (!result.success) {
+          return res.status(result.error.statusCode).json({
+            error: result.error.message,
+          });
+        }
+
+        return res.json({ success: true });
+      } catch (error: any) {
+        logger.error('Route error: DELETE /reports/:id', { error });
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+    });
+
+    // ============================================
+    // STATISTICS & FILTERS
+    // ============================================
+
+    /**
+     * @swagger
+     * /api/statistics:
+     *   get:
+     *     summary: Get statistics
+     *     tags: [Statistics]
+     *     responses:
+     *       200:
+     *         description: Statistics data
+     */
+    this.app.get('/api/statistics', async (req: Request, res: Response) => {
+      try {
+        const filters: ReportFilters = {
+          status: req.query.status as any,
+          baseDate: req.query.baseDate as string | undefined,
+          formCode: req.query.formCode as string | undefined,
+        };
+
+        const result = await handleGetStatistics(this.reportService, filters);
+
+        if (!result.success) {
+          return res.status(result.error.statusCode).json({
+            error: result.error.message,
+          });
+        }
+
+        return res.json(result);
+      } catch (error: any) {
+        logger.error('Route error: GET /statistics', { error });
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+    });
+
+    /**
+     * @swagger
+     * /api/filters:
+     *   get:
+     *     summary: Get filter options
+     *     tags: [Filters]
+     *     responses:
+     *       200:
+     *         description: Filter options
+     */
+    this.app.get('/api/filters', async (_req: Request, res: Response) => {
+      try {
+        const result = await handleGetFilterOptions(this.reportService);
+
+        if (!result.success) {
+          return res.status(result.error.statusCode).json({
+            error: result.error.message,
+          });
+        }
+
+        return res.json(result);
+      } catch (error: any) {
+        logger.error('Route error: GET /filters', { error });
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+    });
+
+    // ============================================
+    // VARIANCE ANNOTATIONS
+    // ============================================
 
     /**
      * @swagger
      * /api/reports/{id}/annotations:
      *   post:
      *     summary: Update variance annotation
-     *     description: Add or update flags, categories, and comments for a variance
      *     tags: [Annotations]
      *     parameters:
      *       - in: path
@@ -357,57 +445,53 @@ export class DashboardServer {
      *         required: true
      *         schema:
      *           type: string
-     *         description: Report ID
      *     requestBody:
      *       required: true
      *       content:
      *         application/json:
      *           schema:
-     *             $ref: '#/components/schemas/VarianceAnnotation'
+     *             type: object
      *     responses:
      *       200:
-     *         description: Annotation updated successfully
-     *         content:
-     *           application/json:
-     *             schema:
-     *               type: object
-     *               properties:
-     *                 success:
-     *                   type: boolean
-     *                   example: true
-     *       500:
-     *         description: Server error
-     *         content:
-     *           application/json:
-     *             schema:
-     *               $ref: '#/components/schemas/Error'
+     *         description: Annotation updated
      */
     this.app.post('/api/reports/:id/annotations', async (req: Request, res: Response) => {
       try {
         const { formCode, cellReference, flagged, category, comment } = req.body;
 
-        await this.dbManager.updateVarianceAnnotation({
+        const annotation: VarianceAnnotation = {
           reportId: req.params.id,
           formCode,
           cellReference,
           flagged: flagged || false,
           category: category || null,
           comment: comment || null,
-        });
+        };
 
-        res.json({ success: true });
+        const result = await handleUpdateAnnotation(this.varianceService, annotation);
+
+        if (!result.success) {
+          return res.status(result.error.statusCode).json({
+            error: result.error.message,
+          });
+        }
+
+        return res.json({ success: true });
       } catch (error: any) {
-        logger.error('Error updating annotation', { error });
-        res.status(500).json({ error: error.message });
+        logger.error('Route error: POST /reports/:id/annotations', { error });
+        return res.status(500).json({ error: 'Internal server error' });
       }
     });
+
+    // ============================================
+    // EXPORT ENDPOINTS
+    // ============================================
 
     /**
      * @swagger
      * /api/reports/{id}/export/{formCode}:
      *   get:
      *     summary: Export form variances to CSV
-     *     description: Download all variances for a specific form as CSV file
      *     tags: [Export]
      *     parameters:
      *       - in: path
@@ -415,60 +499,50 @@ export class DashboardServer {
      *         required: true
      *         schema:
      *           type: string
-     *         description: Report ID
      *       - in: path
      *         name: formCode
      *         required: true
      *         schema:
      *           type: string
-     *         description: Form code
-     *         example: ARF1100
      *     responses:
      *       200:
-     *         description: CSV file download
-     *         content:
-     *           text/csv:
-     *             schema:
-     *               type: string
-     *       404:
-     *         description: Report or form not found
-     *         content:
-     *           application/json:
-     *             schema:
-     *               $ref: '#/components/schemas/Error'
-     *       500:
-     *         description: Server error
-     *         content:
-     *           application/json:
-     *             schema:
-     *               $ref: '#/components/schemas/Error'
+     *         description: CSV file
      */
     this.app.get('/api/reports/:id/export/:formCode', async (req: Request, res: Response) => {
       try {
         const { id, formCode } = req.params;
-        
-        const report = await this.dbManager.getReport(id);
-        if (!report.success) {
-          return res.status(404).json({ error: 'Report not found' });
+
+        // Get report metadata
+        const reportResult = await handleGetReportById(this.reportService, id);
+        if (!reportResult.success) {
+          return res.status(reportResult.error.statusCode).json({
+            error: reportResult.error.message,
+          });
         }
 
-        const formDetails = await this.dbManager.getFormDetails(id);
-        if(!formDetails.success) {
-          return res.status(500).json({ error: formDetails.error.message });
+        // Get report details to find form
+        const detailsResult = await handleGetReportDetails(this.reportService, id);
+        if (!detailsResult.success) {
+          return res.status(detailsResult.error.statusCode).json({
+            error: detailsResult.error.message,
+          });
         }
 
-        const form = formDetails.data.find(f => f.formCode === formCode);
+        const form = detailsResult.data.forms.find(f => f.formCode === formCode);
         if (!form) {
           return res.status(404).json({ error: 'Form not found' });
         }
 
-        const variances = await this.dbManager.getVariances(id, formCode);
-
-        if(!variances.success) {
-          return res.status(500).json({ error: variances.error.message });
+        // Get variances
+        const variancesResult = await handleGetVariances(this.varianceService, id, formCode);
+        if (!variancesResult.success) {
+          return res.status(variancesResult.error.statusCode).json({
+            error: variancesResult.error.message,
+          });
         }
 
-        const csvData = variances.data.map(v => ({
+        // Convert to CSV format
+        const csvData = variancesResult.data.map(v => ({
           'Cell Reference': v.cellReference,
           'Cell Description': v.cellDescription,
           [form.comparisonDate]: v.comparisonValue,
@@ -482,14 +556,13 @@ export class DashboardServer {
 
         const csv = await json2csv(csvData);
 
-        const filename = `${formCode}_${report.data.baseDate}_variances.csv`;
+        const filename = `${formCode}_${reportResult.data.baseDate}_variances.csv`;
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-        res.send(csv);
-        return;
+        return res.send(csv);
       } catch (error: any) {
-        logger.error('Error exporting CSV', { error });
-        return res.status(500).json({ error: error.message });
+        logger.error('Route error: GET /reports/:id/export/:formCode', { error });
+        return res.status(500).json({ error: 'Internal server error' });
       }
     });
 
@@ -498,7 +571,6 @@ export class DashboardServer {
      * /api/reports/{id}/download:
      *   get:
      *     summary: Download Excel report
-     *     description: Download the original Excel workbook for a report
      *     tags: [Export]
      *     parameters:
      *       - in: path
@@ -506,209 +578,55 @@ export class DashboardServer {
      *         required: true
      *         schema:
      *           type: string
-     *         description: Report ID
      *     responses:
      *       200:
-     *         description: Excel file download
-     *         content:
-     *           application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
-     *             schema:
-     *               type: string
-     *               format: binary
-     *       404:
-     *         description: Report or file not found
-     *         content:
-     *           application/json:
-     *             schema:
-     *               $ref: '#/components/schemas/Error'
-     *       500:
-     *         description: Server error
+     *         description: Excel file
      */
     this.app.get('/api/reports/:id/download', async (req: Request, res: Response) => {
       try {
-        const report = await this.dbManager.getReport(req.params.id);
-        if (!report.success) {
-          return res.status(404).json({ error: 'Report not found' });
+        const reportResult = await handleGetReportById(this.reportService, req.params.id);
+        if (!reportResult.success) {
+          return res.status(reportResult.error.statusCode).json({
+            error: reportResult.error.message,
+          });
         }
 
-        const filePath = join(this.reportsDir, report.data.outputFile);
+        const filePath = join(this.reportsDir, reportResult.data.outputFile);
         if (!existsSync(filePath)) {
           return res.status(404).json({ error: 'Excel file not found' });
         }
 
         return res.download(filePath);
       } catch (error: any) {
-        logger.error('Error downloading report', { error });
-        return res.status(500).json({ error: error.message });
+        logger.error('Route error: GET /reports/:id/download', { error });
+        return res.status(500).json({ error: 'Internal server error' });
       }
     });
 
-    /**
-     * @swagger
-     * /api/reports/{id}:
-     *   delete:
-     *     summary: Delete report
-     *     description: Permanently delete a report and all associated data
-     *     tags: [Reports]
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         required: true
-     *         schema:
-     *           type: string
-     *         description: Report ID
-     *     responses:
-     *       200:
-     *         description: Report deleted successfully
-     *         content:
-     *           application/json:
-     *             schema:
-     *               type: object
-     *               properties:
-     *                 success:
-     *                   type: boolean
-     *                   example: true
-     *       500:
-     *         description: Server error
-     */
-    this.app.delete('/api/reports/:id', async (req: Request, res: Response) => {
-      try {
-        await this.dbManager.deleteReport(req.params.id);
-        res.json({ success: true });
-      } catch (error: any) {
-        logger.error('Error deleting report', { error });
-        res.status(500).json({ error: error.message });
-      }
-    });
-
-    /**
-     * @swagger
-     * /api/statistics:
-     *   get:
-     *     summary: Get statistics
-     *     description: Retrieve aggregated statistics with optional filtering
-     *     tags: [Statistics]
-     *     parameters:
-     *       - in: query
-     *         name: status
-     *         schema:
-     *           type: string
-     *         description: Filter by status
-     *       - in: query
-     *         name: baseDate
-     *         schema:
-     *           type: string
-     *         description: Filter by base date
-     *       - in: query
-     *         name: formCode
-     *         schema:
-     *           type: string
-     *         description: Filter by form code
-     *     responses:
-     *       200:
-     *         description: Statistics data
-     *         content:
-     *           application/json:
-     *             schema:
-     *               $ref: '#/components/schemas/Statistics'
-     *       500:
-     *         description: Server error
-     */
-    this.app.get('/api/statistics', async (req: Request, res: Response) => {
-      try {
-        const { status, baseDate, formCode } = req.query;
-        const stats = await this.dbManager.getStatistics({
-          status: status as ReportStatus,
-          baseDate: baseDate as string,
-          formCode: formCode as string,
-        });
-        res.json(stats);
-      } catch (error: any) {
-        logger.error('Error getting statistics', { error });
-        res.status(500).json({ error: error.message });
-      }
-    });
-
-    /**
-     * @swagger
-     * /api/filters:
-     *   get:
-     *     summary: Get filter options
-     *     description: Retrieve available filter values for reports
-     *     tags: [Filters]
-     *     responses:
-     *       200:
-     *         description: Filter options
-     *         content:
-     *           application/json:
-     *             schema:
-     *               type: object
-     *               properties:
-     *                 baseDates:
-     *                   type: array
-     *                   items:
-     *                     type: string
-     *                     format: date
-     *                   example: ['2025-06-30', '2025-03-31']
-     *                 formCodes:
-     *                   type: array
-     *                   items:
-     *                     type: object
-     *                     properties:
-     *                       code:
-     *                         type: string
-     *                         example: ARF1100
-     *                       name:
-     *                         type: string
-     *                         example: Balance Sheet
-     *       500:
-     *         description: Server error
-     */
-    this.app.get('/api/filters', async (_req: Request, res: Response) => {
-      try {
-        const [baseDates, formCodes] = await Promise.all([
-          this.dbManager.getBaseDates(),
-          this.dbManager.getFormCodes(),
-        ]);
-
-        res.json({ baseDates, formCodes });
-      } catch (error: any) {
-        logger.error('Error getting filters', { error });
-        res.status(500).json({ error: error.message });
-      }
-    });
+    // ============================================
+    // ANALYSIS CONTROL
+    // ============================================
 
     /**
      * @swagger
      * /api/run-analysis:
      *   post:
      *     summary: Run analysis
-     *     description: Start a new variance analysis job
      *     tags: [Analysis]
      *     requestBody:
      *       required: true
      *       content:
      *         application/json:
      *           schema:
-     *             $ref: '#/components/schemas/AnalysisRequest'
+     *             type: object
+     *             properties:
+     *               configFile:
+     *                 type: string
+     *               outputFile:
+     *                 type: string
      *     responses:
      *       200:
-     *         description: Analysis started successfully
-     *         content:
-     *           application/json:
-     *             schema:
-     *               type: object
-     *               properties:
-     *                 success:
-     *                   type: boolean
-     *                   example: true
-     *                 reportId:
-     *                   type: string
-     *                   example: report-1700000000000-xyz789
-     *       400:
-     *         description: Invalid request
-     *       500:
-     *         description: Server error
+     *         description: Analysis started
      */
     this.app.post('/api/run-analysis', async (req: Request, res: Response) => {
       try {
@@ -726,7 +644,7 @@ export class DashboardServer {
         const reportId = await this.runAnalysis(safePath, outputFile || 'dashboard_report.xlsx');
         return res.json({ success: true, reportId });
       } catch (error: any) {
-        logger.error('Error starting analysis', { error });
+        logger.error('Route error: POST /run-analysis', { error });
         return res.status(500).json({ error: error.message });
       }
     });
@@ -736,7 +654,6 @@ export class DashboardServer {
      * /api/stop-analysis/{id}:
      *   post:
      *     summary: Stop analysis
-     *     description: Stop a currently running analysis job
      *     tags: [Analysis]
      *     parameters:
      *       - in: path
@@ -744,22 +661,9 @@ export class DashboardServer {
      *         required: true
      *         schema:
      *           type: string
-     *         description: Report ID of running job
      *     responses:
      *       200:
-     *         description: Analysis stopped successfully
-     *         content:
-     *           application/json:
-     *             schema:
-     *               type: object
-     *               properties:
-     *                 success:
-     *                   type: boolean
-     *                   example: true
-     *       404:
-     *         description: Job not found
-     *       500:
-     *         description: Server error
+     *         description: Analysis stopped
      */
     this.app.post('/api/stop-analysis/:id', async (req: Request, res: Response) => {
       try {
@@ -781,7 +685,7 @@ export class DashboardServer {
 
         return res.json({ success: true });
       } catch (error: any) {
-        logger.error('Error stopping analysis', { error });
+        logger.error('Route error: POST /stop-analysis/:id', { error });
         return res.status(500).json({ error: error.message });
       }
     });
@@ -932,11 +836,17 @@ export class DashboardServer {
   }
 
   async start(): Promise<void> {
+    // Initialize database
     const initDB = await this.dbManager.initialize();
-    console.log('initDB', initDB);
-    if(!initDB.success) {
+    if (!initDB.success) {
       throw new Error('Failed to initialize database: ' + initDB.error);
     }
+
+    // Initialize services after DB is ready
+    this.initializeServices();
+
+    // Setup routes after services are initialized
+    this.setupRoutes();
 
     return new Promise((resolve) => {
       this.server.listen(this.port, () => {

@@ -104,17 +104,18 @@ function toggleDarkMode() {
 async function loadFilterOptions() {
     try {
         const response = await fetch(`${API_BASE}/filters`);
-        const data = await response.json();
+        const responseData = await response.json();
         
+        const data = responseData.data;
         // Populate base date filter
         const baseDateFilter = document.getElementById('baseDateFilter');
         baseDateFilter.innerHTML = '<option value="">All Base Dates</option>' + 
-            data.baseDates.data.map(date => `<option value="${date}">${date}</option>`).join('');
+            data.baseDates.map(date => `<option value="${date}">${date}</option>`).join('');
         
         // Populate form filter
         const formFilter = document.getElementById('formFilter');
         formFilter.innerHTML = '<option value="">All Forms</option>' + 
-            data.formCodes.data.map(form => `<option value="${form.code}">${form.name} (${form.code})</option>`).join('');
+            data.formCodes.map(form => `<option value="${form.code}">${form.name} (${form.code})</option>`).join('');
     } catch (error) {
         console.error('Error loading filter options:', error);
     }
