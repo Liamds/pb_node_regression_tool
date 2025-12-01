@@ -9,7 +9,7 @@
     "copy-static": "mkdir dist\\dashboard\\public 2>nul & xcopy src\\dashboard\\public\\* dist\\dashboard\\public\\ /E /I /Y >nul",
     "start": "node dist/main.js",
     "dev": "tsx src/main.ts",
-    "dashboard": "npm run build && node dist/dashboard-cli.js -p 5000",
+    "dashboard": "npm run clean &&npm run build && node dist/dashboard-cli.js -p 5000",
     "dashboard:dev": "tsx src/dashboard-cli.ts",
     "dashboard:build": "node dist/dashboard-cli.js",
     "check-env": "tsx src/check-env.ts",

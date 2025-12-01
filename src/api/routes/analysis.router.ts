@@ -130,5 +130,7 @@ export function createAnalysisRouter(
     }
   );
 
+  logger.info('Routes: Analysis router created');
+
   return router;
 }

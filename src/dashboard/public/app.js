@@ -287,7 +287,6 @@ async function loadStatistics() {
         const stats = statsData.data;
         
         document.getElementById('totalReports').textContent = stats.totalReports;
-        document.getElementById('completedReports').textContent = stats.completedReports;
         document.getElementById('totalVariances').textContent = stats.totalVariances.toLocaleString();
         document.getElementById('totalErrors').textContent = stats.totalValidationErrors.toLocaleString();
     } catch (error) {
@@ -313,8 +312,9 @@ async function loadReports() {
                 'Pragma': 'no-cache'
             }
         });
-        const data = await response.json();
-        allReports = data.reports.data;
+        const responseData = await response.json();
+        const data = responseData.data;
+        allReports = data.reports;
         
         console.log(`Loaded ${allReports.length} reports from API`);
         
@@ -470,8 +470,8 @@ function createTopFormsChart(textColor, gridColor) {
     const formVariances = {};
     
     for (const [reportId, details] of allReportDetails.entries()) {
-        if (details && details.results) {
-            details.results.forEach(result => {
+        if (details && details.data) {
+            details.data.forEach(result => {
                 const key = `${result.formName} (${result.formCode})`;
                 formVariances[key] = (formVariances[key] || 0) + result.varianceCount;
             });
@@ -482,6 +482,8 @@ function createTopFormsChart(textColor, gridColor) {
     const sortedForms = Object.entries(formVariances)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 10);
+
+    console.log('Top variance by form:',sortedForms);
     
     createChart('topFormsChart', {
         type: 'bar',
@@ -542,9 +544,6 @@ function getChartOptions(yLabel, textColor, gridColor) {
 
 // View report details
 async function viewDetails(reportId) {
-     console.log("viewDetails called with:", reportId);
-    console.log("metadata URL:", `${API_BASE}/reports/${reportId}`);
-    console.log("details URL:", `${API_BASE}/reports/${reportId}/details`);
 
     try {
         const [metadataRes, detailsRes] = await Promise.all([
@@ -554,14 +553,11 @@ async function viewDetails(reportId) {
 
         const metadataText = await metadataRes.text();
         const detailsText = await detailsRes.text();
-
-        console.log("RAW metadata response:", metadataText);
-        console.log("RAW details response:", detailsText);
         
         const metadata = JSON.parse(metadataText);
         const details = JSON.parse(detailsText);
         
-        showModal(metadata.data, details);
+        showModal(metadata.data, details.data);
     } catch (error) {
         console.error('Error loading report details:', error);
         alert('Error loading report details');
@@ -606,7 +602,7 @@ function showModal(metadata, details) {
         <div class="detail-section">
             <h3>Forms Analysis</h3>
             <div class="form-results">
-                ${details.results.map(result => `
+                ${details.map(result => `
                     <div class="form-result-card ${result.varianceCount > 0 || result.validationErrorCount > 0 ? 'has-issues' : ''}">
                         <div class="form-result-header">
                             <span class="form-result-name">${result.formName} (${result.formCode})</span>
@@ -703,7 +699,6 @@ function showModal(metadata, details) {
 async function toggleFlag(reportId, varianceKey,categoryId, commentId, button) {
     const [formCode, cellReference] = varianceKey.split('-');
     const isFlagged = !button.classList.contains('flagged');
-    console.log('flag button', button)
     //const isFlagged = document.getElementById(flagButtonId).classList.contains('flagged');
     const categoryValue = document.getElementById(categoryId).value;
     const commentValue = document.getElementById(commentId).value;
@@ -736,7 +731,6 @@ async function toggleFlag(reportId, varianceKey,categoryId, commentId, button) {
 
 async function updateCategory(reportId, varianceKey, category, commentId, flagged) {
     const [formCode, cellReference] = varianceKey.split('-');
-    console.log("updateCategory called with:", reportId, varianceKey, category, commentId, flagged);
     const flagButtonId = `${reportId}-${varianceKey}_flag`;
     const isFlagged = document.getElementById(flagButtonId).classList.contains('flagged');
     const commentValue = document.getElementById(commentId).value;
@@ -765,7 +759,6 @@ async function updateComment(reportId, varianceKey, categoryId, comment, flagged
     const flagButtonId = `${reportId}-${varianceKey}_flag`;
     const isFlagged = document.getElementById(flagButtonId).classList.contains('flagged');
     const categoryValue = document.getElementById(categoryId).value;
-    console.log("updateCategory called with:", reportId, varianceKey, categoryId, comment, isFlagged);
     
     
     try {

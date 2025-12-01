@@ -233,5 +233,7 @@ export function createVariancesRouter(
     }
   );
 
+  logger.info('Routes: Variances router created');
+
   return router;
 }

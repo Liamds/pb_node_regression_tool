@@ -26,10 +26,13 @@ import { ReportService } from '../services/ReportService.js';
 import { VarianceService } from '../services/VarianceService.js';
 
 // Import routers
-import { createReportsRouter } from '../api/routes/reports.router.js';
-import { createVariancesRouter } from '../api/routes/variances.router.js';
-import { createStatisticsRouter } from '../api/routes/statistics.router.js';
-import { createAnalysisRouter } from '../api/routes/analysis.router.js';
+import { 
+  createReportsRouter, 
+  createVariancesRouter, 
+  createStatisticsRouter, 
+  createFiltersRouter,
+  createAnalysisRouter
+} from '../api/routes/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -184,15 +187,19 @@ export class DashboardServer {
     });
 
     // Mount routers
-    this.app.use('/api/reports', createReportsRouter(this.reportService));
-    this.app.use('/api', createVariancesRouter(this.varianceService, this.reportService));
-    this.app.use('/api', createStatisticsRouter(this.reportService));
+    this.app.use('/api/reports', createReportsRouter(this.reportService, this.varianceService));
+    this.app.use('/api/', createVariancesRouter(this.varianceService, this.reportService));
+    this.app.use('/api/statistics', createStatisticsRouter(this.reportService));
+    this.app.use('/api/', createFiltersRouter(this.reportService));
     this.app.use('/api', createAnalysisRouter(
       this.runAnalysis.bind(this),
       this.stopAnalysis.bind(this)
     ));
 
+    logger.info('Routes: Dashboard router created');
+
     // Serve dashboard (catch-all for client-side routing)
+    logger.info('Routes: Catch-all for client-side routing');
     this.app.get(/^(?!\/api).*/, (_req: Request, res: Response) => {
       const indexPath = join(__dirname, 'public', 'index.html');
       if (existsSync(indexPath)) {
@@ -201,9 +208,11 @@ export class DashboardServer {
         res.status(404).send('Dashboard not found. Please build the project first.');
       }
     });
+    logger.info('Routes: Serve dashboard created');
 
     // 404 handler for API routes
-    this.app.use('/api/*', (_req: Request, res: Response) => {
+    logger.info('Routes: 404 handler for API routes');
+    this.app.use('/api', (_req: Request, res: Response) => {
       res.status(404).json({
         success: false,
         error: 'API endpoint not found',
@@ -211,8 +220,10 @@ export class DashboardServer {
         timestamp: new Date().toISOString(),
       });
     });
+    logger.info('Routes: 404 handler created');
 
     // Global error handler
+    logger.info('Routes: Global error handler');
     this.app.use((err: any, _req: Request, res: Response, _next: any) => {
       logger.error('Unhandled error', { error: err });
       res.status(500).json({
@@ -222,6 +233,7 @@ export class DashboardServer {
         timestamp: new Date().toISOString(),
       });
     });
+    logger.info('Routes: Global error handler created');
   }
 
   /**

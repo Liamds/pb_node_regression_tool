@@ -1140,13 +1140,57 @@ export class DatabaseManager {
 
     const reports = reportsResult.data;
 
+    const variancesByDateMap = new Map<
+    string,
+    { baseDate: string; totalVariances: number; timestamp: number }
+  >();
+
+  for (const r of reports) {
+    const existing = variancesByDateMap.get(r.baseDate);
+    const ts = new Date(r.timestamp).getTime();
+
+    if (!existing || ts > existing.timestamp) {
+      variancesByDateMap.set(r.baseDate, {
+        baseDate: r.baseDate,
+        totalVariances: r.totalVariances,
+        timestamp: ts,
+      });
+    }
+  }
+
+  const totalVariancesByBaseDate = Array.from(variancesByDateMap.values()).map(
+    ({ timestamp, ...rest }) => rest
+  );
+
+  const validationErrorsByDateMap = new Map<
+    string,
+    { baseDate: string; totalValidationErrors: number; timestamp: number }
+  >();
+
+  for (const r of reports) {
+    const existing = validationErrorsByDateMap.get(r.baseDate);
+    const ts = new Date(r.timestamp).getTime();
+
+    if (!existing || ts > existing.timestamp) {
+      validationErrorsByDateMap.set(r.baseDate, {
+        baseDate: r.baseDate,
+        totalValidationErrors: r.totalValidationErrors,
+        timestamp: ts,
+      });
+    }
+  }
+
+  const totalValidationErrorsByBaseDate = Array.from(validationErrorsByDateMap.values()).map(
+    ({ timestamp, ...rest }) => rest
+  );
+
     const stats: Statistics = {
       totalReports: reports.length,
       completedReports: reports.filter((r) => r.status === 'completed').length,
       failedReports: reports.filter((r) => r.status === 'failed').length,
       runningReports: reports.filter((r) => r.status === 'running').length,
-      totalVariances: reports.reduce((sum, r) => sum + r.totalVariances, 0),
-      totalValidationErrors: reports.reduce(
+      totalVariances: totalVariancesByBaseDate.reduce((sum, r) => sum + r.totalVariances, 0), //reports.reduce((sum, r) => sum + r.totalVariances, 0),
+      totalValidationErrors: totalValidationErrorsByBaseDate.reduce(
         (sum, r) => sum + r.totalValidationErrors,
         0
       ),
