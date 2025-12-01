@@ -15,9 +15,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { spawn } from 'child_process';
 import { logger } from '../logger.js';
-import { resolve, normalize } from 'path';
 import { DatabaseManager } from '../db-manager.js';
-import { json2csv } from 'json-2-csv';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './swagger.js';
 
@@ -26,19 +24,12 @@ import { ReportRepository } from '../repositories/ReportRepository.js';
 import { VarianceRepository } from '../repositories/VarianceRepository.js';
 import { ReportService } from '../services/ReportService.js';
 import { VarianceService } from '../services/VarianceService.js';
-import { 
-  handleGetReports,
-  handleGetReportById,
-  handleGetReportDetails,
-  handleDeleteReport,
-  handleGetStatistics,
-  handleGetFilterOptions,
-} from '../api/handlers/report.handlers.js';
-import {
-  handleGetVariances,
-  handleUpdateAnnotation,
-} from '../api/handlers/variance.handlers.js';
-import type { ReportFilters, VarianceAnnotation } from '../types/index.js';
+
+// Import routers
+import { createReportsRouter } from '../api/routes/reports.router.js';
+import { createVariancesRouter } from '../api/routes/variances.router.js';
+import { createStatisticsRouter } from '../api/routes/statistics.router.js';
+import { createAnalysisRouter } from '../api/routes/analysis.router.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -105,13 +96,27 @@ export class DashboardServer {
     logger.info('Service layer initialized successfully');
   }
 
+  /**
+   * Setup Express middleware
+   */
   private setupMiddleware(): void {
+    // CORS
     this.app.use(cors());
+
+    // JSON body parser
     this.app.use(express.json());
 
+    // Request logging
+    this.app.use((req: Request, _res: Response, next) => {
+      logger.debug(`${req.method} ${req.path}`);
+      next();
+    });
+
+    // Static files
     const possiblePublicDirs = [
       join(__dirname, 'public'),
       join(process.cwd(), 'src/dashboard/public'),
+      join(process.cwd(), 'dist/dashboard/public'),
       join(process.cwd(), 'public'),
     ];
 
@@ -124,6 +129,9 @@ export class DashboardServer {
     }
   }
 
+  /**
+   * Setup WebSocket server
+   */
   private setupWebSocket(): void {
     this.wss.on('connection', (ws: WebSocket) => {
       logger.info('Dashboard client connected');
@@ -142,6 +150,9 @@ export class DashboardServer {
     });
   }
 
+  /**
+   * Setup Swagger documentation
+   */
   private setupSwagger(): void {
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
       customCss: '.swagger-ui .topbar { display: none }',
@@ -158,544 +169,64 @@ export class DashboardServer {
   }
 
   /**
-   * Setup all API routes using the new handler architecture
+   * Setup all API routes using the new router architecture
    */
   private setupRoutes(): void {
     /**
-     * @swagger
-     * /api/health:
-     *   get:
-     *     summary: Health check
-     *     tags: [Health]
-     *     responses:
-     *       200:
-     *         description: Server is healthy
+     * Health check endpoint
      */
     this.app.get('/api/health', (_req: Request, res: Response) => {
-      res.json({ status: 'ok', timestamp: new Date().toISOString() });
+      res.json({ 
+        status: 'ok', 
+        timestamp: new Date().toISOString(),
+        version: '1.0.0'
+      });
     });
 
-    // ============================================
-    // REPORTS ENDPOINTS
-    // ============================================
+    // Mount routers
+    this.app.use('/api/reports', createReportsRouter(this.reportService));
+    this.app.use('/api', createVariancesRouter(this.varianceService, this.reportService));
+    this.app.use('/api', createStatisticsRouter(this.reportService));
+    this.app.use('/api', createAnalysisRouter(
+      this.runAnalysis.bind(this),
+      this.stopAnalysis.bind(this)
+    ));
 
-    /**
-     * @swagger
-     * /api/reports:
-     *   get:
-     *     summary: Get all reports
-     *     tags: [Reports]
-     *     parameters:
-     *       - in: query
-     *         name: status
-     *         schema:
-     *           type: string
-     *       - in: query
-     *         name: baseDate
-     *         schema:
-     *           type: string
-     *       - in: query
-     *         name: formCode
-     *         schema:
-     *           type: string
-     *     responses:
-     *       200:
-     *         description: List of reports
-     */
-    this.app.get('/api/reports', async (req: Request, res: Response) => {
-      try {
-        const filters: ReportFilters = {
-          status: req.query.status as any,
-          baseDate: req.query.baseDate as string | undefined,
-          formCode: req.query.formCode as string | undefined,
-        };
-
-        const result = await handleGetReports(this.reportService, filters);
-
-        if (!result.success) {
-          return res.status(result.error.statusCode).json({
-            error: result.error.message,
-          });
-        }
-
-        return res.json({ reports: result });
-      } catch (error: any) {
-        logger.error('Route error: GET /reports', { error });
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-    });
-
-    /**
-     * @swagger
-     * /api/reports/{id}:
-     *   get:
-     *     summary: Get report by ID
-     *     tags: [Reports]
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         required: true
-     *         schema:
-     *           type: string
-     *     responses:
-     *       200:
-     *         description: Report metadata
-     *       404:
-     *         description: Report not found
-     */
-    this.app.get('/api/reports/:id', async (req: Request, res: Response) => {
-      try {
-        const result = await handleGetReportById(this.reportService, req.params.id);
-
-        if (!result.success) {
-          return res.status(result.error.statusCode).json({
-            error: result.error.message,
-          });
-        }
-
-        return res.json(result);
-      } catch (error: any) {
-        logger.error('Route error: GET /reports/:id', { error });
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-    });
-
-    /**
-     * @swagger
-     * /api/reports/{id}/details:
-     *   get:
-     *     summary: Get report details
-     *     tags: [Reports]
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         required: true
-     *         schema:
-     *           type: string
-     *     responses:
-     *       200:
-     *         description: Report with form details
-     */
-    this.app.get('/api/reports/:id/details', async (req: Request, res: Response) => {
-      try {
-        // Get report with forms
-        const reportResult = await handleGetReportDetails(this.reportService, req.params.id);
-
-        if (!reportResult.success) {
-          return res.status(reportResult.error.statusCode).json({
-            error: reportResult.error.message,
-          });
-        }
-
-        // Get variances for each form and build results
-        const results = await Promise.all(
-          reportResult.data.forms.map(async (form) => {
-            const variancesResult = await handleGetVariances(
-              this.varianceService,
-              req.params.id,
-              form.formCode
-            );
-
-            const variances = variancesResult.success ? variancesResult.data : [];
-
-            // Get top 100 meaningful variances
-            const topVariances = variances
-              .filter(v => 
-                v.difference !== '0' && 
-                v.difference !== '' && 
-                !v.cellReference.includes('Subtotal')
-              )
-              .slice(0, 100)
-              .map(v => ({
-                'Cell Reference': v.cellReference,
-                'Cell Description': v.cellDescription,
-                [form.comparisonDate]: v.comparisonValue,
-                [form.baseDate]: v.baseValue,
-                'Difference': v.difference,
-                '% Difference': v.percentDifference,
-                flagged: v.flagged,
-                category: v.category,
-                comment: v.comment,
-              }));
-
-            return {
-              ...form,
-              topVariances,
-            };
-          })
-        );
-
-        return res.json({ results });
-      } catch (error: any) {
-        logger.error('Route error: GET /reports/:id/details', { error });
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-    });
-
-    /**
-     * @swagger
-     * /api/reports/{id}:
-     *   delete:
-     *     summary: Delete report
-     *     tags: [Reports]
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         required: true
-     *         schema:
-     *           type: string
-     *     responses:
-     *       200:
-     *         description: Report deleted
-     */
-    this.app.delete('/api/reports/:id', async (req: Request, res: Response) => {
-      try {
-        const result = await handleDeleteReport(this.reportService, req.params.id);
-
-        if (!result.success) {
-          return res.status(result.error.statusCode).json({
-            error: result.error.message,
-          });
-        }
-
-        return res.json({ success: true });
-      } catch (error: any) {
-        logger.error('Route error: DELETE /reports/:id', { error });
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-    });
-
-    // ============================================
-    // STATISTICS & FILTERS
-    // ============================================
-
-    /**
-     * @swagger
-     * /api/statistics:
-     *   get:
-     *     summary: Get statistics
-     *     tags: [Statistics]
-     *     responses:
-     *       200:
-     *         description: Statistics data
-     */
-    this.app.get('/api/statistics', async (req: Request, res: Response) => {
-      try {
-        const filters: ReportFilters = {
-          status: req.query.status as any,
-          baseDate: req.query.baseDate as string | undefined,
-          formCode: req.query.formCode as string | undefined,
-        };
-
-        const result = await handleGetStatistics(this.reportService, filters);
-
-        if (!result.success) {
-          return res.status(result.error.statusCode).json({
-            error: result.error.message,
-          });
-        }
-
-        return res.json(result);
-      } catch (error: any) {
-        logger.error('Route error: GET /statistics', { error });
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-    });
-
-    /**
-     * @swagger
-     * /api/filters:
-     *   get:
-     *     summary: Get filter options
-     *     tags: [Filters]
-     *     responses:
-     *       200:
-     *         description: Filter options
-     */
-    this.app.get('/api/filters', async (_req: Request, res: Response) => {
-      try {
-        const result = await handleGetFilterOptions(this.reportService);
-
-        if (!result.success) {
-          return res.status(result.error.statusCode).json({
-            error: result.error.message,
-          });
-        }
-
-        return res.json(result);
-      } catch (error: any) {
-        logger.error('Route error: GET /filters', { error });
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-    });
-
-    // ============================================
-    // VARIANCE ANNOTATIONS
-    // ============================================
-
-    /**
-     * @swagger
-     * /api/reports/{id}/annotations:
-     *   post:
-     *     summary: Update variance annotation
-     *     tags: [Annotations]
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         required: true
-     *         schema:
-     *           type: string
-     *     requestBody:
-     *       required: true
-     *       content:
-     *         application/json:
-     *           schema:
-     *             type: object
-     *     responses:
-     *       200:
-     *         description: Annotation updated
-     */
-    this.app.post('/api/reports/:id/annotations', async (req: Request, res: Response) => {
-      try {
-        const { formCode, cellReference, flagged, category, comment } = req.body;
-
-        const annotation: VarianceAnnotation = {
-          reportId: req.params.id,
-          formCode,
-          cellReference,
-          flagged: flagged || false,
-          category: category || null,
-          comment: comment || null,
-        };
-
-        const result = await handleUpdateAnnotation(this.varianceService, annotation);
-
-        if (!result.success) {
-          return res.status(result.error.statusCode).json({
-            error: result.error.message,
-          });
-        }
-
-        return res.json({ success: true });
-      } catch (error: any) {
-        logger.error('Route error: POST /reports/:id/annotations', { error });
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-    });
-
-    // ============================================
-    // EXPORT ENDPOINTS
-    // ============================================
-
-    /**
-     * @swagger
-     * /api/reports/{id}/export/{formCode}:
-     *   get:
-     *     summary: Export form variances to CSV
-     *     tags: [Export]
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         required: true
-     *         schema:
-     *           type: string
-     *       - in: path
-     *         name: formCode
-     *         required: true
-     *         schema:
-     *           type: string
-     *     responses:
-     *       200:
-     *         description: CSV file
-     */
-    this.app.get('/api/reports/:id/export/:formCode', async (req: Request, res: Response) => {
-      try {
-        const { id, formCode } = req.params;
-
-        // Get report metadata
-        const reportResult = await handleGetReportById(this.reportService, id);
-        if (!reportResult.success) {
-          return res.status(reportResult.error.statusCode).json({
-            error: reportResult.error.message,
-          });
-        }
-
-        // Get report details to find form
-        const detailsResult = await handleGetReportDetails(this.reportService, id);
-        if (!detailsResult.success) {
-          return res.status(detailsResult.error.statusCode).json({
-            error: detailsResult.error.message,
-          });
-        }
-
-        const form = detailsResult.data.forms.find(f => f.formCode === formCode);
-        if (!form) {
-          return res.status(404).json({ error: 'Form not found' });
-        }
-
-        // Get variances
-        const variancesResult = await handleGetVariances(this.varianceService, id, formCode);
-        if (!variancesResult.success) {
-          return res.status(variancesResult.error.statusCode).json({
-            error: variancesResult.error.message,
-          });
-        }
-
-        // Convert to CSV format
-        const csvData = variancesResult.data.map(v => ({
-          'Cell Reference': v.cellReference,
-          'Cell Description': v.cellDescription,
-          [form.comparisonDate]: v.comparisonValue,
-          [form.baseDate]: v.baseValue,
-          'Difference': v.difference,
-          '% Difference': v.percentDifference,
-          'Flagged': v.flagged ? 'Yes' : 'No',
-          'Category': v.category || '',
-          'Comment': v.comment || '',
-        }));
-
-        const csv = await json2csv(csvData);
-
-        const filename = `${formCode}_${reportResult.data.baseDate}_variances.csv`;
-        res.setHeader('Content-Type', 'text/csv');
-        res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-        return res.send(csv);
-      } catch (error: any) {
-        logger.error('Route error: GET /reports/:id/export/:formCode', { error });
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-    });
-
-    /**
-     * @swagger
-     * /api/reports/{id}/download:
-     *   get:
-     *     summary: Download Excel report
-     *     tags: [Export]
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         required: true
-     *         schema:
-     *           type: string
-     *     responses:
-     *       200:
-     *         description: Excel file
-     */
-    this.app.get('/api/reports/:id/download', async (req: Request, res: Response) => {
-      try {
-        const reportResult = await handleGetReportById(this.reportService, req.params.id);
-        if (!reportResult.success) {
-          return res.status(reportResult.error.statusCode).json({
-            error: reportResult.error.message,
-          });
-        }
-
-        const filePath = join(this.reportsDir, reportResult.data.outputFile);
-        if (!existsSync(filePath)) {
-          return res.status(404).json({ error: 'Excel file not found' });
-        }
-
-        return res.download(filePath);
-      } catch (error: any) {
-        logger.error('Route error: GET /reports/:id/download', { error });
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-    });
-
-    // ============================================
-    // ANALYSIS CONTROL
-    // ============================================
-
-    /**
-     * @swagger
-     * /api/run-analysis:
-     *   post:
-     *     summary: Run analysis
-     *     tags: [Analysis]
-     *     requestBody:
-     *       required: true
-     *       content:
-     *         application/json:
-     *           schema:
-     *             type: object
-     *             properties:
-     *               configFile:
-     *                 type: string
-     *               outputFile:
-     *                 type: string
-     *     responses:
-     *       200:
-     *         description: Analysis started
-     */
-    this.app.post('/api/run-analysis', async (req: Request, res: Response) => {
-      try {
-        const { configFile, outputFile } = req.body;
-
-        if (!configFile) {
-          return res.status(400).json({ error: 'configFile is required' });
-        }
-
-        const safePath = normalize(resolve(process.cwd(), configFile));
-        if (!safePath.startsWith(process.cwd())) {
-          return res.status(400).json({ error: 'Invalid file path' });
-        }
-
-        const reportId = await this.runAnalysis(safePath, outputFile || 'dashboard_report.xlsx');
-        return res.json({ success: true, reportId });
-      } catch (error: any) {
-        logger.error('Route error: POST /run-analysis', { error });
-        return res.status(500).json({ error: error.message });
-      }
-    });
-
-    /**
-     * @swagger
-     * /api/stop-analysis/{id}:
-     *   post:
-     *     summary: Stop analysis
-     *     tags: [Analysis]
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         required: true
-     *         schema:
-     *           type: string
-     *     responses:
-     *       200:
-     *         description: Analysis stopped
-     */
-    this.app.post('/api/stop-analysis/:id', async (req: Request, res: Response) => {
-      try {
-        const reportId = req.params.id;
-        const job = this.runningJobs.get(reportId);
-
-        if (!job) {
-          return res.status(404).json({ error: 'Job not found' });
-        }
-
-        job.process.kill();
-        this.runningJobs.delete(reportId);
-
-        this.broadcastProgress({
-          type: 'error',
-          reportId,
-          message: 'Analysis stopped by user',
-        });
-
-        return res.json({ success: true });
-      } catch (error: any) {
-        logger.error('Route error: POST /stop-analysis/:id', { error });
-        return res.status(500).json({ error: error.message });
-      }
-    });
-
-    // Serve dashboard
+    // Serve dashboard (catch-all for client-side routing)
     this.app.get(/^(?!\/api).*/, (_req: Request, res: Response) => {
-      res.sendFile(join(__dirname, 'public', 'index.html'));
+      const indexPath = join(__dirname, 'public', 'index.html');
+      if (existsSync(indexPath)) {
+        res.sendFile(indexPath);
+      } else {
+        res.status(404).send('Dashboard not found. Please build the project first.');
+      }
+    });
+
+    // 404 handler for API routes
+    this.app.use('/api/*', (_req: Request, res: Response) => {
+      res.status(404).json({
+        success: false,
+        error: 'API endpoint not found',
+        statusCode: 404,
+        timestamp: new Date().toISOString(),
+      });
+    });
+
+    // Global error handler
+    this.app.use((err: any, _req: Request, res: Response, _next: any) => {
+      logger.error('Unhandled error', { error: err });
+      res.status(500).json({
+        success: false,
+        error: 'Internal server error',
+        statusCode: 500,
+        timestamp: new Date().toISOString(),
+      });
     });
   }
 
+  /**
+   * Ensure reports directory exists
+   */
   private async ensureReportsDirectory(): Promise<void> {
     if (!existsSync(this.reportsDir)) {
       await mkdir(this.reportsDir, { recursive: true });
@@ -703,10 +234,13 @@ export class DashboardServer {
     }
   }
 
-  private async runAnalysis(configFile: string, _outputFile: string): Promise<string> {
+  /**
+   * Run analysis job
+   */
+  private async runAnalysis(configFile: string, outputFile: string): Promise<string> {
     const reportId = `report-${Date.now()}`;
     const startTime = Date.now();
-    const reportFilename = `${reportId}.xlsx`;
+    const reportFilename = outputFile ||`${reportId}.xlsx`;
 
     this.broadcastProgress({
       type: 'progress',
@@ -743,6 +277,7 @@ export class DashboardServer {
       process: childProcess,
     });
 
+    // Handle stdout
     childProcess.stdout.on('data', (data) => {
       const output = data.toString();
       const lines: string[] = output.split('\n').filter((line: string) => line.trim());
@@ -762,7 +297,7 @@ export class DashboardServer {
             return;
           }
         } catch (e) {
-          // Not JSON
+          // Not JSON, treat as log
         }
 
         logger.info(`[${reportId}] ${line}`);
@@ -776,6 +311,7 @@ export class DashboardServer {
       });
     });
 
+    // Handle stderr
     childProcess.stderr.on('data', (data) => {
       const output = data.toString();
       logger.error(`[${reportId}] ${output}`);
@@ -788,6 +324,7 @@ export class DashboardServer {
       });
     });
 
+    // Handle process completion
     childProcess.on('close', async (code) => {
       this.runningJobs.delete(reportId);
 
@@ -810,6 +347,7 @@ export class DashboardServer {
       }
     });
 
+    // Handle process errors
     childProcess.on('error', async (error) => {
       childProcess.kill('SIGKILL');
       logger.error(`Process error for ${reportId}:`, { error });
@@ -825,22 +363,61 @@ export class DashboardServer {
     return reportId;
   }
 
+  /**
+   * Stop analysis job
+   */
+  private async stopAnalysis(reportId: string): Promise<boolean> {
+    const job = this.runningJobs.get(reportId);
+
+    if (!job) {
+      return false;
+    }
+
+    try {
+      job.process.kill('SIGTERM');
+      this.runningJobs.delete(reportId);
+
+      this.broadcastProgress({
+        type: 'error',
+        reportId,
+        message: 'Analysis stopped by user',
+      });
+
+      return true;
+    } catch (error) {
+      logger.error(`Failed to stop analysis ${reportId}`, { error });
+      return false;
+    }
+  }
+
+  /**
+   * Broadcast progress update to all connected clients
+   */
   broadcastProgress(update: ProgressUpdate): void {
     const message = JSON.stringify(update);
 
     this.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {
-        client.send(message);
+        try {
+          client.send(message);
+        } catch (error) {
+          logger.error('Failed to send progress update', { error });
+        }
       }
     });
   }
 
+  /**
+   * Start the server
+   */
   async start(): Promise<void> {
     // Initialize database
+    logger.info('Initializing database...');
     const initDB = await this.dbManager.initialize();
     if (!initDB.success) {
-      throw new Error('Failed to initialize database: ' + initDB.error);
+      throw new Error('Failed to initialize database: ' + initDB.error.message);
     }
+    logger.info('Database initialized successfully');
 
     // Initialize services after DB is ready
     this.initializeServices();
@@ -854,21 +431,72 @@ export class DashboardServer {
         logger.info(`API Documentation at http://localhost:${this.port}/api-docs`);
         console.log(`\n🌐 Dashboard: http://localhost:${this.port}`);
         console.log(`📚 API Docs: http://localhost:${this.port}/api-docs`);
+        console.log(`📊 Statistics: http://localhost:${this.port}/api/statistics`);
+        console.log(`🔍 Health: http://localhost:${this.port}/api/health\n`);
         resolve();
       });
     });
   }
 
+  /**
+   * Stop the server
+   */
   async stop(): Promise<void> {
+    logger.info('Stopping dashboard server...');
+
+    // Stop all running jobs
+    for (const [reportId, job] of this.runningJobs.entries()) {
+      logger.info(`Stopping running job: ${reportId}`);
+      try {
+        job.process.kill('SIGTERM');
+      } catch (error) {
+        logger.warn(`Failed to stop job ${reportId}`, { error });
+      }
+    }
+    this.runningJobs.clear();
+
+    // Close WebSocket connections
+    this.clients.forEach((client) => {
+      client.close();
+    });
+    this.clients.clear();
+
+    // Close database
     await this.dbManager.close();
-    
+
     return new Promise((resolve, reject) => {
       this.wss.close(() => {
         this.server.close((err: any) => {
-          if (err) reject(err);
-          else resolve();
+          if (err) {
+            logger.error('Error closing server', { error: err });
+            reject(err);
+          } else {
+            logger.info('Dashboard server stopped');
+            resolve();
+          }
         });
       });
     });
+  }
+
+  /**
+   * Get current port
+   */
+  getPort(): number {
+    return this.port;
+  }
+
+  /**
+   * Get reports directory
+   */
+  getReportsDir(): string {
+    return this.reportsDir;
+  }
+
+  /**
+   * Check if server is running
+   */
+  isRunning(): boolean {
+    return this.server && this.server.listening;
   }
 }
