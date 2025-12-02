@@ -5,6 +5,7 @@ import { StatisticsCards } from '@/components/statistics/StatisticsCards';
 import { ReportsTable } from '@/components/reports/ReportsTable';
 import { ReportDetailsDialog } from '@/components/reports/ReportDetailsDialog';
 import { RunAnalysisDialog } from '@/components/analysis/RunAnalysisDialog';
+import { ProgressIndicator } from '@/components/analysis/ProgressIndicator';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Button } from '@/components/ui/button';
@@ -18,7 +19,7 @@ import {
 } from '@/components/ui/select';
 import { Play, RefreshCw, FileText } from 'lucide-react';
 import { apiRequest } from '@/lib/api-client';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import type { ReportFilters } from '@/types';
 
 export default function DashboardPage(): JSX.Element {
@@ -27,6 +28,8 @@ export default function DashboardPage(): JSX.Element {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [isRunDialogOpen, setIsRunDialogOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [runningReportId, setRunningReportId] = useState<string | null>(null);
+  const queryClient = useQueryClient();
 
   // Load filter options
   const { data: filterOptions } = useQuery({
@@ -66,7 +69,18 @@ export default function DashboardPage(): JSX.Element {
   };
 
   const handleRefresh = (): void => {
-    window.location.reload();
+    queryClient.invalidateQueries({ queryKey: ['reports'] });
+    queryClient.invalidateQueries({ queryKey: ['statistics'] });
+    queryClient.invalidateQueries({ queryKey: ['filterOptions'] });
+  };
+
+  const handleAnalysisStarted = (reportId: string): void => {
+    setRunningReportId(reportId);
+  };
+
+  const handleAnalysisStopped = (): void => {
+    setRunningReportId(null);
+    handleRefresh();
   };
 
   return (
@@ -93,6 +107,14 @@ export default function DashboardPage(): JSX.Element {
             </Button>
           </div>
         </div>
+
+        {/* Progress Indicator */}
+        {runningReportId && (
+          <ProgressIndicator
+            reportId={runningReportId}
+            onStop={handleAnalysisStopped}
+          />
+        )}
 
         {/* Statistics Cards */}
         <StatisticsCards filters={filters} />
@@ -176,10 +198,7 @@ export default function DashboardPage(): JSX.Element {
         <RunAnalysisDialog
           open={isRunDialogOpen}
           onOpenChange={setIsRunDialogOpen}
-          onAnalysisStarted={(reportId) => {
-            console.log('Analysis started:', reportId);
-            // TODO: Show progress indicator
-          }}
+          onAnalysisStarted={handleAnalysisStarted}
         />
       </div>
     </ErrorBoundary>

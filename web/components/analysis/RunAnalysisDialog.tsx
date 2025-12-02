@@ -48,6 +48,9 @@ export function RunAnalysisDialog({
       if (result.success && result.data) {
         onAnalysisStarted?.(result.data.reportId);
         onOpenChange(false);
+        // Reset form
+        setConfigFile('config.json');
+        setOutputFile('');
       } else {
         alert(`Error: ${result.error || 'Failed to start analysis'}`);
       }
@@ -106,4 +109,3 @@ export function RunAnalysisDialog({
     </Dialog>
   );
 }
-
