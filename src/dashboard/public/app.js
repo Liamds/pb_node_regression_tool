@@ -45,7 +45,7 @@ let percentThreshold = UserPreferences.get('percentThreshold', 0);
 
 // Dashboard Client Application
 const API_BASE = window.location.origin + '/api';
-const WS_URL = `ws://${window.location.host}`;
+const WS_URL = `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}`;
 
 let ws = null;
 let allReports = [];
@@ -105,6 +105,11 @@ async function loadFilterOptions() {
     try {
         const response = await fetch(`${API_BASE}/filters`);
         const responseData = await response.json();
+        
+        if (!responseData.success) {
+            console.error('Error loading filter options:', responseData.error);
+            return;
+        }
         
         const data = responseData.data;
         // Populate base date filter
@@ -284,6 +289,12 @@ async function loadStatistics() {
         
         const response = await fetch(`${API_BASE}/statistics?${params}`);
         const statsData = await response.json();
+        
+        if (!statsData.success) {
+            console.error('Error loading statistics:', statsData.error);
+            return;
+        }
+        
         const stats = statsData.data;
         
         document.getElementById('totalReports').textContent = stats.totalReports;
@@ -313,8 +324,16 @@ async function loadReports() {
             }
         });
         const responseData = await response.json();
-        const data = responseData.data;
-        allReports = data.reports;
+        
+        if (!responseData.success) {
+            console.error('Error loading reports:', responseData.error);
+            document.getElementById('reportsTableBody').innerHTML = `
+                <tr><td colspan="8" class="loading-cell">Error loading reports: ${responseData.error}</td></tr>
+            `;
+            return;
+        }
+        
+        allReports = responseData.data.reports;
         
         console.log(`Loaded ${allReports.length} reports from API`);
         
@@ -342,8 +361,13 @@ async function loadVarianceData() {
     for (const report of allReports) {
         try {
             const response = await fetch(`${API_BASE}/reports/${report.id}/details`);
-            const details = await response.json();
-            allReportDetails.set(report.id, details);
+            const responseData = await response.json();
+            
+            if (responseData.success) {
+                allReportDetails.set(report.id, responseData.data);
+            } else {
+                console.error(`Error loading details for report ${report.id}:`, responseData.error);
+            }
         } catch (error) {
             console.error(`Error loading details for report ${report.id}:`, error);
         }
@@ -469,7 +493,7 @@ function createTopFormsChart(textColor, gridColor) {
     // Aggregate variance counts by form across all reports
     const formVariances = {};
     
-    for (const [reportId, details] of allReportDetails.entries()) {
+    for (const [_reportId, details] of allReportDetails.entries()) {
         if (details && details.data) {
             details.data.forEach(result => {
                 const key = `${result.formName} (${result.formCode})`;
@@ -544,20 +568,26 @@ function getChartOptions(yLabel, textColor, gridColor) {
 
 // View report details
 async function viewDetails(reportId) {
-
     try {
         const [metadataRes, detailsRes] = await Promise.all([
             fetch(`${API_BASE}/reports/${reportId}`),
             fetch(`${API_BASE}/reports/${reportId}/details`)
         ]);
 
-        const metadataText = await metadataRes.text();
-        const detailsText = await detailsRes.text();
+        const metadataData = await metadataRes.json();
+        const detailsData = await detailsRes.json();
         
-        const metadata = JSON.parse(metadataText);
-        const details = JSON.parse(detailsText);
+        if (!metadataData.success) {
+            alert(`Error loading report: ${metadataData.error}`);
+            return;
+        }
         
-        showModal(metadata.data, details.data);
+        if (!detailsData.success) {
+            alert(`Error loading report details: ${detailsData.error}`);
+            return;
+        }
+        
+        showModal(metadataData.data, detailsData.data);
     } catch (error) {
         console.error('Error loading report details:', error);
         alert('Error loading report details');
@@ -696,10 +726,9 @@ function showModal(metadata, details) {
 }
 
 // Variance interaction functions
-async function toggleFlag(reportId, varianceKey,categoryId, commentId, button) {
+async function toggleFlag(reportId, varianceKey, categoryId, commentId, button) {
     const [formCode, cellReference] = varianceKey.split('-');
     const isFlagged = !button.classList.contains('flagged');
-    //const isFlagged = document.getElementById(flagButtonId).classList.contains('flagged');
     const categoryValue = document.getElementById(categoryId).value;
     const commentValue = document.getElementById(commentId).value;
     
@@ -718,11 +747,13 @@ async function toggleFlag(reportId, varianceKey,categoryId, commentId, button) {
             }),
         });
         
-        if (response.ok) {
+        const responseData = await response.json();
+        
+        if (response.ok && responseData.success) {
             button.textContent = isFlagged ? '🚩' : '⚐';
             button.classList.toggle('flagged', isFlagged);
         } else {
-            console.error('Error updating flag');
+            console.error('Error updating flag:', responseData.error || 'Unknown error');
         }
     } catch (error) {
         console.error('Error updating flag:', error);
@@ -736,7 +767,7 @@ async function updateCategory(reportId, varianceKey, category, commentId, flagge
     const commentValue = document.getElementById(commentId).value;
     
     try {
-        await fetch(`${API_BASE}/reports/${reportId}/annotations`, {
+        const response = await fetch(`${API_BASE}/reports/${reportId}/annotations`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -749,6 +780,12 @@ async function updateCategory(reportId, varianceKey, category, commentId, flagge
                 flagged: isFlagged,
             }),
         });
+        
+        const responseData = await response.json();
+        
+        if (!response.ok || !responseData.success) {
+            console.error('Error updating category:', responseData.error || 'Unknown error');
+        }
     } catch (error) {
         console.error('Error updating category:', error);
     }
@@ -760,9 +797,8 @@ async function updateComment(reportId, varianceKey, categoryId, comment, flagged
     const isFlagged = document.getElementById(flagButtonId).classList.contains('flagged');
     const categoryValue = document.getElementById(categoryId).value;
     
-    
     try {
-        await fetch(`${API_BASE}/reports/${reportId}/annotations`, {
+        const response = await fetch(`${API_BASE}/reports/${reportId}/annotations`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -775,6 +811,12 @@ async function updateComment(reportId, varianceKey, categoryId, comment, flagged
                 flagged: isFlagged,
             }),
         });
+        
+        const responseData = await response.json();
+        
+        if (!response.ok || !responseData.success) {
+            console.error('Error updating comment:', responseData.error || 'Unknown error');
+        }
     } catch (error) {
         console.error('Error updating comment:', error);
     }
@@ -816,11 +858,13 @@ async function deleteReport(reportId) {
             method: 'DELETE'
         });
         
-        if (response.ok) {
+        const responseData = await response.json();
+        
+        if (response.ok && responseData.success) {
             loadStatistics();
             loadReports();
         } else {
-            alert('Error deleting report');
+            alert(`Error deleting report: ${responseData.error || 'Unknown error'}`);
         }
     } catch (error) {
         console.error('Error deleting report:', error);
@@ -865,7 +909,7 @@ async function runAnalysis() {
     });
     
     try {
-        const response = await fetch(`${API_BASE}/run-analysis`, {
+        const response = await fetch(`${API_BASE}/analysis/run`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -878,7 +922,7 @@ async function runAnalysis() {
         
         const result = await response.json();
         
-        if (response.ok) {
+        if (response.ok && result.success) {
             closeRunModal();
             
             // Show progress section
@@ -887,14 +931,14 @@ async function runAnalysis() {
             document.getElementById('progressPercent').textContent = '0%';
             
             // Store the running job ID
-            currentRunningJobId = result.reportId;
+            currentRunningJobId = result.data.reportId;
             
             // Refresh reports to show the running job
             setTimeout(() => {
                 loadReports();
             }, 1000);
         } else {
-            alert(`Error: ${result.error}`);
+            alert(`Error: ${result.error || 'Failed to start analysis'}`);
         }
     } catch (error) {
         console.error('Error starting analysis:', error);
@@ -913,15 +957,16 @@ async function stopAnalysis() {
     }
     
     try {
-        const response = await fetch(`${API_BASE}/stop-analysis/${currentRunningJobId}`, {
+        const response = await fetch(`${API_BASE}/analysis/stop/${currentRunningJobId}`, {
             method: 'POST',
         });
         
-        if (response.ok) {
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
             console.log('Analysis stopped');
         } else {
-            const result = await response.json();
-            alert(`Error: ${result.error}`);
+            alert(`Error: ${result.error || 'Failed to stop analysis'}`);
         }
     } catch (error) {
         console.error('Error stopping analysis:', error);
