@@ -2,8 +2,8 @@
 
 import { useTheme } from 'next-themes';
 import {
-  BarChart,
-  Bar,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -11,53 +11,51 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import type { ReportMetadata } from '@/types';
 import { useMemo } from 'react';
 
-interface TopFormsData {
-  formName: string;
-  varianceCount: number;
+interface ErrorTrendChartProps {
+  reports: ReportMetadata[];
 }
 
-interface TopFormsChartProps {
-  data: TopFormsData[];
-}
-
-export function TopFormsChart({ data }: TopFormsChartProps): JSX.Element {
+export function ErrorTrendChart({ reports }: ErrorTrendChartProps): JSX.Element {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
-  const top10 = useMemo(() => {
-    return data
-      .sort((a, b) => b.varianceCount - a.varianceCount)
-      .slice(0, 10);
-  }, [data]);
+  const chartData = useMemo(() => {
+    const sortedReports = [...reports].sort(
+      (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+    );
+
+    return sortedReports.map((report) => ({
+      date: new Date(report.timestamp).toLocaleDateString(),
+      errors: report.totalValidationErrors,
+    }));
+  }, [reports]);
 
   const textColor = isDark ? '#e2e8f0' : '#334155';
   const gridColor = isDark ? '#334155' : '#e2e8f0';
 
-  if (top10.length === 0) {
+  if (chartData.length === 0) {
     return (
       <div className="flex items-center justify-center h-[300px] text-muted-foreground">
-        No form data available
+        No data available
       </div>
     );
   }
 
   return (
     <ResponsiveContainer width="100%" height={300}>
-      <BarChart data={top10} layout="vertical" margin={{ left: 20, right: 20 }}>
+      <LineChart data={chartData}>
         <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
         <XAxis
-          type="number"
+          dataKey="date"
           tick={{ fill: textColor }}
           style={{ fontSize: '12px' }}
         />
         <YAxis
-          dataKey="formName"
-          type="category"
-          width={150}
           tick={{ fill: textColor }}
-          style={{ fontSize: '11px' }}
+          style={{ fontSize: '12px' }}
         />
         <Tooltip
           contentStyle={{
@@ -70,13 +68,16 @@ export function TopFormsChart({ data }: TopFormsChartProps): JSX.Element {
         <Legend
           wrapperStyle={{ color: textColor }}
         />
-        <Bar
-          dataKey="varianceCount"
-          fill="#10b981"
-          name="Variances"
-          radius={[0, 4, 4, 0]}
+        <Line
+          type="monotone"
+          dataKey="errors"
+          stroke="#ef4444"
+          strokeWidth={2}
+          name="Validation Errors"
+          dot={{ r: 4 }}
+          activeDot={{ r: 6 }}
         />
-      </BarChart>
+      </LineChart>
     </ResponsiveContainer>
   );
 }

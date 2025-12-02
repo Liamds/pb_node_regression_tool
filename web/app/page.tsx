@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { StatisticsCards } from '@/components/statistics/StatisticsCards';
+import { ChartsSection } from '@/components/charts/ChartsSection';
 import { ReportsTable } from '@/components/reports/ReportsTable';
 import { ReportDetailsDialog } from '@/components/reports/ReportDetailsDialog';
 import { RunAnalysisDialog } from '@/components/analysis/RunAnalysisDialog';
@@ -131,6 +132,9 @@ export default function DashboardPage(): JSX.Element {
 
           {/* Statistics Cards */}
           <StatisticsCards filters={filters} />
+
+          {/* Charts Section */}
+          <ChartsSection filters={filters} />
 
           {/* Filters */}
           <div className="flex flex-wrap gap-4 items-center">

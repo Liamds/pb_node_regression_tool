@@ -13,6 +13,9 @@
  */
 
 import { readFile } from 'fs/promises';
+import { spawn } from 'child_process';
+import { join } from 'path';
+import { existsSync } from 'fs';
 import { Command } from 'commander';
 import { z } from 'zod';
 import { logger, setupLogging } from './logger.js';
@@ -585,19 +588,46 @@ async function main(): Promise<number> {
   try {
     // Initialize dashboard if requested
     if (args.serve) {
-      logger.info('Starting dashboard server...');
-      dashboard = new DashboardServer(args.port);
+      // Check if Next.js is available
+      const webDir = join(process.cwd(), 'web');
+      const nextConfigExists = existsSync(join(webDir, 'next.config.js')) || 
+                              existsSync(join(webDir, 'next.config.ts'));
       
-      await dashboard.start().catch((error) => {
-        throw new MainError(
-          `Dashboard start failed: ${error.message}`,
-          MainErrorCode.DASHBOARD_FAILED,
-          undefined,
-          error
-        );
-      });
+      if (nextConfigExists) {
+        logger.info('Next.js detected. Starting Next.js dashboard server...');
+        logger.info('Note: Next.js runs on port 3000. API backend will run on port 5000.');
+        logger.info('Starting Express API server on port 5000 for Next.js frontend...');
+        
+        // Start Express API server for Next.js to connect to
+        dashboard = new DashboardServer(5000);
+        await dashboard.start().catch((error) => {
+          throw new MainError(
+            `API server start failed: ${error.message}`,
+            MainErrorCode.DASHBOARD_FAILED,
+            undefined,
+            error
+          );
+        });
+        
+        logger.info('Express API server started on port 5000');
+        logger.info('Next.js dashboard should be started separately with: npm run web:dev');
+        logger.info('Or use: npm run dev:full to start both together');
+      } else {
+        // Use Express dashboard (legacy)
+        logger.info('Starting Express dashboard server...');
+        dashboard = new DashboardServer(args.port);
+        
+        await dashboard.start().catch((error) => {
+          throw new MainError(
+            `Dashboard start failed: ${error.message}`,
+            MainErrorCode.DASHBOARD_FAILED,
+            undefined,
+            error
+          );
+        });
 
-      logger.info('Dashboard server started successfully');
+        logger.info('Dashboard server started successfully');
+      }
     }
 
     // Create progress broadcaster
