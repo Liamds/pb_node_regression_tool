@@ -131,7 +131,7 @@ export class ApiClientError extends Error {
     message: string,
     public readonly code: ApiErrorCode,
     public readonly statusCode?: number,
-    public readonly cause?: unknown
+    public override readonly cause?: unknown
   ) {
     super(message);
     this.name = 'ApiClientError';
@@ -489,8 +489,8 @@ export class AgileReporterClient {
           ),
         };
       }
-      logger.error(`Received response for form versions of ${formCode}`, { status: response.status });
-      logger.error(`Response data: ${JSON.stringify(response.data)}`);
+      logger.debug(`Received response for form versions of ${formCode}`, { status: response.status });
+      logger.debug(`Response data: ${JSON.stringify(response.data)}`);
 
       // Validate response
       try {
@@ -599,6 +599,17 @@ export class AgileReporterClient {
       }
 
       const metadata = dataArray.data[0];
+      if (!metadata) {
+        return {
+          success: false,
+          error: new ApiClientError(
+            `No metadata found for cell ${cellId}`,
+            ApiErrorCode.NOT_FOUND,
+            response.status
+          ),
+        };
+      }
+
       logger.debug(`Retrieved metadata for cell ${cellId}`);
 
       return { success: true, data: metadata };

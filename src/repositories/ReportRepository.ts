@@ -33,7 +33,7 @@ export class ReportRepositoryError extends Error {
   constructor(
     message: string,
     public readonly code: ReportRepositoryErrorCode,
-    public readonly cause?: unknown
+    public override readonly cause?: unknown
   ) {
     super(message);
     this.name = 'ReportRepositoryError';

@@ -49,7 +49,7 @@ export class ReportSaverError extends Error {
     message: string,
     public readonly code: ReportSaverErrorCode,
     public readonly context?: Record<string, unknown>,
-    public readonly cause?: unknown
+    public override readonly cause?: unknown
   ) {
     super(message);
     this.name = 'ReportSaverError';
@@ -123,7 +123,8 @@ export interface ReportGenerationMetadata {
  */
 function getFilename(filepath: string): string {
   const parts = filepath.split(/[\/\\]/);
-  return parts[parts.length - 1];
+  const filename = parts[parts.length - 1];
+  return filename || filepath;
 }
 
 /**
@@ -495,7 +496,7 @@ export class ReportSaver {
       totalVariances,
       totalValidationErrors,
       configFile: 'config.json',
-      outputFile: getFilename(outputFile),
+      outputFile: getFilename(outputFile || ''),
       duration,
       status,
     };

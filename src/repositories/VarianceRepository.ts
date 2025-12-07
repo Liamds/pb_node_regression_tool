@@ -29,7 +29,7 @@ export class VarianceRepositoryError extends Error {
   constructor(
     message: string,
     public readonly code: VarianceRepositoryErrorCode,
-    public readonly cause?: unknown
+    public override readonly cause?: unknown
   ) {
     super(message);
     this.name = 'VarianceRepositoryError';

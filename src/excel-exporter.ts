@@ -52,7 +52,7 @@ export class ExcelExporterError extends Error {
     message: string,
     public readonly code: ExcelExporterErrorCode,
     public readonly context?: Record<string, unknown>,
-    public readonly cause?: unknown
+    public override readonly cause?: unknown
   ) {
     super(message);
     this.name = 'ExcelExporterError';
@@ -517,7 +517,11 @@ export class ExcelExporter {
       return;
     }
 
-    const headers = Object.keys(data[0]);
+    const firstRow = data[0];
+    if (!firstRow) {
+      return;
+    }
+    const headers = Object.keys(firstRow);
 
     // Set columns
     const columns = headers.map((key) => ({

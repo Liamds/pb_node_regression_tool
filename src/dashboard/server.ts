@@ -8,12 +8,12 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { WebSocketServer, WebSocket } from 'ws';
-import { createServer } from 'http';
+import { createServer, type Server } from 'http';
 import { mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { spawn } from 'child_process';
+import { spawn, type ChildProcess } from 'child_process';
 import { logger } from '../logger.js';
 import { DatabaseManager } from '../db-manager.js';
 import swaggerUi from 'swagger-ui-express';
@@ -34,6 +34,12 @@ import {
   createAnalysisRouter
 } from '../api/routes/index.js';
 
+// Import tRPC
+import { createExpressMiddleware } from '@trpc/server/adapters/express';
+import { createAppRouter } from '../api/trpc/routers/index.js';
+import { createContext } from '../api/trpc/context.js';
+import { renderTrpcPanel } from 'trpc-panel';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -51,12 +57,12 @@ interface RunningJob {
   reportId: string;
   configFile: string;
   startTime: number;
-  process: any;
+  process: ChildProcess;
 }
 
 export class DashboardServer {
   private app: express.Application;
-  private server: any;
+  private server: Server | null = null;
   private wss: WebSocketServer;
   private port: number;
   private reportsDir: string;
@@ -67,6 +73,7 @@ export class DashboardServer {
   // Service layer instances
   private reportService!: ReportService;
   private varianceService!: VarianceService;
+  private trpcRouter: ReturnType<typeof createAppRouter> | null = null;
 
   constructor(port: number = 3000) {
     this.port = port;
@@ -96,6 +103,12 @@ export class DashboardServer {
     this.reportService = new ReportService(reportRepo);
     this.varianceService = new VarianceService(varianceRepo);
 
+    // Create tRPC router
+    this.trpcRouter = createAppRouter(
+      this.runAnalysis.bind(this),
+      this.stopAnalysis.bind(this)
+    );
+
     logger.info('Service layer initialized successfully');
   }
 
@@ -115,19 +128,28 @@ export class DashboardServer {
       next();
     });
 
-    // Static files
-    const possiblePublicDirs = [
-      join(__dirname, 'public'),
-      join(process.cwd(), 'src/dashboard/public'),
-      join(process.cwd(), 'dist/dashboard/public'),
-      join(process.cwd(), 'public'),
-    ];
+    // Static files - serve Vite build in production, or allow Vite dev server in development
+    if (process.env.NODE_ENV === 'production') {
+      const distWebDir = join(process.cwd(), 'dist', 'web');
+      if (existsSync(distWebDir)) {
+        this.app.use(express.static(distWebDir));
+        logger.info(`Serving static files from: ${distWebDir}`);
+      }
+    } else {
+      // In development, Vite dev server handles static files
+      // Only serve old public directory as fallback
+      const possiblePublicDirs = [
+        join(__dirname, 'public'),
+        join(process.cwd(), 'src/dashboard/public'),
+        join(process.cwd(), 'dist/dashboard/public'),
+      ];
 
-    for (const dir of possiblePublicDirs) {
-      if (existsSync(dir)) {
-        this.app.use(express.static(dir));
-        logger.info(`Serving static files from: ${dir}`);
-        break;
+      for (const dir of possiblePublicDirs) {
+        if (existsSync(dir)) {
+          this.app.use(express.static(dir));
+          logger.info(`Serving static files from: ${dir}`);
+          break;
+        }
       }
     }
   }
@@ -172,6 +194,46 @@ export class DashboardServer {
   }
 
   /**
+   * Setup tRPC
+   */
+  private setupTRPC(): void {
+    if (!this.trpcRouter) {
+      throw new Error('tRPC router not initialized. Call initializeServices() first.');
+    }
+
+    const context = createContext(
+      this.reportService,
+      this.varianceService,
+      this.dbManager
+    );
+
+    // tRPC endpoint
+    this.app.use(
+      '/api/trpc',
+      createExpressMiddleware({
+        router: this.trpcRouter,
+        createContext: () => context,
+      })
+    );
+
+    // tRPC Panel for API documentation
+    this.app.use('/trpc-panel', (_req: Request, res: Response) => {
+      if (!this.trpcRouter) {
+        res.status(500).send('tRPC router not initialized');
+        return;
+      }
+      const html = renderTrpcPanel(this.trpcRouter, {
+        url: 'http://localhost:' + this.port + '/api/trpc',
+        transformer: 'superjson',
+      });
+      res.send(html);
+    });
+
+    logger.info('tRPC endpoint available at /api/trpc');
+    logger.info('tRPC Panel available at /trpc-panel');
+  }
+
+  /**
    * Setup all API routes using the new router architecture
    */
   private setupRoutes(): void {
@@ -200,12 +262,22 @@ export class DashboardServer {
 
     // Serve dashboard (catch-all for client-side routing)
     logger.info('Routes: Catch-all for client-side routing');
-    this.app.get(/^(?!\/api).*/, (_req: Request, res: Response) => {
-      const indexPath = join(__dirname, 'public', 'index.html');
-      if (existsSync(indexPath)) {
-        res.sendFile(indexPath);
+    this.app.get(/^(?!\/api|\/trpc-panel).*/, (_req: Request, res: Response) => {
+      if (process.env.NODE_ENV === 'production') {
+        const indexPath = join(process.cwd(), 'dist', 'web', 'index.html');
+        if (existsSync(indexPath)) {
+          res.sendFile(indexPath);
+        } else {
+          res.status(404).send('Dashboard not found. Please build the project first.');
+        }
       } else {
-        res.status(404).send('Dashboard not found. Please build the project first.');
+        // In development, redirect to Vite dev server or serve old index
+        const indexPath = join(__dirname, 'public', 'index.html');
+        if (existsSync(indexPath)) {
+          res.sendFile(indexPath);
+        } else {
+          res.status(404).send('Dashboard not found. Please start Vite dev server or build the project.');
+        }
       }
     });
     logger.info('Routes: Serve dashboard created');
@@ -386,7 +458,7 @@ export class DashboardServer {
     }
 
     try {
-      job.process.kill('SIGTERM');
+      job.process.kill(15); // SIGTERM signal number
       this.runningJobs.delete(reportId);
 
       this.broadcastProgress({
@@ -434,11 +506,18 @@ export class DashboardServer {
     // Initialize services after DB is ready
     this.initializeServices();
 
+    // Setup tRPC after services are initialized
+    this.setupTRPC();
+
     // Setup routes after services are initialized
     this.setupRoutes();
 
+    if (!this.server) {
+      throw new Error('Server not initialized');
+    }
+
     return new Promise((resolve) => {
-      this.server.listen(this.port, () => {
+      this.server!.listen(this.port, () => {
         logger.info(`Dashboard server running at http://localhost:${this.port}`);
         logger.info(`API Documentation at http://localhost:${this.port}/api-docs`);
         console.log(`\n🌐 Dashboard: http://localhost:${this.port}`);
@@ -460,7 +539,7 @@ export class DashboardServer {
     for (const [reportId, job] of this.runningJobs.entries()) {
       logger.info(`Stopping running job: ${reportId}`);
       try {
-        job.process.kill('SIGTERM');
+        job.process.kill(15); // SIGTERM signal number
       } catch (error) {
         logger.warn(`Failed to stop job ${reportId}`, { error });
       }
@@ -476,9 +555,13 @@ export class DashboardServer {
     // Close database
     await this.dbManager.close();
 
+    if (!this.server) {
+      return Promise.resolve();
+    }
+
     return new Promise((resolve, reject) => {
       this.wss.close(() => {
-        this.server.close((err: any) => {
+        this.server!.close((err: unknown) => {
           if (err) {
             logger.error('Error closing server', { error: err });
             reject(err);
@@ -509,6 +592,6 @@ export class DashboardServer {
    * Check if server is running
    */
   isRunning(): boolean {
-    return this.server && this.server.listening;
+    return this.server !== null && this.server.listening === true;
   }
 }

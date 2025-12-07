@@ -54,7 +54,7 @@ export class VarianceAnalyzerError extends Error {
     message: string,
     public readonly code: AnalyzerErrorCode,
     public readonly formCode?: string,
-    public readonly cause?: unknown
+    public override readonly cause?: unknown
   ) {
     super(message);
     this.name = 'VarianceAnalyzerError';

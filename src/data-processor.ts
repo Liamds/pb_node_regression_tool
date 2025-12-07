@@ -374,6 +374,17 @@ export function findInstanceBeforeDate(
   );
 
   const mostRecent = sortedInstances[0];
+  
+  if (!mostRecent) {
+    return {
+      success: false,
+      error: new DataProcessorError(
+        'No instances found before target date',
+        DataProcessorErrorCode.INSTANCE_NOT_FOUND,
+        { targetDate }
+      ),
+    };
+  }
 
   // Calculate days difference
   const daysResult = daysBetween(mostRecent.referenceDate, targetDate);

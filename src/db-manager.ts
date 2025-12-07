@@ -13,7 +13,8 @@
  * @module db-manager
  */
 
-import initSqlJs, { Database } from 'sql.js';
+import initSqlJs from 'sql.js';
+import type { Database, SqlJsStatic } from 'sql.js';
 import { readFile, writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import { join, dirname } from 'path';
@@ -66,7 +67,7 @@ export class DatabaseError extends Error {
     message: string,
     public readonly code: DbErrorCode,
     public readonly context?: Record<string, unknown>,
-    public readonly cause?: unknown
+    public override readonly cause?: unknown
   ) {
     super(message);
     this.name = 'DatabaseError';
@@ -183,7 +184,7 @@ const DEFAULT_RETRY_CONFIG: RetryConfig = {
 export class DatabaseManager {
   private db: Database | null = null;
   private dbPath: string;
-  private SQL: any = null;
+  private SQL: SqlJsStatic | null = null;
   private isInitialized: boolean = false;
 
   constructor(
@@ -290,9 +291,21 @@ export class DatabaseManager {
 
     try {
       // Close current database
-      this.db!.close();
+      if (this.db) {
+        this.db.close();
+      }
 
       // Reload from disk
+      if (!this.SQL) {
+        return {
+          success: false,
+          error: new DatabaseError(
+            'SQL.js not initialized',
+            DbErrorCode.NOT_INITIALIZED
+          ),
+        };
+      }
+
       if (existsSync(this.dbPath)) {
         const buffer = await readFile(this.dbPath);
         this.db = new this.SQL.Database(buffer);
@@ -722,7 +735,7 @@ export class DatabaseManager {
 
     try {
       let sql = 'SELECT * FROM reports WHERE 1=1';
-      const params: any[] = [];
+      const params: unknown[] = [];
 
       if (filters?.status) {
         sql += ' AND status = ?';

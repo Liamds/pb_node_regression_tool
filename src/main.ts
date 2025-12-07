@@ -58,7 +58,7 @@ export class MainError extends Error {
     message: string,
     public readonly code: MainErrorCode,
     public readonly context?: Record<string, unknown>,
-    public readonly cause?: unknown
+    public override readonly cause?: unknown
   ) {
     super(message);
     this.name = 'MainError';
@@ -566,7 +566,7 @@ async function main(): Promise<number> {
     return 1;
   }
 
-  // Setup logging
+  // Setup logging (must be done after args parsing to get verbose flag)
   setupLogging(args.verbose);
 
   // Validate environment
@@ -763,6 +763,8 @@ main()
     process.exit(exitCode);
   })
   .catch((error) => {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    logger.error('Fatal error in main', { error: errorMessage, stack: error instanceof Error ? error.stack : undefined });
     console.error('Fatal error:', error);
     process.exit(1);
   });
