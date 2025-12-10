@@ -29,7 +29,8 @@
     "noImplicitOverride": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
-    "typeRoots": ["./types", "./src/types", "./node_modules/@types"]
+    "typeRoots": ["./types", "./src/types", "./node_modules/@types"],
+    "composite": true
   },
   "include": ["src/**/*", "types/**/*"],
   "exclude": ["node_modules", "dist", "web"]

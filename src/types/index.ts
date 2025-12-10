@@ -176,7 +176,7 @@ export interface ReportMetadata {
 /**
  * Variance annotation category enum
  */
-export type VarianceCategory = 'expected' | 'unexpected' | 'resolved' | 'investigating' | null;
+export type VarianceCategory = 'expected' | 'unexpected' | 'resolved' | 'investigating' | 'accepted' | null;
 
 /**
  * Variance annotation

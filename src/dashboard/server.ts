@@ -38,7 +38,7 @@ import {
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import { createAppRouter } from '../api/trpc/routers/index.js';
 import { createContext } from '../api/trpc/context.js';
-import { renderTrpcPanel } from 'trpc-panel';
+//import { renderTrpcPanel } from 'trpc-panel';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -217,7 +217,7 @@ export class DashboardServer {
     );
 
     // tRPC Panel for API documentation
-    this.app.use('/trpc-panel', (_req: Request, res: Response) => {
+    /*this.app.use('/trpc-panel', (_req: Request, res: Response) => {
       if (!this.trpcRouter) {
         res.status(500).send('tRPC router not initialized');
         return;
@@ -230,7 +230,7 @@ export class DashboardServer {
     });
 
     logger.info('tRPC endpoint available at /api/trpc');
-    logger.info('tRPC Panel available at /trpc-panel');
+    logger.info('tRPC Panel available at /trpc-panel');*/
   }
 
   /**

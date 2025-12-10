@@ -107,6 +107,7 @@ export const VarianceCategorySchema = z.enum([
   'unexpected',
   'resolved',
   'investigating',
+  'accepted',
 ]).nullable();
 
 /**

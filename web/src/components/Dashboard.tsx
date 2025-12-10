@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import * as React from 'react';
 import { trpc } from '../lib/trpc';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
@@ -7,6 +8,9 @@ import { Label } from './ui/label';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import { Checkbox } from './ui/checkbox';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
+import { Badge } from './ui/badge';
 import { 
   BarChart3, 
   TrendingUp, 
@@ -20,19 +24,55 @@ import {
   Download,
   Trash2,
   Eye,
-  StopCircle
+  StopCircle,
+  ChevronDown,
+  CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
 import { useTheme } from './theme-provider';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { report } from 'process';
+import { get } from 'http';
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#00ff00'];
+
+function formatCellDescription(description: string): React.ReactNode {
+  if (!description) return <span className="text-muted-foreground">-</span>
+
+  const parts = description.split('_');
+  if (parts.length ===1) return <span>{description}</span>;
+
+  return (
+    <div className="text-left font-mono text-xs">
+      {parts.map((part, idx, arr) => {
+        const indent = idx * 16;
+        const isLast = idx === arr.length -1;
+        const isFirst = idx === 0;
+        const connector = isFirst ? '' : (isLast ? '└─ ' : '├─ ');
+
+        return (
+          <div
+            key={idx}
+            style={{ paddingLeft: `${indent}px` }}
+            className = "leading-relaxed"
+          >
+            {!isFirst && (
+              <span className="text-muted-foreground select-none">{connector}</span>
+            )}
+            <span className={isFirst ? 'font-semibold' : ''}>{part}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function Dashboard() {
   const { theme, setTheme } = useTheme();
   const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState<string>('');
-  const [baseDateFilter, setBaseDateFilter] = useState<string>('');
-  const [formFilter, setFormFilter] = useState<string>('');
+  const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [baseDateFilter, setBaseDateFilter] = useState<string>('all');
+  const [formFilter, setFormFilter] = useState<string>('all');
   const [varianceThreshold, setVarianceThreshold] = useState(0);
   const [percentThreshold, setPercentThreshold] = useState(0);
   const [runAnalysisOpen, setRunAnalysisOpen] = useState(false);
@@ -42,14 +82,114 @@ export default function Dashboard() {
   const [currentRunningJob, setCurrentRunningJob] = useState<string | null>(null);
   const [ws, setWs] = useState<WebSocket | null>(null);
 
+  const [editingAnnotations, setEditingAnnotations] = useState<Record<string, {
+    flagged: boolean;
+    category: string | null;
+    comment: string | null;
+  }>>({});
+
   // tRPC queries
-  const { data: statistics, refetch: refetchStats } = trpc.statistics.get.useQuery({});
-  const { data: filterOptions } = trpc.filters.getOptions.useQuery();
-  const { data: reports, refetch: refetchReports } = trpc.reports.list.useQuery({
-    status: statusFilter || undefined,
-    baseDate: baseDateFilter || undefined,
-    formCode: formFilter || undefined,
+  const { data: statistics, isLoading: statsLoading, error: statsError, refetch: refetchStats } = trpc.statistics.get.useQuery({});
+  const { data: filterOptions, isLoading: filtersLoading, error: filtersError } = trpc.filters.getOptions.useQuery();
+  const { data: reports, isLoading: reportsLoading, error: reportsError, refetch: refetchReports } = trpc.reports.list.useQuery({
+    status: statusFilter === 'all' ? undefined : statusFilter,
+    baseDate: baseDateFilter === 'all' ? undefined : baseDateFilter,
+    formCode: formFilter === 'all' ? undefined : formFilter,
   });
+
+  const { data: reportDetails, isLoading: detailsLoading, refetch: refetchReportDetails } = trpc.reports.getDetails.useQuery(
+    { id: selectedReport || '' },
+    { enabled: !!selectedReport }
+  );
+
+  const commentTimeouts = useRef<Record<string, NodeJS.Timeout>>({});
+
+  const handleAnnotationEdit = (
+    formCode: string,
+    cellReference: string,
+    field: 'flagged' | 'category' | 'comment',
+    value: boolean | string | null
+  ) => {
+    const key = `${formCode}-${cellReference}`;
+    const currentVariance = reportDetails
+      ?.flatMap((form: any) => form.topVariances || [])
+      .find((v: any) => v['Cell Reference'] === cellReference);
+
+    if (!currentVariance) return;
+
+    const currentEdit = editingAnnotations[key] || {
+      flagged: currentVariance.flagged || false,
+      category: currentVariance.category || null,
+      comment: currentVariance.comment || null,
+    };
+
+    setEditingAnnotations({
+      ...editingAnnotations,
+      [key]: {
+        ...currentEdit,
+        [field]: value,
+      },
+    });
+  };
+
+  const handleSaveAnnotation = ( formCode: string,  cellReference: string,) => {
+    if (!selectedReport) return;
+
+    const key = `${formCode}-${cellReference}`;
+    const editState = editingAnnotations[key];
+
+    if (!editState) return;
+
+    const updateData = {
+      reportId: selectedReport,
+      formCode,
+      cellReference,
+      flagged: editState.flagged,
+      category: editState.category,
+      comment: editState.comment,
+    };
+      
+    updateAnnotationMutation.mutate( updateData, {
+      onSuccess: () => {
+        const newEditing = { ...editingAnnotations };
+        delete newEditing[key];
+        setEditingAnnotations(newEditing);
+        refetchReportDetails();
+      },
+    });
+  };
+
+  const getAnnotationValue = (
+    variance: any,
+    formCode: string,
+    cellReference: string,
+    field: 'flagged' | 'category' | 'comment'
+  ) : boolean | string | null => {
+    const key = `${formCode}-${cellReference}`;
+    const editState = editingAnnotations[key];
+    
+    if (editState) {
+      return editState[field];
+    }
+
+    if (field === 'flagged') {
+      return variance.flagged || false;
+    }
+    return variance[field] || null;
+  };
+
+  const hasUnsavedChanges = (formCode: string, cellReference: string) : boolean => {
+    const key = `${formCode}-${cellReference}`;
+    return key in editingAnnotations;
+  };
+
+  const categories = [
+    { value: 'expected', label: 'Expected' },
+    { value: 'unexpected', label: 'Unexpected' },
+    { value: 'resolved', label: 'Resolved' },
+    { value: 'investigating', label: 'Investigating' },
+    { value: 'accepted', label: 'Accepted' },
+  ];
 
   // Mutations
   const runAnalysisMutation = trpc.analysis.run.useMutation({
@@ -74,38 +214,65 @@ export default function Dashboard() {
     },
   });
 
+  const updateAnnotationMutation = trpc.variances.updateAnnotation.useMutation({
+    onSuccess: () => {
+      if (selectedReport){
+        // The query will automatically refrehs when we invalidate it
+      }
+    },
+  });
+
   // WebSocket connection for real-time updates
   useEffect(() => {
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsUrl = `${protocol}//${window.location.host}`;
-    const websocket = new WebSocket(wsUrl);
+    const backendHost = window.location.hostname === 'localhost'
+      ? 'localhost:3000'
+      : window.location.host.replace(':5173', ':3000');
+    const wsUrl = `${protocol}//${backendHost}`;
+    
+    let websocket: WebSocket | null = null;
 
-    websocket.onopen = () => {
-      console.log('WebSocket connected');
-    };
+    try {
+      websocket = new WebSocket(wsUrl);
+    } catch (error) {
+      console.error('Websocket connection failed (this is non-critical)', error);
+      return;
+    }
 
-    websocket.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      if (data.type === 'complete' || data.type === 'error') {
-        setCurrentRunningJob(null);
-        refetchReports();
-        refetchStats();
-      }
-    };
+    if (websocket) {
+      websocket.onopen = () => {
+        console.log('WebSocket connected');
+      };
 
-    websocket.onerror = (error) => {
-      console.error('WebSocket error:', error);
-    };
+      websocket.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data.type === 'complete' || data.type === 'error') {
+            setCurrentRunningJob(null);
+            refetchReports();
+            refetchStats();
+          }
+        } catch (error) {
+          console.error('Error parsing Websocket message:', error);
+        }
+      };
 
-    websocket.onclose = () => {
-      console.log('WebSocket disconnected');
-    };
+      websocket.onerror = (error) => {
+        console.error('WebSocket error:', error);
+      };
 
-    setWs(websocket);
+      websocket.onclose = () => {
+        console.log('WebSocket disconnected');
+      };
 
-    return () => {
-      websocket.close();
-    };
+      setWs(websocket);
+
+      return () => {
+        if (websocket) {
+          websocket.close();
+        }
+      };
+    }
   }, []);
 
   const handleRunAnalysis = () => {
@@ -153,6 +320,18 @@ export default function Dashboard() {
     date: new Date(report.timestamp).toLocaleDateString(),
     errors: report.totalValidationErrors,
   })) || [];
+
+  if (statsLoading && filtersLoading && reportsLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-content">
+        <div className="text-center">
+          <RefreshCw className="h-8 w-8 animate-spin mx-auto mb-2" />
+          <p className="text-muted-forground">Loading dashboard...</p>
+        </div>
+      </div>
+      
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -220,6 +399,32 @@ export default function Dashboard() {
       </header>
 
       <div className="container mx-auto px-4 py-8 space-y-8">
+        {/* Error Messages */}
+        {(statsError || filtersError || reportsError) && (
+          <Card className="border-red-500">
+            <CardHeader>
+              <CardTitle className="text-red-600">Error Loading Data</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2 text-sm">
+                {statsError && <p>Statistics: {statsError.message}</p>}
+                {filtersError && <p>Filters: {filtersError.message}</p>}
+                {reportsError && <p>Reports: {reportsError.message}</p>}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Loading Indicator */}
+        {(statsLoading || filtersLoading || reportsLoading) && (
+          <Card>
+            <CardContent className="py-8 text-center">
+              <RefreshCw className="h-8 w-8 animate-spin mx-auto mb-2" />
+              <p className="text-muted-forground">Loading dashboard data...</p>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Statistics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card>
@@ -372,7 +577,7 @@ export default function Dashboard() {
                     <SelectValue placeholder="All Status" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Status</SelectItem>
+                    <SelectItem value="all">All Status</SelectItem>
                     <SelectItem value="completed">Completed</SelectItem>
                     <SelectItem value="running">Running</SelectItem>
                     <SelectItem value="failed">Failed</SelectItem>
@@ -383,8 +588,10 @@ export default function Dashboard() {
                     <SelectValue placeholder="All Base Dates" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Base Dates</SelectItem>
-                    {filterOptions?.baseDates.map(date => (
+                    <SelectItem value="all">All Base Dates</SelectItem>
+                    {filterOptions?.baseDates
+                      ?.filter((date: string) => date && date.trim() !== '')
+                      .map((date: string) => (
                       <SelectItem key={date} value={date}>{date}</SelectItem>
                     ))}
                   </SelectContent>
@@ -394,8 +601,10 @@ export default function Dashboard() {
                     <SelectValue placeholder="All Forms" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Forms</SelectItem>
-                    {filterOptions?.formCodes.map(form => (
+                    <SelectItem value="all">All Forms</SelectItem>
+                    {filterOptions?.formCodes
+                      ?.filter((form: { code: string; name: string }) => form.code && form.code.trim() !== '')
+                      .map((form: { code: string; name: string }) => (
                       <SelectItem key={form.code} value={form.code}>{form.name}</SelectItem>
                     ))}
                   </SelectContent>
@@ -476,6 +685,231 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Report Detail Dialog */ }
+        <Dialog open={!!selectedReport} onOpenChange={(open) => {
+          if (!open) {
+            setSelectedReport(null);
+            setEditingAnnotations({});
+          }
+        }}>
+          <DialogContent className="max-w-7xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>Report Details</DialogTitle>
+              <DialogDescription>
+                View details variance information for this report
+              </DialogDescription>
+            </DialogHeader>
+            {detailsLoading ? (
+              <div className="py-8 text-center">
+                <RefreshCw className="h-8 w-8 animate-spin mx-auto mb-2" />
+                <p className="text-muted-forground">Loading report details...</p>
+              </div>
+            ) : reportDetails && reportDetails.length > 0 ? (
+              <Accordion type="multiple" className="w-full">
+                {reportDetails.map((form: any, formIndex: number) => {
+                  // Determine form status
+                  const hasVariances = (form.varianceCount || 0) > 0;
+                  const hasValidationErrors = (form.validationErrorCount || 0) > 0;
+                  const hasIssues = hasVariances || hasValidationErrors;
+                  const isConfirmed = form.confirmed === true;
+                  
+                  let status: 'success' | 'error' | 'warning' = 'success';
+                  let statusIcon: React.ReactNode = <CheckCircle2 className="h-4 w-4" />;
+                  let statusText = 'Good';
+                  
+                  if (hasIssues && isConfirmed) {
+                    status = 'error';
+                    statusIcon = <XCircle className="h-4 w-4" />;
+                    statusText = 'Confirmed with Issues';
+                  } else if (hasIssues && !isConfirmed) {
+                    status = 'warning';
+                    statusIcon = <AlertCircle className="h-4 w-4" />;
+                    statusText = 'Unconfirmed Issues';
+                  } else {
+                    status = 'success';
+                    statusIcon = <CheckCircle2 className="h-4 w-4" />;
+                    statusText = 'Good';
+                  }
+                  
+                  return (
+                    <AccordionItem 
+                      key={formIndex} 
+                      value={`form-${formIndex}`} 
+                      className={`border rounded-lg mb-4 ${
+                        status === 'error' ? 'border-red-500/50 bg-red-50/50 dark:bg-red-950/20' :
+                        status === 'warning' ? 'border-yellow-500/50 bg-yellow-50/50 dark:bg-yellow-950/20' :
+                        'border-green-500/50 bg-green-50/50 dark:bg-green-950/20'
+                      }`}
+                    >
+                      <AccordionTrigger className="px-6 hover:no-underline">
+                        <div className="flex flex-col items-start text-left w-full">
+                          <div className="flex items-center gap-3 w-full">
+                            <div className="flex-1">
+                              <CardTitle className="text-lg flex items-center gap-2">
+                                {form.formCode} - {form.formName || 'N/A'}
+                                <Badge variant={status} className="ml-2 flex items-center gap-1">
+                                  {statusIcon}
+                                  {statusText}
+                                </Badge>
+                                {isConfirmed && (
+                                  <Badge variant="secondary" className="flex items-center gap-1">
+                                    <CheckCircle2 className="h-3 w-3" />
+                                    Confirmed
+                                  </Badge>
+                                )}
+                              </CardTitle>
+                              <CardDescription className="mt-1">
+                                Base Date: {form.baseDate} | Comparison Date: {form.comparisonDate}
+                                {hasVariances && (
+                                  <span className="ml-2 text-muted-foreground">
+                                    ({form.varianceCount || 0} variance{(form.varianceCount || 0) !== 1 ? 's' : ''})
+                                  </span>
+                                )}
+                                {hasValidationErrors && (
+                                  <span className="ml-2 text-destructive">
+                                    ({form.validationErrorCount || 0} validation error{(form.validationErrorCount || 0) !== 1 ? 's' : ''})
+                                  </span>
+                                )}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="px-6 pb-6">
+                      {form.topVariances && form.topVariances.length > 0? (
+                        <div className="border rounded-lg overflow-x-auto">
+                          <Table>
+                            <TableHeader>
+                              <TableRow>
+                                <TableHead>Cell Reference</TableHead>
+                                <TableHead>Description</TableHead>
+                                <TableHead>{form.baseDate}</TableHead>
+                                <TableHead>{form.comparisonDate}</TableHead>
+                                <TableHead>Difference</TableHead>
+                                <TableHead>% Difference</TableHead>
+                                <TableHead>Flagged</TableHead>
+                                <TableHead>Category</TableHead>
+                                <TableHead>Comment</TableHead>
+                                <TableHead className="w-20">Actions</TableHead>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              {form.topVariances.map((variance: any, idx: number) => {
+                                const cellRef = variance['Cell Reference'];
+                                const hasChanges = hasUnsavedChanges(form.formCode, cellRef);
+                                const isSaving = updateAnnotationMutation.isPending;
+
+                                return (
+                                  <TableRow key={idx}>
+                                    <TableCell>
+                                      <Checkbox
+                                        checked={getAnnotationValue(variance, form.formCode, cellRef, 'flagged') as boolean}
+                                        onCheckedChange={(checked) => {
+                                          handleAnnotationEdit(
+                                            form.formCode,
+                                            cellRef,
+                                            'flagged',
+                                            checked === true
+                                          );
+                                        }}
+                                        disabled={updateAnnotationMutation.isPending}
+                                      />
+                                    </TableCell>
+                                    <TableCell className="font-mono text-xs">{cellRef}</TableCell>
+                                    <TableCell className="max-w-xs">
+                                      {formatCellDescription(variance['Cell Description'])}
+                                    </TableCell>
+                                    <TableCell>{variance[form.baseDate]}</TableCell>
+                                    <TableCell>{variance[form.comparisonDate]}</TableCell>
+                                    <TableCell>{variance['Difference']}</TableCell>
+                                    <TableCell>{variance['% Difference']}</TableCell>
+                                    <TableCell>
+                                      <Select
+                                        value = {getAnnotationValue(variance, form.formCode, cellRef, 'category') as string || 'none'}
+                                        onValueChange={(value) => {
+                                          handleAnnotationEdit(
+                                            form.formCode,
+                                            variance['Cell Reference'],
+                                            'category',
+                                            value === 'none' ? null : value
+                                          );
+                                        }}
+                                        disabled={isSaving}
+                                      >
+                                        <SelectTrigger className="w[150px] h-8">
+                                          <SelectValue placeholder="Select Category" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                          <SelectItem value="none">-</SelectItem>
+                                          {categories.map((cat) => (
+                                            <SelectItem key={cat.value} value={cat.value}>
+                                              {cat.label}
+                                            </SelectItem>
+                                          ))}
+                                        </SelectContent>
+                                      </Select>
+                                    </TableCell>
+                                    <TableCell>
+                                      <textarea
+                                        value={getAnnotationValue(variance, form.formCode, cellRef, 'comment') as string || ''}
+                                      onChange={(e) => {
+                                        handleAnnotationEdit(
+                                          form.formCode,
+                                          cellRef,
+                                          'comment',
+                                          e.target.value || null
+                                        );
+                                        }}
+                                        placeholder="Enter comment..."
+                                        className="flex min-h-[60px] w-full min-w-[200px] rounded-md border border-unput bg-background px-3 py-2 text-sm ring-offeset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        disabled={updateAnnotationMutation.isPending}
+                                        rows={2}
+                                      />
+                                    </TableCell>
+                                    <TableCell>
+                                      <Button
+                                        size="sm"
+                                        onClick={() => handleSaveAnnotation(form.formCode, cellRef)}
+                                        disabled={!hasChanges || isSaving}
+                                        variant={hasChanges ? "default" : "outline"}
+                                        className="w-full"
+                                        title={hasChanges ? "Save Changes" : "No changes to save"}
+                                      >
+                                        {isSaving ? (
+                                          <>
+                                            <RefreshCw className="h-3 w-3 mr-1 animate-spin" />
+                                            Saving...
+                                          </>
+                                        ) : (
+                                          'Save'
+                                        )}
+                                      </Button>
+                                    </TableCell>
+                                  </TableRow>
+                                );
+                              })}
+                            </TableBody>
+                          </Table>
+                        </div>
+                      ) : (
+                        <p className="text-muted-foreground text-center py-4">No variances found for this form</p>
+                      )}
+                    </AccordionContent>
+                  </AccordionItem>
+                  );
+                })}
+              </Accordion>
+            ) : (
+              <p className="text-muted-foregroud text-center py-8">No report details available</p>
+            )}
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setSelectedReport(null)}>
+                Close
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
