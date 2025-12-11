@@ -535,6 +535,8 @@ export default function Dashboard() {
               </div>
             </CardHeader>
             <CardContent>
+              <RefreshCw className="h-8 w-8 animate-spin mx-auto mb-2" />
+              <p className="text-muted-forground">Running analysis...</p>
               <p className="text-sm text-muted-foreground">
                 Report ID: {currentRunningJob}
               </p>
